@@ -54,6 +54,10 @@
     </div>
   </nav>
 
+  <div class="container mt-3">
+    <h5 id="title"></h5>
+  </div>
+
   @vite('resources/js/welcome.js')
 </body>
 

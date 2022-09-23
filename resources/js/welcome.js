@@ -1,1 +1,2 @@
-console.log('welcome');
+let title = $('#title');
+title.text('Jquery');
