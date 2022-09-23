@@ -6,7 +6,12 @@ export default defineConfig({
     plugins: [
         laravel({
             input: [
+                // Sass
+                'resources/sass/welcome.scss',
+
+                // JavaScript
                 'resources/js/app.js',
+                'resources/js/welcome.js',
             ],
         }),
     ],

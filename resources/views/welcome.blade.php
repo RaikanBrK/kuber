@@ -8,10 +8,12 @@
   <title>Welcome</title>
 
   @vite(['resources/js/app.js'])
+
+  @vite('resources/sass/welcome.scss')
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
       <a class="navbar-brand" href="#">Navbar</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -51,6 +53,8 @@
       </div>
     </div>
   </nav>
+
+  @vite('resources/js/welcome.js')
 </body>
 
 </html>
