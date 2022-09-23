@@ -56,6 +56,8 @@
 
   <div class="container mt-3">
     <h5 id="title"></h5>
+
+    <i class="fa-solid fa-house"></i>
   </div>
 
   @vite('resources/js/welcome.js')
