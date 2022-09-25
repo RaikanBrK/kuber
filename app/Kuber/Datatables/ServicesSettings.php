@@ -8,7 +8,7 @@ trait ServicesSettings {
      *
      * @var string
      */
-    public string $table = 'kuber-table-datatables';
+    public $table = 'kuber-table-datatables';
 
     /**
      * Configurações do datatables
@@ -17,7 +17,18 @@ trait ServicesSettings {
      *
      * @var string
      */
-    public string $settings = "";
+    public $settings = "";
+
+    /**
+     * Arquivo de responsividade
+     * 
+     * Quando for null será aplicado a responsividade padrão
+     * 
+     * Caso seja uma string será buscado o arquivo usando a diretiva do blade @vite
+     *
+     * @var string|null
+     */
+    public $assetResponsive = null;
 
     /**
      * Método Herdado

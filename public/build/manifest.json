@@ -20,6 +20,16 @@
     "src": "resources/js/welcome.js",
     "isEntry": true
   },
+  "resources/js/kuber/appAdminlte.js": {
+    "file": "assets/appAdminlte.25eed37a.js",
+    "src": "resources/js/kuber/appAdminlte.js",
+    "isEntry": true
+  },
+  "resources/js/kuber/datatables/datatables.js": {
+    "file": "assets/datatables.b010adca.js",
+    "src": "resources/js/kuber/datatables/datatables.js",
+    "isEntry": true
+  },
   "resources/sass/welcome.scss": {
     "file": "assets/welcome.552c02cb.css",
     "src": "resources/sass/welcome.scss",
