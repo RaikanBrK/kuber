@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-    <p>Welcome to this beautiful admin panel.</p>
+    <x-kuber.datatables />
 @stop
 
 @section('css')

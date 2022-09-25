@@ -12,6 +12,10 @@ export default defineConfig({
                 // JavaScript
                 'resources/js/app.js',
                 'resources/js/welcome.js',
+                
+                // Kuber
+                'resources/js/kuber/appAdminlte.js',
+                'resources/js/kuber/datatables/datatables.js',
             ],
         }),
     ],
