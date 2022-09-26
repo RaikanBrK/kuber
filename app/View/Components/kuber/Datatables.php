@@ -2,15 +2,10 @@
 
 namespace App\View\Components\kuber;
 
-use Kuber\Datatables\ServicesDatatables;
+use Kuber\Datatables\Component;
 
-class Datatables extends ServicesDatatables
+class Datatables extends Component
 {
-    public function __construct(public $noAssets = false)
-    {
-        $this->bootstrap();
-    }
-
     /**
      * Get the view / contents that represent the component.
      *
