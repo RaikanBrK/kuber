@@ -1,4 +1,4 @@
-<div class="table-responsive">
+<div class="table-responsive pb-3">
     <table class="display table {{ $table }}" style="width:100%">
         <thead>
             <tr>
@@ -1383,6 +1383,7 @@
     </table>
 </div>
 
+@if ($noAssets == false)
 @push('js')
 <script>
     const tableDatatables = $('.{{ $table }}');
@@ -1413,3 +1414,4 @@
 @endif
 
 @endpush
+@endif

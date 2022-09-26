@@ -5,7 +5,7 @@ namespace Kuber\Datatables;
 use Illuminate\View\Component;
 
 abstract class ServicesDatatables extends Component {
-    use ServicesSettings;
+    use ServicesSettings, ServicesStyle;
 
     public function __construct()
     {

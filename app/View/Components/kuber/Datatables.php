@@ -6,6 +6,11 @@ use Kuber\Datatables\ServicesDatatables;
 
 class Datatables extends ServicesDatatables
 {
+    public function __construct(public $noAssets = false)
+    {
+        $this->bootstrap();
+    }
+
     /**
      * Get the view / contents that represent the component.
      *

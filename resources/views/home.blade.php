@@ -8,6 +8,7 @@
 
 @section('content')
     <x-kuber.datatables />
+    <x-kuber.datatables :noAssets="true" />
 @stop
 
 @section('css')
