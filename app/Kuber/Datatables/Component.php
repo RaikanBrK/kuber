@@ -5,11 +5,14 @@ namespace Kuber\Datatables;
 use Illuminate\View\Component as ComponentIlluminate;
 
 abstract class Component extends ComponentIlluminate {
-    use ServicesSettings, ServicesStyle;
+    use ServicesSettings, ServicesStyle, ServicesData;
 
     /**
      * Iniciando o datatables
      *
+     * @param null|collection $data Registros
+     * @param null|array $header Lista de itens do cabeçalho
+     * @param null|array $keys Itens que serão buscado nos registros
      * @param boolean $noAssets Não Adicionar o script de inicialização
      * @param boolean $tableDark Tabela dark
      * @param boolean $tableStriped Tabela Striped
@@ -21,6 +24,9 @@ abstract class Component extends ComponentIlluminate {
      * 
      */
     public function __construct(
+        public $data = null,
+        public $header = null,
+        public $keys = null,
         public $noAssets = false,
         public $tableDark = false,
         public $tableStriped = false,
@@ -51,5 +57,6 @@ abstract class Component extends ComponentIlluminate {
     {
         $this->runSettings();
         $this->runStyles();
+        $this->runData();
     }
 }
