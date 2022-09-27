@@ -7,8 +7,9 @@
 @stop
 
 @section('content')
-    <x-kuber.datatables />
-    <x-kuber.datatables :noAssets="true" />
+    <x-kuber.datatables theadDark tableHover />
+    <x-kuber.datatables noAssets tableHover >
+    </x-kuber.datatables>
 @stop
 
 @section('css')

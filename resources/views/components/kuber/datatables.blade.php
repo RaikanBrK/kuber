@@ -1,6 +1,6 @@
 <div class="table-responsive pb-3">
-    <table class="display table {{ $table }}" style="width:100%">
-        <thead>
+    <table class="display table {{ $table }} {{ $tableClass }}" style="width:100%">
+        <thead class="{{ $theadClass }}">
             <tr>
                 <th>Name</th>
                 <th>Position</th>
