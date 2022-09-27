@@ -1,6 +1,6 @@
-<div class="table-responsive">
-    <table class="display table {{ $table }}" style="width:100%">
-        <thead>
+<div class="table-responsive pb-3">
+    <table class="display table {{ $table }} {{ $tableClass }}" style="width:100%">
+        <thead class="{{ $theadClass }}">
             <tr>
                 <th>Name</th>
                 <th>Position</th>
@@ -1383,6 +1383,7 @@
     </table>
 </div>
 
+@if ($noAssets == false)
 @push('js')
 <script>
     const tableDatatables = $('.{{ $table }}');
@@ -1413,3 +1414,4 @@
 @endif
 
 @endpush
+@endif
