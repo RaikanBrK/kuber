@@ -62,6 +62,34 @@ trait ServicesSettings {
     private function createJson()
     {
         $this->json = new Settings;
+
+        $this->createParamDefaults();
+    }
+
+    /**
+     * Criando parâmetros default
+     *
+     * @return void
+     */
+    private function createParamDefaults()
+    {
+        $this->removeSortingColumnAction();
+    }
+
+    /**
+     * Removendo ordenação na coluna de ações
+     *
+     * @return void
+     */
+    public function removeSortingColumnAction()
+    {
+        if ($this->actions == true) {
+            $columnDefs = new \stdClass();
+            $columnDefs->orderable = false;
+            $columnDefs->targets = -1;
+            
+            $this->json->columnDefs[] = $columnDefs;
+        }
     }
 
     /**

@@ -7,11 +7,9 @@
 @stop
 
 @section('content')
-    @php
-        $header = ['id' => 'Id', 'name' => 'Nome', 'email' => 'E-mail']
-    @endphp
+    @php($header = ['id' => 'Id', 'name' => 'Nome', 'email' => 'E-mail'])
     
-    <x-kuber.datatables theadDark tableHover :data="$users" :header="$header">
+    <x-kuber.datatables theadDark tableHover :data="$users" :header="$header" actions>
         <x-slot:tfoot>
             <tfoot>
                 <tr>

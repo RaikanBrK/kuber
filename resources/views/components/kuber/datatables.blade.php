@@ -1,3 +1,7 @@
+@push('css')
+@vite('resources/sass/kuber/datatables/datatables.scss')
+@endpush
+
 <div class="table-responsive pb-3">
     <table class="display table {{ $table }} {{ $tableClass }}" style="width:100%">
 
@@ -9,6 +13,10 @@
                 @foreach($itemsHeader as $item)
                     <th>{{ $item }}</th>
                 @endforeach
+
+                @if($actions)
+                    <th>{{ $labelAction }}</th>
+                @endif
             </tr>
         </thead>
         @endif
@@ -20,6 +28,30 @@
                 @foreach($itemsKeys as $key)
                 <td>{{ $item[$key] }}</td>
                 @endforeach
+
+                @if($actions)
+                <td class="kuber-datatables-actions">
+                    @foreach($listActionsViewer as $action)
+
+                        @if($methodFormHtml($action) == 'get')
+                        <a href="{{ route($routeActionName($action), [$routeActionParam($item)]) }}" class="kuber-datatables-action kuber-datatables-action-{{ $action['action'] }}" title="{{ $action['title'] }}">
+                            <i class="fas {{ $action['icon'] }}"></i>                        
+                        </a>
+                        @else
+                        
+                        <form action="{{ route($routeActionName($action), [$routeActionParam($item)]) }}" method="{{ $methodFormHtml($action) }}">
+                            @csrf
+                            @isset($action['method'])
+                            @method($action['method'])
+                            @endisset
+                            <button type="submit" class="kuber-datatables-action kuber-datatables-action-{{ $action['action'] }}" title="{{ $action['title'] }}">
+                                <i class="fas {{ $action['icon'] }}"></i>
+                            </button>
+                        </form>
+                        @endif
+                    @endforeach
+                </td>
+                @endif
             </tr>
             @endforeach
         </tbody>
