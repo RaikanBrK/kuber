@@ -5,9 +5,6 @@
 <div class="table-responsive pb-3">
     <table class="display table {{ $table }} {{ $tableClass }}" style="width:100%">
 
-        @if (isset($thead))
-            {{ $thead }}
-        @else
         <thead class="{{ $theadClass }}">
             <tr>
                 @foreach($itemsHeader as $item)
@@ -19,27 +16,24 @@
                 @endif
             </tr>
         </thead>
-        @endif
 
-        @if($slot->isEmpty())
         <tbody>
             @foreach($dataArray as $item)
             <tr>
                 @foreach($itemsKeys as $key)
                 <td>{{ $item[$key] }}</td>
                 @endforeach
-
+                
                 @if($actions)
                 <td class="kuber-datatables-actions">
                     @foreach($listActionsViewer as $action)
-
-                        @if($methodFormHtml($action) == 'get')
-                        <a href="{{ route($routeActionName($action), [$routeActionParam($item)]) }}" class="kuber-datatables-action kuber-datatables-action-{{ $action['action'] }}" title="{{ $action['title'] }}">
+                        @if($action['methodFormHtml'] == 'get')
+                        <a href="{{ route($action['link'], [$item['identifier']]) }}" class="kuber-datatables-action kuber-datatables-action-{{ $action['action'] }}" title="{{ $action['title'] }}">
                             <i class="fas {{ $action['icon'] }}"></i>                        
                         </a>
                         @else
                         
-                        <form action="{{ route($routeActionName($action), [$routeActionParam($item)]) }}" method="{{ $methodFormHtml($action) }}">
+                        <form action="{{ route($action['link'], [$item['identifier']]) }}" method="{{ $action['methodFormHtml'] }}">
                             @csrf
                             @isset($action['method'])
                             @method($action['method'])
@@ -55,13 +49,6 @@
             </tr>
             @endforeach
         </tbody>
-        @else
-        {{ $slot }}
-        @endif
-
-        @if (isset($tfoot))
-            {{ $tfoot }}
-        @endif
     </table>
 </div>
 

@@ -30,6 +30,8 @@ trait ServicesSettings {
      */
     public $assetResponsive = null;
 
+    protected $json = null;
+
     /**
      * Método Herdado
      * 
@@ -46,7 +48,6 @@ trait ServicesSettings {
      */
     private function runSettings()
     {
-        
         $this->createJson();
 
         $this->settingsActions();

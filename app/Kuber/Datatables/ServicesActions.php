@@ -58,14 +58,14 @@ trait ServicesActions {
      *
      * @return void
      */
-    public function runActions()
+    private function runActions()
     {
         if ($this->actions != true) {
             return false;
         }
 
         $this->setActions();
-        $this->routeNameAction();
+        $this->setAttributesDefault();
     }
 
     /**
@@ -73,7 +73,7 @@ trait ServicesActions {
      *
      * @return void
      */
-    public function setActions()
+    private function setActions()
     {
         $list = $this->actionsList != null ? $list = $this->actionsList : $this->listActionsDefault;
 
@@ -87,7 +87,7 @@ trait ServicesActions {
      * @param array $actions
      * @return void
      */
-    public function createActions($actions)
+    private function createActions($actions)
     {
         foreach($actions as $nameAction) {
             $this->listActionsViewer[$nameAction] = $this->listAllActions[$nameAction];
@@ -99,7 +99,7 @@ trait ServicesActions {
      *
      * @return void
      */
-    public function exceptActions()
+    private function exceptActions()
     {
         if ($this->actionsExcept == null) {
             return false;
@@ -117,7 +117,7 @@ trait ServicesActions {
      *
      * @return void
      */
-    protected function routeNameAction()
+    private function routeNameAction()
     {
         if ($this->route == null) {
             $this->route = explode('.', Route::currentRouteName())[0];
@@ -125,48 +125,71 @@ trait ServicesActions {
     }
 
     /**
-     * Recuperando nome da rota que será usada na ação 
+     * Adicionando atributos adicionais por padrão para a tabela
      *
-     * @param array $action
-     * @return string
+     * @return void
      */
-    public function routeActionName($action)
+    private function setAttributesDefault()
     {
-        $link = 'home';
-        if ($action['route']) {
-            $route = $this->route . '.' . $action['route'];
-
-            // administrators.show
-            if (Route::has($route)) {
-                $link = $route;
-            }
-        }
-
-        return $link;
+        $this->setMethodsActions();
+        $this->setRouteActions();
+        $this->setIdentifierData();
     }
 
     /**
-     * Retornando parâmetro que será usado como identificador na rota
+     * Adicionando atributo com os métodos de envio de formulário conhecidos pelo HTML5
      *
-     * @param array $data
-     * @return string
+     * @return void
      */
-    public function routeActionParam($data)
+    private function setMethodsActions()
+    {
+        foreach($this->listActionsViewer as $action) {
+            $this->listActionsViewer[$action['action']]['methodFormHtml'] = isset($action['method']) && $action['method'] != 'get'
+                ? 'post'
+                : 'get';
+        }
+    }
+
+    /**
+     * Adicionando atributo com o nome principal da rota
+     * 
+     * Exemplo de nome de rota
+     * administrators.show
+     * 
+     * administrators é o nome principal da rota
+     *
+     * @return void
+     */
+    private function setRouteActions()
+    {
+        $this->routeNameAction();
+
+        foreach($this->listActionsViewer as $action) {
+            $link = 'home';
+
+            if ($action['route']) {
+                $route = $this->route . '.' . $action['route'];
+
+                if (Route::has($route)) {
+                    $link = $route;
+                }
+            }
+
+            $this->listActionsViewer[$action['action']]['link'] = $link;
+        }
+    }
+
+    /**
+     * Adicionando identificador no registro com base na função ou o atributo para pesquisar no registro
+     *
+     * @return void
+     */
+    private function setIdentifierData()
     {
         $fun = $this->nameFunIdentifier;
 
-        return $fun == null ? $data[$this->identifier] : $this->$fun($data);
-    }
-
-    /**
-     * Retornando métodos de requisição para formulário em html
-     *
-     * @param [type] $action
-     * @return string 'get'|'post'
-     */
-    public function methodFormHtml($action)
-    {
-        $method = $action['method'] ?? 'get';
-        return strtolower($method) == 'get' ? 'get' : 'post';
+        foreach($this->dataArray as $key => $value) {
+            $this->dataArray[$key]['identifier'] = $fun == null ? $value[$this->identifier] : $this->$fun($value);
+        }
     }
 }

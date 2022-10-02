@@ -4,6 +4,7 @@
 
 @section('adminlte_css')
     @vite('resources/js/kuber/appAdminlte.js')
+    @livewireStyles 
 
     @stack('css')
     @yield('css')
@@ -54,6 +55,8 @@
 @stop
 
 @section('adminlte_js')
+    @livewireScripts
+    
     @stack('js')
     @yield('js')
 @stop
