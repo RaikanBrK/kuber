@@ -6,6 +6,8 @@
     @vite('resources/js/kuber/appAdminlte.js')
     @livewireStyles 
 
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     @stack('css')
     @yield('css')
 @stop

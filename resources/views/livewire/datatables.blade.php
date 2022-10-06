@@ -5,7 +5,7 @@
 <div class="table-responsive pb-3">
     <table class="display table {{ $table }} {{ $tableClass }}" style="width:100%">
 
-        <thead class="{{ $theadClass }}">
+        <thead class="kuber-table-thead {{ $theadClass }}">
             <tr>
                 @foreach($itemsHeader as $item)
                     <th>{{ $item }}</th>
@@ -55,25 +55,7 @@
 @if ($noAssets == false)
 @push('js')
 <script>
-    const tableDatatables = $('.{{ $table }}');
-    
-    var table = null;
-    var page = 0;
-    var json = {!! $settings !!}
 
-    function initDatatables(callback = null) {
-        if (table != null) {
-            page = table.page.info().page;
-            table.destroy();
-        }
-
-        if (callback) {
-            callback();
-        }
-        
-        table = tableDatatables.DataTable(json);
-        table.page( page ).draw( 'page' );
-    }
 </script>
 
 @if ($assetResponsive == null)

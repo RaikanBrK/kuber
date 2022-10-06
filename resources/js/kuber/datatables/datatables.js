@@ -1,19 +1,40 @@
-let fun = () => {
-    initDatatables(() => {
-        let width = $(window).width();
-        let numbers_length = 7;
+const table = $('table');
+var indexTh = null;
 
-        json.pagingType = "simple_numbers"
+function sortTable(idx, th) {
+    let tbody = $(table.find('tbody'));
+    let asc = true;
 
-        if (width <= 575.98) {
-            json.pagingType = "numbers"
-        } else if (width >= 992) {
-            numbers_length = 8;
+    $(table.find('thead th')).removeClass('kuber-table-sort-asc kuber-table-sort-desc')
+
+    if (indexTh == idx) {
+        asc = false;
+        indexTh = null;
+        $(th).addClass('kuber-table-sort-desc');
+    } else {
+        indexTh = idx;
+        $(th).addClass('kuber-table-sort-asc');
+    }
+
+
+    $(tbody.find('tr')).sort(function(a, b) {
+        let tdA = $($(a).find('td')[idx]);
+        let tdB = $($(b).find('td')[idx]);
+
+        if (asc) {
+            return tdA.text().localeCompare(tdB.text());
+        } else {
+            return tdB.text().localeCompare(tdA.text());
         }
+    }).each(function(idx, element) {
+        tbody.append(element);
+    });
+}
 
-        $.fn.DataTable.ext.pager.numbers_length = numbers_length;
-    })
-};
+$(table.find('th')).each(function(idx, th) {
+    $(th).on('click', () => {sortTable(idx, th)});
+});
 
-jQuery(fun);
-$(window).on('resizeEnd', fun);
+jQuery(() => {
+    sortTable(0, $(table.find('th')).first());
+})
