@@ -4,27 +4,30 @@
     .#{$slug}-table-thead th {
         position: relative;
         padding-right: 23px;
-        cursor: pointer;
 
-        &::after {
-            content: "";
-            width: 16px;
-            height: 21px;
-            position: absolute;
-            top: 4px;
-            right: 4px;
-            bottom: 0;
-            margin: auto;
-            background: url('/public/dk.png') no-repeat;
-            background-size: 12px;
-        }
+        &.kuber-table-th {
+            cursor: pointer;
 
-        &.#{$slug}-table-sort-asc::after {
-            background-image: url('/public/dk-asc.png');
-        }
-
-        &.#{$slug}-table-sort-desc::after {
-            background-image: url('/public/dk-desc.png');
+            &::after {
+                content: "";
+                width: 16px;
+                height: 21px;
+                position: absolute;
+                top: 4px;
+                right: 4px;
+                bottom: 0;
+                margin: auto;
+                background: url('/public/images/datatables/sort.png') no-repeat;
+                background-size: 12px;
+            }
+    
+            &.#{$slug}-table-sort-asc::after {
+                background-image: url('/public/images/datatables/sort-asc.png');
+            }
+    
+            &.#{$slug}-table-sort-desc::after {
+                background-image: url('/public/images/datatables/sort-desc.png');
+            }
         }
     }
 

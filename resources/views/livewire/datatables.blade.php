@@ -8,7 +8,7 @@
         <thead class="kuber-table-thead {{ $theadClass }}">
             <tr>
                 @foreach($itemsHeader as $item)
-                    <th>{{ $item }}</th>
+                    <th class="kuber-table-th">{{ $item }}</th>
                 @endforeach
 
                 @if($actions)

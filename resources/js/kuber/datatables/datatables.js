@@ -5,7 +5,7 @@ function sortTable(idx, th) {
     let tbody = $(table.find('tbody'));
     let asc = true;
 
-    $(table.find('thead th')).removeClass('kuber-table-sort-asc kuber-table-sort-desc')
+    $(table.find('.kuber-table-th')).removeClass('kuber-table-sort-asc kuber-table-sort-desc')
 
     if (indexTh == idx) {
         asc = false;
@@ -15,7 +15,6 @@ function sortTable(idx, th) {
         indexTh = idx;
         $(th).addClass('kuber-table-sort-asc');
     }
-
 
     $(tbody.find('tr')).sort(function(a, b) {
         let tdA = $($(a).find('td')[idx]);
@@ -31,10 +30,10 @@ function sortTable(idx, th) {
     });
 }
 
-$(table.find('th')).each(function(idx, th) {
+$(table.find('.kuber-table-th')).each(function(idx, th) {
     $(th).on('click', () => {sortTable(idx, th)});
 });
 
 jQuery(() => {
-    sortTable(0, $(table.find('th')).first());
+    sortTable(0, $(table.find('.kuber-table-th')).first());
 })
