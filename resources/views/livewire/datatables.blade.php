@@ -2,6 +2,11 @@
 @vite('resources/sass/kuber/datatables/datatables.scss')
 @endpush
 
+<div class="form-group">
+    <label for="busca" class="form-label">Pesquisar</label>
+    <input type="text" class="form-control buscaInput" id="busca">
+</div>
+
 <div class="table-responsive pb-3">
     <table class="display table {{ $table }} {{ $tableClass }}" style="width:100%">
 
@@ -19,9 +24,9 @@
 
         <tbody>
             @foreach($dataArray as $item)
-            <tr>
+            <tr class="kuber-table-tr">
                 @foreach($itemsKeys as $key)
-                <td>{{ $item[$key] }}</td>
+                <td class="kuber-table-td">{{ $item[$key] }}</td>
                 @endforeach
                 
                 @if($actions)

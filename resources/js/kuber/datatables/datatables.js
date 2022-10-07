@@ -37,3 +37,38 @@ $(table.find('.kuber-table-th')).each(function(idx, th) {
 jQuery(() => {
     sortTable(0, $(table.find('.kuber-table-th')).first());
 })
+
+function myFunction() {
+    // Declare variables
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.querySelector('.buscaInput');
+    filter = input.value.toUpperCase();
+    table = document.querySelector('.kuber-table-datatables');
+    tr = $(table).find("tr.kuber-table-tr");
+    var trNone = [];
+    
+    // Loop through all table rows, and hide those who don't match the search query
+    for (i = 0; i < tr.length; i++) {
+        let addTrNone = true;
+        td = $(tr[i]).find("td.kuber-table-td");
+        td.each((idx, element) => {
+            let txtValue = element.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+                addTrNone = false;
+                return false;
+            }
+        })
+
+        if (addTrNone) {
+            trNone.push(tr[i]);
+        }
+    }
+
+    console.log(trNone);
+    trNone.forEach(element => {
+        element.style.display = "none";
+    });
+}
+
+$("#busca").on('keyup', myFunction);
