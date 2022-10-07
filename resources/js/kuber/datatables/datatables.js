@@ -20,10 +20,18 @@ function sortTable(idx, th) {
         let tdA = $($(a).find('td')[idx]);
         let tdB = $($(b).find('td')[idx]);
 
-        if (asc) {
-            return tdA.text().localeCompare(tdB.text());
+        if (Number(tdA.text()) && Number(tdB.text())) {
+            if (asc) {
+                return Number(tdA.text()) < Number(tdB.text()) ? -1 : 0;
+            } else {
+                return Number(tdA.text()) < Number(tdB.text()) ? 0 : -1
+            }
         } else {
-            return tdB.text().localeCompare(tdA.text());
+            if (asc) {
+                return tdA.text().localeCompare(tdB.text());
+            } else {
+                return tdB.text().localeCompare(tdA.text());
+            }
         }
     }).each(function(idx, element) {
         tbody.append(element);
@@ -65,7 +73,6 @@ function myFunction() {
         }
     }
 
-    console.log(trNone);
     trNone.forEach(element => {
         element.style.display = "none";
     });
