@@ -2,6 +2,7 @@ const table = $('table');
 var indexTh = null;
 
 function sortTable(idx, th) {
+    let registrosPaginas = $('#inputState').val();
     let tbody = $(table.find('tbody'));
     let asc = true;
 
@@ -34,7 +35,7 @@ function sortTable(idx, th) {
             }
         }
     }).each(function(idx, element) {
-        if (idx < 10) {
+        if (idx < registrosPaginas) {
             element.style.display = "";
         } else {
             element.style.display = "none";
@@ -87,7 +88,6 @@ $("#busca").on('keyup', myFunction);
 
 $('#inputState').on('change', pagination);
 
-
 function pagination() {
     let registrosPaginas = $('#inputState').val();
     let date = $('.kuber-table-datatables tbody tr');
@@ -97,23 +97,47 @@ function pagination() {
     date.each((idx, element) => idx >= registrosPaginas ? element.style.display = "none" : element.style.display = "");    
     
     $('.nav-pagination ul.pagination').append(`
-        <li class="page-item disabled">
-            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Anterior</a>
+        <li class="page-item">
+            <a class="page-link" href="#" tabindex="-1" aria-disabled="true" data-action="prev">Anterior</a>
         </li>
     `);
 
     for (let index = 1; index <= numPaging; index++) {
         let active = index == 1 ? 'active' : '';
         $('.nav-pagination ul.pagination').append(`
-            <li class="page-item ${active}"><a class="page-link" href="#">${index}</a></li>
+            <li class="page-item ${active}"><a class="page-link" href="#" data-action="${index}">${index}</a></li>
         `);       
     }
 
     $('.nav-pagination ul.pagination').append(`
         <li class="page-item">
-            <a class="page-link" href="#">Próximo</a>
+            <a class="page-link" href="#" data-action="next">Próximo</a>
         </li>
     `);
+
+    $('.nav-pagination ul.pagination .page-link').on('click', function(e) {
+        let element = $(e.target);
+        let dataAction = element.attr('data-action');
+        let dataActionActive = $('.nav-pagination ul.pagination .page-item.active .page-link').attr('data-action');
+        if (dataAction == 'next') {
+            dataAction = Number(dataActionActive) + 1;
+            element = $(`.nav-pagination ul.pagination .page-item .page-link[data-action=${dataAction}]`);
+        } else if (dataAction == 'prev') {
+            dataAction = Number(dataActionActive) - 1;
+            element = $(`.nav-pagination ul.pagination .page-item .page-link[data-action=${dataAction}]`);
+        }
+        $('tr.kuber-table-tr').each((idx, element) => {
+            let initRegistros = (registrosPaginas * (dataAction - 1)) - 1;
+
+            if (idx > initRegistros && idx < (Number(initRegistros) + Number(registrosPaginas) + 1)) {
+                element.style.display = "";
+            } else {
+                element.style.display = "none";
+            }
+        });
+        $('.nav-pagination ul.pagination .page-item').removeClass('active');
+        element.closest('.page-item').addClass('active');
+    })
 }
 
 pagination();
