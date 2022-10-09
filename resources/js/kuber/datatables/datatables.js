@@ -34,6 +34,11 @@ function sortTable(idx, th) {
             }
         }
     }).each(function(idx, element) {
+        if (idx < 10) {
+            element.style.display = "";
+        } else {
+            element.style.display = "none";
+        }
         tbody.append(element);
     });
 }
@@ -79,3 +84,36 @@ function myFunction() {
 }
 
 $("#busca").on('keyup', myFunction);
+
+$('#inputState').on('change', pagination);
+
+
+function pagination() {
+    let registrosPaginas = $('#inputState').val();
+    let date = $('.kuber-table-datatables tbody tr');
+    let numPaging = Math.ceil(date.length / Number(registrosPaginas));
+    $('.nav-pagination ul.pagination').html('');
+    
+    date.each((idx, element) => idx >= registrosPaginas ? element.style.display = "none" : element.style.display = "");    
+    
+    $('.nav-pagination ul.pagination').append(`
+        <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Anterior</a>
+        </li>
+    `);
+
+    for (let index = 1; index <= numPaging; index++) {
+        let active = index == 1 ? 'active' : '';
+        $('.nav-pagination ul.pagination').append(`
+            <li class="page-item ${active}"><a class="page-link" href="#">${index}</a></li>
+        `);       
+    }
+
+    $('.nav-pagination ul.pagination').append(`
+        <li class="page-item">
+            <a class="page-link" href="#">Próximo</a>
+        </li>
+    `);
+}
+
+pagination();

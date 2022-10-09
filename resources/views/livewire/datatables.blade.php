@@ -2,9 +2,23 @@
 @vite('resources/sass/kuber/datatables/datatables.scss')
 @endpush
 
-<div class="form-group">
-    <label for="busca" class="form-label">Pesquisar</label>
-    <input type="text" class="form-control buscaInput" id="busca">
+<div class="form-row justify-content-between">
+    <div class="form-group col-md-4 d-flex align-items-center">
+        <label for="inputState" class="d-flex">
+            Exibir
+            <select id="inputState">
+                <option selected>10</option>
+                <option>25</option>
+                <option>50</option>
+                <option>100</option>
+            </select>
+            resultados por página
+        </label>
+    </div>
+    <div class="form-group col-md-5 d-flex align-items-center">
+        <label for="busca" class="form-label mr-3">Pesquisar</label>
+        <input type="text" class="form-control buscaInput" id="busca">
+    </div>
 </div>
 
 <div class="table-responsive pb-3">
@@ -56,6 +70,20 @@
         </tbody>
     </table>
 </div>
+
+<nav aria-label="Page navigation example" class="nav-pagination">
+    <ul class="pagination justify-content-end m-0 pb-3">
+      {{-- <li class="page-item disabled">
+        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Anterior</a>
+      </li>
+      <li class="page-item active"><a class="page-link" href="#">1</a></li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item">
+        <a class="page-link" href="#">Próximo</a>
+      </li> --}}
+    </ul>
+</nav>
 
 @if ($noAssets == false)
 @push('js')
