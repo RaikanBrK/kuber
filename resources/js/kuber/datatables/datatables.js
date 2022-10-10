@@ -1,143 +1,166 @@
-const table = $('table');
-var indexTh = null;
-
-function sortTable(idx, th) {
-    let registrosPaginas = $('#inputState').val();
-    let tbody = $(table.find('tbody'));
-    let asc = true;
-
-    $(table.find('.kuber-table-th')).removeClass('kuber-table-sort-asc kuber-table-sort-desc')
-
-    if (indexTh == idx) {
-        asc = false;
-        indexTh = null;
-        $(th).addClass('kuber-table-sort-desc');
-    } else {
-        indexTh = idx;
-        $(th).addClass('kuber-table-sort-asc');
+class Pagination {
+    pagination(selectorCountForPage, selectorContainerPagination, activeItemPaginationInit = 1) {
+        this.selectorCountForPage = selectorCountForPage;
+        this.containerPagination = $(selectorContainerPagination);
+        this.countForPage = 10;
+        this.countPagination = null;
+        this.linkPagination = null;
+        this.activeItemPaginationInit = activeItemPaginationInit;
+        this.initCountForPage();
     }
 
-    $(tbody.find('tr')).sort(function(a, b) {
-        let tdA = $($(a).find('td')[idx]);
-        let tdB = $($(b).find('td')[idx]);
+    setLinkPagination(linkPagination) {
+        this.linkPagination = linkPagination;
+    }
 
-        if (Number(tdA.text()) && Number(tdB.text())) {
-            if (asc) {
-                return Number(tdA.text()) < Number(tdB.text()) ? -1 : 0;
-            } else {
-                return Number(tdA.text()) < Number(tdB.text()) ? 0 : -1
-            }
-        } else {
-            if (asc) {
-                return tdA.text().localeCompare(tdB.text());
-            } else {
-                return tdB.text().localeCompare(tdA.text());
-            }
+    initCountForPage() {
+        this.addEventChangeCountPage();
+        this.setCountPage();
+    }
+
+    resetPagination() {
+        this.setLinkPagination(1);
+        this.setCountPage();
+    }
+
+    addEventChangeCountPage() {
+        $(this.selectorCountForPage).on('change', this.resetPagination.bind(this));
+    }
+
+    setCountPage() {
+        this.countForPage = Number($(this.selectorCountForPage).val());
+        this.createPagination();
+    }
+
+    createPagination() {
+        this.updateDate();
+
+        this.createViewerPagination();
+
+        if (this.linkPagination == null) {
+            this.setLinkPagination(this.activeItemPaginationInit);
         }
-    }).each(function(idx, element) {
-        if (idx < registrosPaginas) {
-            element.style.display = "";
-        } else {
-            element.style.display = "none";
+        this.changeActivePagination();
+    }
+
+    setCountPagination() {
+        this.countPagination = Math.ceil(this.date.length / this.countForPage);
+    }
+
+    createViewerPagination() {
+        this.setCountPagination();
+
+        this.containerPagination.html('');
+        
+        this.containerPagination.append(`
+            <li class="page-item kuber-link-prev">
+                <a class="page-link" href="#" data-link="prev">Anterior</a>
+            </li>
+        `);
+
+        for (let index = 1; index <= this.countPagination; index++) {
+            this.containerPagination.append(`
+                <li class="page-item">
+                    <a class="page-link" href="#" data-link="${index}">${index}</a>
+                </li>
+            `);
         }
-        tbody.append(element);
-    });
+    
+        this.containerPagination.append(`
+            <li class="page-item kuber-link-next">
+                <a class="page-link" href="#" data-link="next">Próximo</a>
+            </li>
+        `);
+
+        this.addEventClickItemPagination();
+    }
+
+    addEventClickItemPagination() {
+        $(this.containerPagination.find('.page-link')).on('click', this.clickItemPagination.bind(this));
+    }
+
+    clickItemPagination(e) {
+        const element = $(e.target);
+
+        if (element.closest('.page-item').hasClass('active')) {
+            return false;
+        }
+
+        this.setLinkPagination(element.attr('data-link'));
+
+        this.changeActivePagination();
+    }
+
+    changeActivePagination() {
+        this.linkItemPagination();
+
+        this.changeViewerDateFromPagination();
+    }
+
+    changeViewerDateFromPagination() {
+        this.updateViewerDateTable();
+    }
+
+    linkItemPagination() {
+        let linkPaginationActive = Number($(this.containerPagination.find('.page-item.active .page-link')).attr('data-link'));
+
+        this.linkPagination = 
+            this.linkPagination == 'next' ? ++linkPaginationActive :
+            this.linkPagination == 'prev' ? --linkPaginationActive :
+            Number(this.linkPagination);
+
+        this.activeLinkItemPagination();
+    }
+
+    activeLinkItemPagination() {
+        let next = $(this.containerPagination.find('.kuber-link-next'));
+        let prev = $(this.containerPagination.find('.kuber-link-prev'));
+
+        if (this.countPagination == 1) {
+            next.addClass('disabled');
+            prev.addClass('disabled');
+        } else if (this.linkPagination >= this.countPagination) {
+            this.linkPagination = this.countPagination;
+            next.addClass('disabled');
+            prev.removeClass('disabled');
+        } else if(this.linkPagination <= 1) {
+            next.removeClass('disabled');
+            prev.addClass('disabled');
+        } else {
+            next.removeClass('disabled');
+            prev.removeClass('disabled');
+        }
+
+        let elementItem = $(this.containerPagination.find(`.page-item .page-link[data-link=${this.linkPagination}]`));
+
+        $(this.containerPagination.find('.page-item')).removeClass('active');
+        elementItem.closest('.page-item').addClass('active');
+    }
 }
 
-$(table.find('.kuber-table-th')).each(function(idx, th) {
-    $(th).on('click', () => {sortTable(idx, th)});
-});
-
-jQuery(() => {
-    sortTable(0, $(table.find('.kuber-table-th')).first());
-})
-
-function myFunction() {
-    // Declare variables
-    var input, filter, table, tr, td, i, txtValue;
-    input = document.querySelector('.buscaInput');
-    filter = input.value.toUpperCase();
-    table = document.querySelector('.kuber-table-datatables');
-    tr = $(table).find("tr.kuber-table-tr");
-    var trNone = [];
-    
-    // Loop through all table rows, and hide those who don't match the search query
-    for (i = 0; i < tr.length; i++) {
-        let addTrNone = true;
-        td = $(tr[i]).find("td.kuber-table-td");
-        td.each((idx, element) => {
-            let txtValue = element.innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                tr[i].style.display = "";
-                addTrNone = false;
-                return false;
-            }
-        })
-
-        if (addTrNone) {
-            trNone.push(tr[i]);
-        }
+class DataTable extends Pagination {
+    constructor(table) {
+        super();
+        this.table = $(table);
+        this.date = $(this.table.find('tbody tr'));
     }
 
-    trNone.forEach(element => {
-        element.style.display = "none";
-    });
-}
-
-$("#busca").on('keyup', myFunction);
-
-$('#inputState').on('change', pagination);
-
-function pagination() {
-    let registrosPaginas = $('#inputState').val();
-    let date = $('.kuber-table-datatables tbody tr');
-    let numPaging = Math.ceil(date.length / Number(registrosPaginas));
-    $('.nav-pagination ul.pagination').html('');
-    
-    date.each((idx, element) => idx >= registrosPaginas ? element.style.display = "none" : element.style.display = "");    
-    
-    $('.nav-pagination ul.pagination').append(`
-        <li class="page-item">
-            <a class="page-link" href="#" tabindex="-1" aria-disabled="true" data-action="prev">Anterior</a>
-        </li>
-    `);
-
-    for (let index = 1; index <= numPaging; index++) {
-        let active = index == 1 ? 'active' : '';
-        $('.nav-pagination ul.pagination').append(`
-            <li class="page-item ${active}"><a class="page-link" href="#" data-action="${index}">${index}</a></li>
-        `);       
+    updateDate() {
+        this.date = $(this.table.find('tbody tr'));
     }
 
-    $('.nav-pagination ul.pagination').append(`
-        <li class="page-item">
-            <a class="page-link" href="#" data-action="next">Próximo</a>
-        </li>
-    `);
+    updateViewerDateTable() {
+        $(this.table.find('tbody .kuber-table-tr')).each((idx, element) => {
+            let initRegistros = (this.countForPage * (this.linkPagination - 1)) - 1;
 
-    $('.nav-pagination ul.pagination .page-link').on('click', function(e) {
-        let element = $(e.target);
-        let dataAction = element.attr('data-action');
-        let dataActionActive = $('.nav-pagination ul.pagination .page-item.active .page-link').attr('data-action');
-        if (dataAction == 'next') {
-            dataAction = Number(dataActionActive) + 1;
-            element = $(`.nav-pagination ul.pagination .page-item .page-link[data-action=${dataAction}]`);
-        } else if (dataAction == 'prev') {
-            dataAction = Number(dataActionActive) - 1;
-            element = $(`.nav-pagination ul.pagination .page-item .page-link[data-action=${dataAction}]`);
-        }
-        $('tr.kuber-table-tr').each((idx, element) => {
-            let initRegistros = (registrosPaginas * (dataAction - 1)) - 1;
-
-            if (idx > initRegistros && idx < (Number(initRegistros) + Number(registrosPaginas) + 1)) {
+            if (idx > initRegistros && idx < (Number(initRegistros) + Number(this.countForPage) + 1)) {
                 element.style.display = "";
             } else {
                 element.style.display = "none";
             }
         });
-        $('.nav-pagination ul.pagination .page-item').removeClass('active');
-        element.closest('.page-item').addClass('active');
-    })
+    }
 }
 
-pagination();
+const table = new DataTable('.kuber-table-datatables');
+table.pagination('#countForPage', '#paginationDatatables');
