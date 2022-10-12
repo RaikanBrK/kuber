@@ -1,54 +1,101 @@
-class Pagination {
-    pagination(selectorCountForPage, selectorContainerPagination, activeItemPaginationInit = 1) {
-        this.selectorCountForPage = selectorCountForPage;
-        this.containerPagination = $(selectorContainerPagination);
-        this.countForPage = 10;
-        this.countPagination = null;
-        this.linkPagination = null;
-        this.activeItemPaginationInit = activeItemPaginationInit;
-        this.initCountForPage();
+class Search {
+    search(selectorInput) {
+        this.input = $(selectorInput)
+        this.initSearch();
     }
 
+    initSearch() {
+        this.addEventChangeSearch();
+    }
+
+    addEventChangeSearch() {
+        $(this.input).on('keyup', this.updateSearchInput.bind(this));
+    }
+
+    updateSearchInput() {
+        this.text = this.input.val().toUpperCase();
+        this.createDateTableSearch();
+    }
+}
+
+class Pagination extends Search {
+    constructor() {
+        super();
+    }
+
+    pagination(seletorRegistrosPorPagina, selectorContainerPagination, paginationAtivaAoIniciar = 1) {
+        this.seletorRegistrosPorPagina = seletorRegistrosPorPagina;
+        this.containerPagination = $(selectorContainerPagination);
+        this.qtdRegistrosPorPaginas = 10;
+        this.qtdPaginas = null;
+        this.linkPagination = null;
+        this.paginationAtivaAoIniciar = paginationAtivaAoIniciar;
+        this.IniciandoCriacaoDaPaginacao();
+    }
+
+    /**
+     * Setando o link da página atual
+     * 
+     * @param {integer} linkPagination 
+     */
     setLinkPagination(linkPagination) {
         this.linkPagination = linkPagination;
     }
 
-    initCountForPage() {
-        this.addEventChangeCountPage();
-        this.setCountPage();
+    /**
+     * Setando quantidade de paginação de 
+     * Acordo com o números de registros e a quantidade de registros por páginas
+     */
+    setQtdPaginas() {
+        this.qtdPaginas = Math.ceil(this.date.length / this.qtdRegistrosPorPaginas);
     }
 
+    /**
+     * Setando quantidade de registros por página
+     */
+      setQtdRegistrosPorPaginas() {
+        this.qtdRegistrosPorPaginas = Number($(this.seletorRegistrosPorPagina).val());
+    }
+
+    /**
+     * Recriando paginação
+     */
     resetPagination() {
         this.setLinkPagination(1);
-        this.setCountPage();
-    }
-
-    addEventChangeCountPage() {
-        $(this.selectorCountForPage).on('change', this.resetPagination.bind(this));
-    }
-
-    setCountPage() {
-        this.countForPage = Number($(this.selectorCountForPage).val());
+        this.setQtdRegistrosPorPaginas();
         this.createPagination();
     }
 
-    createPagination() {
-        this.updateDate();
+    /**
+     * Iniciando a criação da paginação
+     */
+    IniciandoCriacaoDaPaginacao() {
+        this.addEventChangeRegistrosPorPagina();
+        this.setQtdRegistrosPorPaginas();
+        this.createPagination();
+    }
 
+    /**
+     * Adicionando evento para alterar a quantidade de registros por páginas
+     */
+    addEventChangeRegistrosPorPagina() {
+        $(this.seletorRegistrosPorPagina).on('change', this.resetPagination.bind(this));
+    }
+
+    /**
+     * Criar paginação
+     */
+    createPagination() {
         this.createViewerPagination();
 
-        if (this.linkPagination == null) {
-            this.setLinkPagination(this.activeItemPaginationInit);
-        }
-        this.changeActivePagination();
+        this.alterarPaginationAtiva();
     }
 
-    setCountPagination() {
-        this.countPagination = Math.ceil(this.date.length / this.countForPage);
-    }
-
+    /**
+     * Criar Visualização da paginação
+     */
     createViewerPagination() {
-        this.setCountPagination();
+        this.setQtdPaginas();
 
         this.containerPagination.html('');
         
@@ -58,7 +105,7 @@ class Pagination {
             </li>
         `);
 
-        for (let index = 1; index <= this.countPagination; index++) {
+        for (let index = 1; index <= this.qtdPaginas; index++) {
             this.containerPagination.append(`
                 <li class="page-item">
                     <a class="page-link" href="#" data-link="${index}">${index}</a>
@@ -75,11 +122,20 @@ class Pagination {
         this.addEventClickItemPagination();
     }
 
+    /**
+     * Adicionando evento de click nos item de paginação
+     */
     addEventClickItemPagination() {
-        $(this.containerPagination.find('.page-link')).on('click', this.clickItemPagination.bind(this));
+        $(this.containerPagination.find('.page-link')).on('click', this.changeClickItemPagination.bind(this));
     }
 
-    clickItemPagination(e) {
+    /**
+     * Alterando paginação com evento
+     * 
+     * @param {event} e 
+     * @returns {false} Falos em caso de erro
+     */
+    changeClickItemPagination(e) {
         const element = $(e.target);
 
         if (element.closest('.page-item').hasClass('active')) {
@@ -88,20 +144,33 @@ class Pagination {
 
         this.setLinkPagination(element.attr('data-link'));
 
-        this.changeActivePagination();
+        this.alterarPaginationAtiva();
     }
 
-    changeActivePagination() {
-        this.linkItemPagination();
+    /**
+     * Alterar item da paginação ativo
+     */
+    alterarPaginationAtiva() {
+        this.setandoLinkPaginationInterativo();
 
         this.changeViewerDateFromPagination();
     }
 
+    /**
+     * Atualizar dados de visualização da tabela
+     */
     changeViewerDateFromPagination() {
         this.updateViewerDateTable();
     }
 
-    linkItemPagination() {
+    /**
+     * Setando link pagination com a partir da interação do usuário com a paginação
+     */
+    setandoLinkPaginationInterativo() {
+        if (this.linkPagination == null) {
+            this.setLinkPagination(this.paginationAtivaAoIniciar);
+        }
+
         let linkPaginationActive = Number($(this.containerPagination.find('.page-item.active .page-link')).attr('data-link'));
 
         this.linkPagination = 
@@ -109,18 +178,21 @@ class Pagination {
             this.linkPagination == 'prev' ? --linkPaginationActive :
             Number(this.linkPagination);
 
-        this.activeLinkItemPagination();
+        this.alterandoClassesItemPagination();
     }
 
-    activeLinkItemPagination() {
+    /**
+     * Alterando classes dos itens da paginação
+     */
+    alterandoClassesItemPagination() {
         let next = $(this.containerPagination.find('.kuber-link-next'));
         let prev = $(this.containerPagination.find('.kuber-link-prev'));
 
-        if (this.countPagination == 1) {
+        if (this.qtdPaginas == 1) {
             next.addClass('disabled');
             prev.addClass('disabled');
-        } else if (this.linkPagination >= this.countPagination) {
-            this.linkPagination = this.countPagination;
+        } else if (this.linkPagination >= this.qtdPaginas) {
+            this.linkPagination = this.qtdPaginas;
             next.addClass('disabled');
             prev.removeClass('disabled');
         } else if(this.linkPagination <= 1) {
@@ -142,25 +214,78 @@ class DataTable extends Pagination {
     constructor(table) {
         super();
         this.table = $(table);
-        this.date = $(this.table.find('tbody tr'));
+        this.dateAll = {};
+        this.date = {};
+        this.text = null;
+
+        this.createDateAll();
     }
 
-    updateDate() {
-        this.date = $(this.table.find('tbody tr'));
+    createDateAll() {
+        $(this.table.find('tbody tr')).each((idx, element) => {
+            let id = idx + 1;
+            $(element).attr('data-kuberId', id);
+            this.dateAll[idx] = {
+                viewer: false,
+                id: id,
+                element: $(element),
+            };
+        });
+
+        this.updateDateViewer(this.dateAll);
+    }
+
+    updateDateViewer(date = {}) {
+        $('.kuber-d-auto').removeClass('kuber-d-auto');
+        
+        this.date.registers = date;
+        this.date.length = Object.keys(this.date.registers).length;
     }
 
     updateViewerDateTable() {
-        $(this.table.find('tbody .kuber-table-tr')).each((idx, element) => {
-            let initRegistros = (this.countForPage * (this.linkPagination - 1)) - 1;
+        let qtdRegistrosViewer = 0;
+        let initRegistros = (this.qtdRegistrosPorPaginas * (this.linkPagination - 1));
+        let countLoop = 0;
 
-            if (idx > initRegistros && idx < (Number(initRegistros) + Number(this.countForPage) + 1)) {
-                element.style.display = "";
-            } else {
-                element.style.display = "none";
+        for (const [idx, item] of Object.entries(this.date.registers)) {
+            if (item) {
+                if (countLoop >= initRegistros && qtdRegistrosViewer < this.qtdRegistrosPorPaginas) {
+                    item.viewer = true;
+                    qtdRegistrosViewer++;
+                    item.element.addClass('kuber-d-auto');
+                } else {
+                    item.viewer = false;
+                    item.element.removeClass('kuber-d-auto');
+                }
             }
-        });
+            countLoop++
+        }
+    }
+
+    createDateTableSearch() {
+        var filter = this.text.toUpperCase();
+        var newDate = {};
+
+        let countLoop = 0;
+        for (const [idx, item] of Object.entries(this.dateAll)) {
+            var td = $(item.element).find("td.kuber-table-td");
+            td.each((idx, element) => {
+                let txtValue = element.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    newDate[countLoop] = item;
+                    return false;
+                }
+            });
+
+            countLoop++;
+        }
+
+        this.updateDateViewer(newDate);
+
+        this.resetPagination();
     }
 }
 
 const table = new DataTable('.kuber-table-datatables');
 table.pagination('#countForPage', '#paginationDatatables');
+table.search('#search');
