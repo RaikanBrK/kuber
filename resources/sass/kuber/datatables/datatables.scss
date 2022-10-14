@@ -1,14 +1,6 @@
 @import '../../variables';
 
 .#{$slug}-table-datatables {
-    tbody tr {
-        display: none;
-
-        &.#{$slug}-d-auto {
-            display: table-row;
-        }
-    }
-
     .#{$slug}-table-thead th {
         position: relative;
         padding-right: 23px;

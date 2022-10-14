@@ -1,4 +1,84 @@
-class Search {
+class Sort {
+    sort(selectorHeadTh) {
+        this.ths = $(selectorHeadTh);
+        this.lastIdxThSort = null;
+        this.th = null;
+        this.indexTh = null;
+
+        this.initSort();
+    }
+
+    setSettingsTh(th) {
+        this.th = th;
+        this.indexTh = this.th.attr('data-kuberId');
+    }
+
+    initSort() {
+        this.addEventClickSort();
+
+        this.setSettingsTh($(this.ths).first());
+        this.controllerSort();
+    }
+
+    addEventClickSort() {
+        this.ths.on('click', this.clickControllerSort.bind(this));
+    }
+
+    clickControllerSort(e) {
+        this.setSettingsTh($(e.target));
+        this.controllerSort();
+    }
+
+    controllerSort() {
+        let asc = true;
+
+        this.clearClassItens();
+
+        const newDate = this.indexTh == this.lastIdxThSort ?
+            this.sortDesc() :
+            this.sortAsc();
+
+        this.updateSort(newDate);
+    }
+
+    sortAsc() {
+        this.lastIdxThSort = this.indexTh;
+        this.th.addClass('kuber-table-sort-asc');
+
+        return this.date.registers.sort((a, b) => {
+            let tdA = $($(a.element).find('td')[this.indexTh]).text();
+            let tdB = $($(b.element).find('td')[this.indexTh]).text();
+            
+            if (Number(tdA) && Number(tdB)) {
+                return Number(tdA) < Number(tdB) ? -1 : 0;
+            } else {
+                return tdA.localeCompare(tdB);
+            }
+        });
+    }
+
+    sortDesc() {
+        this.lastIdxThSort = null;
+        this.th.addClass('kuber-table-sort-desc');
+
+        return this.date.registers.sort((a, b) => {
+            let tdA = $($(a.element).find('td')[this.indexTh]).text();
+            let tdB = $($(b.element).find('td')[this.indexTh]).text();
+            
+            if (Number(tdA) && Number(tdB)) {
+                return Number(tdA) < Number(tdB) ? 0 : -1;
+            } else {
+                return tdB.localeCompare(tdA);
+            }
+        });
+    }
+
+    clearClassItens() {
+        this.ths.removeClass('kuber-table-sort-asc kuber-table-sort-desc');
+    }
+}
+
+class Search extends Sort {
     search(selectorInput) {
         this.input = $(selectorInput)
         this.initSearch();
@@ -47,7 +127,7 @@ class Pagination extends Search {
      * Acordo com o números de registros e a quantidade de registros por páginas
      */
     setQtdPaginas() {
-        this.qtdPaginas = Math.ceil(this.date.length / this.qtdRegistrosPorPaginas);
+        this.qtdPaginas = Math.ceil(this.date.registers.length / this.qtdRegistrosPorPaginas);
     }
 
     /**
@@ -214,8 +294,8 @@ class DataTable extends Pagination {
     constructor(table) {
         super();
         this.table = $(table);
-        this.dateAll = {};
-        this.date = {};
+        this.dateAll = [];
+        this.date = [];
         this.text = null;
 
         this.createDateAll();
@@ -225,21 +305,19 @@ class DataTable extends Pagination {
         $(this.table.find('tbody tr')).each((idx, element) => {
             let id = idx + 1;
             $(element).attr('data-kuberId', id);
-            this.dateAll[idx] = {
+            this.dateAll.push({
                 viewer: false,
                 id: id,
                 element: $(element),
-            };
+            })
         });
 
+        $(this.table.find('tbody tr')).remove();
         this.updateDateViewer(this.dateAll);
     }
 
-    updateDateViewer(date = {}) {
-        $('.kuber-d-auto').removeClass('kuber-d-auto');
-        
+    updateDateViewer(date = []) {        
         this.date.registers = date;
-        this.date.length = Object.keys(this.date.registers).length;
     }
 
     updateViewerDateTable() {
@@ -247,41 +325,47 @@ class DataTable extends Pagination {
         let initRegistros = (this.qtdRegistrosPorPaginas * (this.linkPagination - 1));
         let countLoop = 0;
 
+        let tbody = this.table.find('tbody');
+        tbody.html('');
+
         for (const [idx, item] of Object.entries(this.date.registers)) {
             if (item) {
                 if (countLoop >= initRegistros && qtdRegistrosViewer < this.qtdRegistrosPorPaginas) {
                     item.viewer = true;
                     qtdRegistrosViewer++;
-                    item.element.addClass('kuber-d-auto');
+                    tbody.append(item.element);
                 } else {
                     item.viewer = false;
-                    item.element.removeClass('kuber-d-auto');
+                    item.element.remove();
                 }
             }
+
             countLoop++
         }
     }
 
     createDateTableSearch() {
         var filter = this.text.toUpperCase();
-        var newDate = {};
+        var newDate = [];
 
-        let countLoop = 0;
         for (const [idx, item] of Object.entries(this.dateAll)) {
             var td = $(item.element).find("td.kuber-table-td");
             td.each((idx, element) => {
                 let txtValue = element.innerText;
                 if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    newDate[countLoop] = item;
+                    newDate.push(item);
                     return false;
                 }
             });
-
-            countLoop++;
         }
 
         this.updateDateViewer(newDate);
 
+        this.resetPagination();
+    }
+
+    updateSort(newDate) {
+        this.updateDateViewer(newDate);
         this.resetPagination();
     }
 }
@@ -289,3 +373,4 @@ class DataTable extends Pagination {
 const table = new DataTable('.kuber-table-datatables');
 table.pagination('#countForPage', '#paginationDatatables');
 table.search('#search');
+table.sort('.kuber-table-th');

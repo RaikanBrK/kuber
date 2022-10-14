@@ -27,8 +27,10 @@
 
             <thead class="kuber-table-thead {{ $theadClass }}">
                 <tr>
-                    @foreach($itemsHeader as $item)
-                        <th class="kuber-table-th">{{ $item }}</th>
+                    @php($indexHeader = 0)
+                    @foreach($itemsHeader as  $item)
+                        <th class="kuber-table-th" data-kuberId="{{ $indexHeader }}">{{ $item }}</th>
+                        @php($indexHeader++)
                     @endforeach
 
                     @if($actions)
