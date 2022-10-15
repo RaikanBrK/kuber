@@ -152,7 +152,6 @@ class Pagination extends Search {
     IniciandoCriacaoDaPaginacao() {
         this.addEventChangeRegistrosPorPagina();
         this.setQtdRegistrosPorPaginas();
-        this.createPagination();
     }
 
     /**
@@ -172,34 +171,95 @@ class Pagination extends Search {
     }
 
     /**
+     * Criar item na paginação
+     * 
+     * @param {number|null} link Identificador do item
+     * @param {string|null} text Texto de exibição do item
+     * @param {string|null} itemClass Classe css do item
+     */
+    createAppendItemPagination(link = null, text = null, itemClass = '') {
+        let linkHtml = '';
+        let textHtml = '...';
+
+        if (link != null) {
+            linkHtml = `href="#" data-link="${link}"`;
+
+            textHtml = text == null ? link : text;
+        }
+
+        this.containerPagination.append(`
+            <li class="page-item ${itemClass}">
+                <a class="page-link" ${linkHtml}>${textHtml}</a>
+            </li>
+        `);
+    }
+
+    /**
+     * Criar loop para criar item na paginação
+     * 
+     * @param {number} init Valor inicial do loop
+     * @param {number} finish Valor final do loop
+     */
+    createLoopAppendItemPagination(init, finish) {
+        for (let index = init; index <= finish; index++) {
+            this.createAppendItemPagination(index);
+        }
+    }
+
+    /**
      * Criar Visualização da paginação
      */
     createViewerPagination() {
         this.setQtdPaginas();
 
         this.containerPagination.html('');
-        
-        this.containerPagination.append(`
-            <li class="page-item kuber-link-prev">
-                <a class="page-link" href="#" data-link="prev">Anterior</a>
-            </li>
-        `);
 
-        for (let index = 1; index <= this.qtdPaginas; index++) {
-            this.containerPagination.append(`
-                <li class="page-item">
-                    <a class="page-link" href="#" data-link="${index}">${index}</a>
-                </li>
-            `);
-        }
+        this.createAppendItemPagination('prev', 'Anterior', 'kuber-link-prev');
+        
+        this.qtdPaginas > 7 ? this.paginationResponsive() : this.paginationDefault();
     
-        this.containerPagination.append(`
-            <li class="page-item kuber-link-next">
-                <a class="page-link" href="#" data-link="next">Próximo</a>
-            </li>
-        `);
+        this.createAppendItemPagination('next', 'Próximo', 'kuber-link-next');
 
         this.addEventClickItemPagination();
+    }
+
+    /**
+     * Criar paginação responsiva
+     */
+    paginationResponsive() {
+        let numReduce = 3;
+        let qtdReduce = this.qtdPaginas - numReduce;
+
+        // Primeiro
+        this.createAppendItemPagination('1', '1');
+
+        if (this.linkPagination > numReduce) {
+            if (this.linkPagination < qtdReduce) {
+                this.createAppendItemPagination();
+
+                this.createLoopAppendItemPagination(this.linkPagination - 1, this.linkPagination + 1);
+            }
+        } else {
+            this.createLoopAppendItemPagination(2, 5);
+        }
+
+        if (this.linkPagination >= qtdReduce) {
+            this.createAppendItemPagination();
+
+            this.createLoopAppendItemPagination(this.qtdPaginas - 4, this.qtdPaginas - 1);
+        } else {
+            this.createAppendItemPagination();
+        }
+
+        // Último
+        this.createAppendItemPagination(this.qtdPaginas);
+    }
+
+    /**
+     * Criar paginação sem responsividade
+     */
+    paginationDefault() {
+        this.createLoopAppendItemPagination(1, this.qtdPaginas);
     }
 
     /**
@@ -225,6 +285,8 @@ class Pagination extends Search {
         this.setLinkPagination(element.attr('data-link'));
 
         this.alterarPaginationAtiva();
+
+        this.createPagination();
     }
 
     /**
