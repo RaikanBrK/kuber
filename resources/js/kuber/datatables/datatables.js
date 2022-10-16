@@ -133,7 +133,7 @@ class Pagination extends Search {
     /**
      * Setando quantidade de registros por página
      */
-      setQtdRegistrosPorPaginas() {
+    setQtdRegistrosPorPaginas() {
         this.qtdRegistrosPorPaginas = Number($(this.seletorRegistrosPorPagina).val());
     }
 
@@ -158,7 +158,9 @@ class Pagination extends Search {
      * Adicionando evento para alterar a quantidade de registros por páginas
      */
     addEventChangeRegistrosPorPagina() {
-        $(this.seletorRegistrosPorPagina).on('change', this.resetPagination.bind(this));
+        Livewire.hook('message.processed', (message, component) => {
+            this.resetPagination();
+        })
     }
 
     /**
@@ -432,7 +434,9 @@ class DataTable extends Pagination {
     }
 }
 
-const table = new DataTable('.kuber-table-datatables');
-table.pagination('#countForPage', '#paginationDatatables');
-table.search('#search');
-table.sort('.kuber-table-th');
+jQuery(() => {
+    const table = new DataTable('.kuber-table-datatables');
+    table.pagination('#countForPage', '#paginationDatatables');
+    table.search('#search');
+    table.sort('.kuber-table-th');
+});
