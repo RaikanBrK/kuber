@@ -39,6 +39,10 @@ trait ServicesData {
         $this->createDatasTable();
     }
 
+    public function updateData($data) {
+        $this->data = $data;
+    }
+
     /**
      * Criando valores para a tabela
      *

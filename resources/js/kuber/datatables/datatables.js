@@ -368,12 +368,11 @@ class DataTable extends Pagination {
     createDateAll() {
         $(this.table.find('tbody tr')).each((idx, element) => {
             let id = idx + 1;
-            $(element).attr('data-kuberId', id);
             this.dateAll.push({
                 viewer: false,
                 id: id,
                 element: $(element),
-            })
+            });
         });
 
         $(this.table.find('tbody tr')).remove();
@@ -406,6 +405,35 @@ class DataTable extends Pagination {
 
             countLoop++
         }
+
+        this.addEventClickDelete();
+    }
+
+    addEventClickDelete() {
+        this.table.find('tbody tr.kuber-table-tr .kuber-datatables-action-delete').on('click', e => {
+            let button = $(e.target);
+            let element = button.closest('tr.kuber-table-tr');
+            let id = element.attr('data-kuberIdItem');
+            let idElement = element.attr('data-kuberid');
+
+            window.livewire.emit('delete', id);
+
+            element.remove();
+
+            console.log(id, idElement);
+
+            this.dateAll = this.dateAll.filter(item => {
+                return item.id != idElement;
+            });
+            
+            let date = this.date.registers.filter(item => {
+                return item.id != idElement;
+            });
+
+            this.updateDateViewer(date);
+            
+            e.preventDefault();
+        })
     }
 
     createDateTableSearch() {

@@ -40,8 +40,8 @@
             </thead>
 
             <tbody>
-                @foreach($dataArray as $item)
-                <tr class="kuber-table-tr">
+                @foreach($dataArray as $idx => $item)
+                <tr class="kuber-table-tr" wire:key="{{ $item['id'] }}" data-kuberIdItem="{{ $item['id'] }}" data-kuberId="{{ $idx + 1 }}">
                     @foreach($itemsKeys as $key)
                     <td class="kuber-table-td">{{ $item[$key] }}</td>
                     @endforeach
@@ -55,7 +55,10 @@
                             </a>
                             @else
                             
-                            <form action="{{ route($action['link'], [$item['identifier']]) }}" method="{{ $action['methodFormHtml'] }}">
+                            <form 
+                                action="{{ route($action['link'], [$item['identifier']]) }}"
+                                method="{{ $action['methodFormHtml'] }}"
+                            >
                                 @csrf
                                 @isset($action['method'])
                                 @method($action['method'])

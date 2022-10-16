@@ -82,6 +82,5 @@ class AdministratorController extends Controller
     public function destroy($id)
     {
         User::where('id', $id)->delete();
-        echo json_encode($id);
     }
 }
