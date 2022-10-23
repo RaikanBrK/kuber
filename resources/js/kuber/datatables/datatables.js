@@ -29,15 +29,16 @@ class Sort {
         this.controllerSort();
     }
 
-    controllerSort() {
-        let asc = true;
-
+    controllerSortInit() {
         this.clearClassItens();
 
-        const newDate = this.indexTh == this.lastIdxThSort ?
+        return this.indexTh == this.lastIdxThSort ?
             this.sortDesc() :
             this.sortAsc();
+    }
 
+    controllerSort() {
+        const newDate = this.controllerSortInit();
         this.updateSort(newDate);
     }
 
@@ -140,9 +141,19 @@ class Pagination extends Search {
     /**
      * Recriando paginação
      */
-    resetPagination() {
-        this.setLinkPagination(1);
+    updatePagination(linkPagination = null) {
+        let link = linkPagination == null ? 1 : linkPagination;
+
+        this.setQtdPaginas();
         this.setQtdRegistrosPorPaginas();
+
+        if (link > this.qtdPaginas) {
+            link = this.qtdPaginas;
+        } else if (link < 1) {
+            link = 1;
+        }
+
+        this.setLinkPagination(link);
         this.createPagination();
     }
 
@@ -159,7 +170,13 @@ class Pagination extends Search {
      */
     addEventChangeRegistrosPorPagina() {
         Livewire.hook('message.processed', (message, component) => {
-            this.resetPagination();
+            let link = null;
+
+            if (message.updateQueue[0].payload.event == 'delete') {
+                link = this.linkPagination;
+            }
+
+            this.updatePagination(link);
         })
     }
 
@@ -358,6 +375,8 @@ class DataTable extends Pagination {
     constructor(table) {
         super();
         this.table = $(table);
+        this.body = null;
+        this.lines = null;
         this.dateAll = [];
         this.date = [];
         this.text = null;
@@ -365,21 +384,31 @@ class DataTable extends Pagination {
         this.createDateAll();
     }
 
+    getBody() {
+        this.body = $(this.table.find('tbody'));
+        return this.body;
+    }
+
+    getLines() {
+        this.lines = $($(this.getBody()).find('tr.kuber-table-tr'));
+        return this.lines;
+    }
+
     createDateAll() {
-        $(this.table.find('tbody tr')).each((idx, element) => {
+        this.getLines().each((idx, element) => {
             let id = idx + 1;
             this.dateAll.push({
                 viewer: false,
-                id: id,
+                id: Number($(element).attr('data-kuberIdItem')),
                 element: $(element),
             });
         });
 
-        $(this.table.find('tbody tr')).remove();
+        this.getLines().remove();
         this.updateDateViewer(this.dateAll);
     }
 
-    updateDateViewer(date = []) {        
+    updateDateViewer(date = []) {
         this.date.registers = date;
     }
 
@@ -388,7 +417,7 @@ class DataTable extends Pagination {
         let initRegistros = (this.qtdRegistrosPorPaginas * (this.linkPagination - 1));
         let countLoop = 0;
 
-        let tbody = this.table.find('tbody');
+        let tbody = this.getBody();
         tbody.html('');
 
         for (const [idx, item] of Object.entries(this.date.registers)) {
@@ -414,20 +443,17 @@ class DataTable extends Pagination {
             let button = $(e.target);
             let element = button.closest('tr.kuber-table-tr');
             let id = element.attr('data-kuberIdItem');
-            let idElement = element.attr('data-kuberid');
 
             window.livewire.emit('delete', id);
 
             element.remove();
 
-            console.log(id, idElement);
-
             this.dateAll = this.dateAll.filter(item => {
-                return item.id != idElement;
+                return item.id != id;
             });
             
             let date = this.date.registers.filter(item => {
-                return item.id != idElement;
+                return item.id != id;
             });
 
             this.updateDateViewer(date);
@@ -453,12 +479,16 @@ class DataTable extends Pagination {
 
         this.updateDateViewer(newDate);
 
-        this.resetPagination();
+        this.updatePagination();
     }
 
     updateSort(newDate) {
         this.updateDateViewer(newDate);
-        this.resetPagination();
+        this.updatePagination();
+    }
+
+    create() {
+        this.updatePagination();
     }
 }
 
@@ -467,4 +497,5 @@ jQuery(() => {
     table.pagination('#countForPage', '#paginationDatatables');
     table.search('#search');
     table.sort('.kuber-table-th');
+    table.create();
 });

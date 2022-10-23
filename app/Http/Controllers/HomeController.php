@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\administrators\AdministratorController;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -25,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // $users = User::factory()->count(5)->create();
+        $users = User::factory()->count(1)->create();
         $users = User::all();
 
         return view('home', ["users" => $users]);

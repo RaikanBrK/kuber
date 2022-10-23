@@ -2,7 +2,6 @@
 
 namespace App\Http\Livewire\kuber;
 
-use App\Http\Controllers\administrators\AdministratorController;
 use App\Http\Livewire\kuber\datatables\ComponentDatatables;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
