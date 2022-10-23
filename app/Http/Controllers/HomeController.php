@@ -24,7 +24,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $users = User::factory()->count(1)->create();
         $users = User::all();
 
         return view('home', ["users" => $users]);
