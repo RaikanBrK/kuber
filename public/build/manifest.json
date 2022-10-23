@@ -34,5 +34,10 @@
     "file": "assets/welcome.552c02cb.css",
     "src": "resources/sass/welcome.scss",
     "isEntry": true
+  },
+  "resources/sass/kuber/datatables/datatables.scss": {
+    "file": "assets/datatables.6d7b5281.css",
+    "src": "resources/sass/kuber/datatables/datatables.scss",
+    "isEntry": true
   }
 }
