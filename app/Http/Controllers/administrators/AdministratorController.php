@@ -15,7 +15,11 @@ class AdministratorController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::all();
+
+        $header = ['id' => 'Id', 'name' => 'Nome', 'email' => 'E-mail'];
+
+        return view('admin.administrators.index', ['users' => $users, 'header' => $header]);
     }
 
     /**
