@@ -6,11 +6,7 @@
     <h1>Dashboard</h1>
 @stop
 
-@section('content')
-    @php($header = ['id' => 'Id', 'name' => 'Nome', 'email' => 'E-mail'])
-
-    <livewire:kuber.datatables theadDark tableHover :data="$users" :header="$header" actions route="administrators" />
-    
+@section('content')    
 @stop
 
 @section('css')
