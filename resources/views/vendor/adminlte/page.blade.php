@@ -58,6 +58,12 @@
 
 @section('adminlte_js')
     @livewireScripts
+
+    @include('sweetalert::alert')
+    
+    <x-livewire-alert::scripts />
+
+    <x-livewire-alert::flash />
     
     @stack('js')
     @yield('js')
