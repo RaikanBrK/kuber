@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\administrators;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class AdministratorController extends Controller
 {
@@ -29,7 +31,7 @@ class AdministratorController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.administrators.create');
     }
 
     /**
@@ -40,7 +42,22 @@ class AdministratorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name' => ['required', 'min:5', 'max:255'],
+            'email' => ['required', 'unique:users', 'min:4', 'max:255'],
+            'password' => ['required', 'confirmed', 'min:8', 'max:255'],
+        ]);
+    
+        if ($validator->fails()) {
+            return back()->with('toast_error', $validator->messages()->all()[0])->withInput();
+        }
+
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+        return back()->with('success', 'Usuário Criado com sucesso');
     }
 
     /**
