@@ -5,11 +5,15 @@ namespace App\Http\Controllers\administrators;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Hash;
+use App\Repositories\UserRepository;
 use Illuminate\Support\Facades\Validator;
 
 class AdministratorController extends Controller
 {
+    public function __construct(private UserRepository $repository)
+    {
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -52,11 +56,8 @@ class AdministratorController extends Controller
             return back()->with('toast_error', $validator->messages()->all()[0])->withInput();
         }
 
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+        $user = $this->repository->add($request);
+
         return back()->with('success', 'Usuário Criado com sucesso');
     }
 
