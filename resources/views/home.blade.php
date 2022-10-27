@@ -6,7 +6,8 @@
     <h1>Dashboard</h1>
 @stop
 
-@section('content')    
+@section('content')
+    @livewire('teste')
 @stop
 
 @section('css')
