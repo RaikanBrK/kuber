@@ -35,7 +35,6 @@ class AdministratorController extends Controller
      */
     public function create()
     {
-
         return view('admin.administrators.create');
     }
 
@@ -47,7 +46,6 @@ class AdministratorController extends Controller
      */
     public function store(UserCreateRequest $request)
     {
-
         // $user = $this->repository->add($request);
 
         // return back()->with('success', 'Usuário Criado com sucesso');

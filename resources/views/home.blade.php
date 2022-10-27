@@ -7,7 +7,6 @@
 @stop
 
 @section('content')
-    @livewire('teste')
 @stop
 
 @section('css')

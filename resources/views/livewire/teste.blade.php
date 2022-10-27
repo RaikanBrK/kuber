@@ -1,1 +1,0 @@
-<button wire:click="createAlertError">Alert</button>
