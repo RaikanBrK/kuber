@@ -46,9 +46,9 @@ class AdministratorController extends Controller
      */
     public function store(UserCreateRequest $request)
     {
-        // $user = $this->repository->add($request);
+        $this->repository->add($request);
 
-        // return back()->with('success', 'Usuário Criado com sucesso');
+        return back()->withSuccess('Usuário criado com sucesso');
     }
 
     /**
