@@ -6,7 +6,9 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserCreateRequest;
+use App\Http\Requests\UserEditRequest;
 use App\Repositories\UserRepository;
+use Illuminate\Support\Facades\Validator;
 
 class AdministratorController extends Controller
 {
@@ -48,7 +50,7 @@ class AdministratorController extends Controller
     {
         $this->repository->add($request);
 
-        return back()->withSuccess('Usuário criado com sucesso');
+        return to_route('administrator.create')->withSuccess('Usuário criado com sucesso');
     }
 
     /**
@@ -59,7 +61,6 @@ class AdministratorController extends Controller
      */
     public function show($id)
     {
-        echo 'edit';
     }
 
     /**
@@ -70,7 +71,9 @@ class AdministratorController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+
+        return view('admin.administrators.edit', ['user' => $user]);
     }
 
     /**
@@ -80,9 +83,17 @@ class AdministratorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserEditRequest $request, $id)
     {
-        //
+        if ($request->checkBoxChangePassword) {
+            $request->validate([
+                'password' => ['required', 'confirmed', 'min:8', 'max:255'],
+            ]);
+        }
+
+        $this->repository->update($id, $request);
+
+        return to_route('administrators.edit', $id)->withSuccess("Usuário editado com sucesso");
     }
 
     /**

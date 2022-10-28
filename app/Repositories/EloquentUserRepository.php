@@ -16,4 +16,20 @@ class EloquentUserRepository implements UserRepository
             'password' => Hash::make($request->password),
         ]);
     }
+
+    public function update($id, $request): User
+    {
+        $user = User::find($id);
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+
+        if ($request->checkBoxChangePassword) {
+            $user->password = Hash::make($request->password);
+        }
+
+        $user->save();
+        
+        return $user;
+    }
 }

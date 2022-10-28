@@ -7,5 +7,5 @@
 @stop
 
 @section('content')
-    <livewire:kuber.datatables theadDark tableHover :data="$users" :header="$header" actions route="administrators" />
+    <livewire:kuber.datatables theadDark tableHover :data="$users" :header="$header" actions route="administrators" :actionsExcept="['viewer']" />
 @stop
