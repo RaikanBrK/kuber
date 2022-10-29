@@ -85,12 +85,6 @@ class AdministratorController extends Controller
      */
     public function update(UserEditRequest $request, $id)
     {
-        if ($request->checkBoxChangePassword) {
-            $request->validate([
-                'password' => ['required', 'confirmed', 'min:8', 'max:255'],
-            ]);
-        }
-
         $this->repository->update($id, $request);
 
         return to_route('administrators.edit', $id)->withSuccess("Usuário editado com sucesso");
