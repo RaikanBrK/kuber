@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Livewire\kuber;
+namespace App\Http\Livewire\Kuber;
 
-use App\Http\Livewire\kuber\datatables\ComponentDatatables;
+use App\Http\Livewire\Kuber\datatables\ComponentDatatables;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -39,6 +39,6 @@ class Datatables extends ComponentDatatables
 
     public function render()
     {
-        return view('livewire.datatables');
+        return view('livewire.kuber.datatables');
     }
 }

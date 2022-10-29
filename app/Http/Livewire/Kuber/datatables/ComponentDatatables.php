@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\kuber\datatables;
+namespace App\Http\Livewire\Kuber\datatables;
 
 use Livewire\Component;
 
