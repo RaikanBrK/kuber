@@ -18,6 +18,7 @@ export default defineConfig({
                 'resources/js/kuber/appAdminlte.js',
                 'resources/js/kuber/datatables/datatables.js',
                 'resources/sass/kuber/datatables/datatables.scss',
+                'resources/sass/kuber/adminlte/page.scss',
             ],
         }),
     ],

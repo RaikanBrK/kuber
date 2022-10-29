@@ -8,6 +8,8 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    @vite('resources/sass/kuber/adminlte/page.scss')
+
     @stack('css')
     @yield('css')
 @stop
