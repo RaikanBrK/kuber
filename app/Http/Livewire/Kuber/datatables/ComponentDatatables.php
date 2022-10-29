@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Kuber\datatables;
 
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 use Kuber\Datatables\ServicesActions;
@@ -46,6 +47,8 @@ abstract class ComponentDatatables extends Component
     public $theadDark = false;
 
     public $theadLight = false;
+
+    public $countForPage = 10;
     
     /**
      * Construindo o datatables
@@ -55,6 +58,7 @@ abstract class ComponentDatatables extends Component
     public function mount()
     {
         $this->bootstrap();
+        $this->countForPage = Auth::user()->countForPage;
         $this->init();
     }
 
@@ -76,5 +80,12 @@ abstract class ComponentDatatables extends Component
         $this->runStyles();
         $this->runData();
         $this->runActions();
+    }
+
+    public function updatedCountForPage()
+    {
+        $user = Auth::user();
+        $user->countForPage = $this->countForPage;
+        $user->save();
     }
 }
