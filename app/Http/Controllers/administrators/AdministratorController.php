@@ -50,7 +50,7 @@ class AdministratorController extends Controller
     {
         $this->repository->add($request);
 
-        return to_route('administrator.create')->withSuccess('Usuário criado com sucesso');
+        return to_route('administrators.create')->withSuccess('Usuário criado com sucesso');
     }
 
     /**
