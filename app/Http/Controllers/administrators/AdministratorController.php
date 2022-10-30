@@ -23,10 +23,6 @@ class AdministratorController extends Controller
      */
     public function index()
     {
-        // foreach(User::factory()->count(2)->create() as $user) {
-        //     $user->assignRole('admin');
-        // }
-
         $users = User::role(['admin', 'admin-master'])->get();
 
         $header = ['id' => 'Id', 'name' => 'Nome', 'email' => 'E-mail'];

@@ -16,12 +16,20 @@ class DatatablesUser extends ComponentDatatables
     {
         $user = User::find($id);
 
-        if ($user == null || $user->hasRole('admin-master') == true) {
-            $this->alert('error', 'O super usuário não pode ser removido');
+        if ($user == null) {
+            return false;
+        }
+
+        if ($user->hasRole('admin-master') == true) {
+            $this->alert('error', 'O super usuário não pode ser removido ' . $id);
             return 'error-delete-user';
         }
 
-        User::where('id', $id)->delete();
+        User::where('id', $id)->delete();        
+        
+        if ($id == auth()->user()->id) {
+            $this->logout();
+        }
             
         foreach ($this->data as $key => $value) {
             if ($this->data[$key]->id == $id) {
@@ -34,6 +42,12 @@ class DatatablesUser extends ComponentDatatables
 
         $this->alert('success', 'Usuário removido com sucesso');
         return 'success-delete-user';
+    }
+
+    public function logout() 
+    {
+        Auth::logout();
+        return redirect()->route('admin.login');
     }
 
     public function render()
