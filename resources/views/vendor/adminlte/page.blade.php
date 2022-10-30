@@ -60,8 +60,6 @@
 
 @section('adminlte_js')
     @livewireScripts
-
-    @include('sweetalert::alert')
     
     <x-livewire-alert::scripts />
 

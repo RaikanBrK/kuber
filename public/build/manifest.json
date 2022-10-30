@@ -1,10 +1,10 @@
 {
   "resources/js/app.js": {
-    "file": "assets/app.8f3474bb.js",
+    "file": "assets/app.2ad6cc2a.js",
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [
-      "assets/app.62a9a7ff.css"
+      "assets/app.8c56a720.css"
     ],
     "assets": [
       "assets/fa-brands-400.3fe890d0.woff2",
@@ -15,18 +15,23 @@
       "assets/fa-solid-900.6d53c706.ttf"
     ]
   },
+  "resources/js/admin/administrators/edit.js": {
+    "file": "assets/edit.6cd000e5.js",
+    "src": "resources/js/admin/administrators/edit.js",
+    "isEntry": true
+  },
   "resources/js/welcome.js": {
-    "file": "assets/welcome.fb923c28.js",
+    "file": "assets/welcome.9f232000.js",
     "src": "resources/js/welcome.js",
     "isEntry": true
   },
   "resources/js/kuber/appAdminlte.js": {
-    "file": "assets/appAdminlte.25eed37a.js",
+    "file": "assets/appAdminlte.d06859f3.js",
     "src": "resources/js/kuber/appAdminlte.js",
     "isEntry": true
   },
   "resources/js/kuber/datatables/datatables.js": {
-    "file": "assets/datatables.b010adca.js",
+    "file": "assets/datatables.3fbfa404.js",
     "src": "resources/js/kuber/datatables/datatables.js",
     "isEntry": true
   },
@@ -35,8 +40,13 @@
     "src": "resources/sass/welcome.scss",
     "isEntry": true
   },
+  "resources/sass/kuber/adminlte/page.scss": {
+    "file": "assets/page.0abfb3ef.css",
+    "src": "resources/sass/kuber/adminlte/page.scss",
+    "isEntry": true
+  },
   "resources/sass/kuber/datatables/datatables.scss": {
-    "file": "assets/datatables.6d7b5281.css",
+    "file": "assets/datatables.f22b9609.css",
     "src": "resources/sass/kuber/datatables/datatables.scss",
     "isEntry": true
   }

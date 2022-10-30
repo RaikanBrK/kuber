@@ -165,15 +165,37 @@ class Pagination extends Search {
         this.setQtdRegistrosPorPaginas();
     }
 
+    deleteRegistro(retorno, id) {
+        if (retorno == 'success-delete-user') {
+            $(this.body).find(`.kuber-table-tr[data-kuberIdItem=${id}]`).remove();
+
+            this.dateAll = this.dateAll.filter(item => {
+                return item.id != id;
+            });
+            
+            let date = this.date.registers.filter(item => {
+                return item.id != id;
+            });
+
+            this.updateDateViewer(date);
+            
+        }
+    }
+
     /**
      * Adicionando evento para alterar a quantidade de registros por páginas
      */
     addEventChangeRegistrosPorPagina() {
         Livewire.hook('message.processed', (message, component) => {
             let link = null;
+            let effects = message.response.effects;
+            let payload = message.updateQueue[0].payload;
+            let retorno = Object.values(effects.returns)[0];
+            let id = payload.params[0];
 
-            if (message.updateQueue[0].payload.event == 'delete') {
+            if (payload.event == 'delete') {
                 link = this.linkPagination;
+                this.deleteRegistro(retorno, id);
             }
 
             this.updatePagination(link);
@@ -446,18 +468,6 @@ class DataTable extends Pagination {
 
             window.livewire.emit('delete', id);
 
-            element.remove();
-
-            this.dateAll = this.dateAll.filter(item => {
-                return item.id != id;
-            });
-            
-            let date = this.date.registers.filter(item => {
-                return item.id != id;
-            });
-
-            this.updateDateViewer(date);
-            
             e.preventDefault();
         })
     }

@@ -7,8 +7,6 @@ use App\Models\User;
 
 class Datatables extends ComponentDatatables
 {
-    protected $listeners = ['delete' => 'delete'];
-
     public function delete($id)
     {
         User::where('id', $id)->delete();

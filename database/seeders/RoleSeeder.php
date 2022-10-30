@@ -6,8 +6,9 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Spatie\Permission\Models\Role;
 
-class PermissionsSeeder extends Seeder
+class RoleSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,8 +17,8 @@ class PermissionsSeeder extends Seeder
      */
     public function run()
     {
-        Permission::create(['name' => 'admin-master']);
-        Permission::create(['name' => 'admin']);
-        Permission::create(['name' => 'user']);
+        Role::create(['name' => 'admin-master']);
+        Role::create(['name' => 'admin']);
+        Role::create(['name' => 'user']);
     }
 }
