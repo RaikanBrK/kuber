@@ -3,7 +3,10 @@
 namespace App\Http\Livewire\Kuber;
 
 use App\Http\Livewire\Kuber\datatables\ComponentDatatables;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
+use Illuminate\Support\Facades\Route;
 
 class DatatablesUserTransferMaster extends ComponentDatatables
 {
@@ -11,7 +14,9 @@ class DatatablesUserTransferMaster extends ComponentDatatables
     
     protected $listeners = ['confirmed', 'cancel'];
 
-    public function modal()
+    public $idUser;
+
+    public function modal($id = null)
     {
         $this->alert('warning', 'Transferir Super Admin?', [
             'position' => 'center',
@@ -21,20 +26,21 @@ class DatatablesUserTransferMaster extends ComponentDatatables
             'onConfirmed' => 'confirmed',
             'confirmButtonText' => 'Sim, transferir!',
             'showCancelButton' => true,
-            'onDismissed' => 'cancel',
             'cancelButtonText' => 'Não. Permanecer como Super Admin',
             'text' => 'Cuidado!!! Essa é uma ação irreversível.',
-        ]);           
+        ]);
+        $this->idUser = $id;
     }
 
     public function confirmed()
     {
-        $this->alert('success', 'Sucesso');
-    }
+        if (Auth::check() && Auth::user()->hasRole('admin-master')) {
+            User::find($this->idUser)->assignRole('admin-master');
+            Auth::user()->removeRole('admin-master');
 
-    public function cancel()
-    {
-        $this->alert('info', 'Nop');
+            return redirect()->route('administrators.index')->with('success', 'Super Admin transferido com sucesso');
+        }
+        $this->alert('error', 'Algo deu errado!');
     }
 
     public function render()

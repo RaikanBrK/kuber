@@ -3,12 +3,10 @@
 namespace App\Http\Controllers\administrators;
 
 use App\Models\User;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserCreateRequest;
 use App\Http\Requests\UserEditRequest;
 use App\Repositories\UserRepository;
-use Illuminate\Support\Facades\Validator;
 
 class AdministratorController extends Controller
 {

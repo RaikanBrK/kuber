@@ -9,7 +9,7 @@
                         <i class="fas {{ $action['icon'] }}"></i>
                     </a>
                 @elseif($action['livewire'] != false)
-                <button type="type" class="kuber-datatables-action kuber-datatables-action-{{ $action['action'] }}" wire:click="{{ $action['livewire'] }}"
+                <button type="type" class="kuber-datatables-action kuber-datatables-action-{{ $action['action'] }}" wire:click="{{ $action['livewire'] }}({{ $item['id'] }})"
                     title="{{ $action['title'] }}">
                     <i class="fas {{ $action['icon'] }}"></i>
                 </button>
