@@ -23,6 +23,10 @@ class AdministratorController extends Controller
      */
     public function index()
     {
+        // foreach(User::factory()->count(2)->create() as $user) {
+        //     $user->assignRole('user');
+        // }
+
         $users = User::role(['admin', 'admin-master'])->get();
 
         $header = ['id' => 'Id', 'name' => 'Nome', 'email' => 'E-mail'];
@@ -99,5 +103,14 @@ class AdministratorController extends Controller
     public function destroy($id)
     {
         User::where('id', $id)->delete();
+    }
+
+    public function transferMaster()
+    {
+        $users = User::role('admin')->get();
+
+        $header = ['id' => 'Id', 'name' => 'Nome', 'email' => 'E-mail'];
+
+        return view('admin.administrators.transferMaster', ['users' => $users, 'header' => $header]);
     }
 }

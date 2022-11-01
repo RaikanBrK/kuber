@@ -49,8 +49,6 @@ abstract class ComponentDatatables extends Component
     public $theadLight = false;
 
     public $countForPage = 10;
-    
-    protected $listeners = ['delete' => 'delete'];
 
     /**
      * Construindo o datatables

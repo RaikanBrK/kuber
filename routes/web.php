@@ -32,4 +32,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
 Route::prefix('admin')->middleware('auth')->group(function() {
     Route::resource('administrators', AdministratorController::class);
+    Route::controller(AdministratorController::class)->middleware('admin.master')->name('administrators.')->group(function () {
+        Route::get('transferir-super-admin', 'transferMaster')->name('transferMaster.index');
+        Route::post('transferir-super-admin', 'transferMasterStore')->name('transferMaster.store');
+    });
 });

@@ -190,7 +190,7 @@ class Pagination extends Search {
             let link = null;
             let effects = message.response.effects;
             let payload = message.updateQueue[0].payload;
-            let retorno = Object.values(effects.returns)[0];
+            let retorno = effects.returns ? Object.values(effects.returns)[0] : false;
             let id = payload.params[0];
 
             if (payload.event == 'delete') {

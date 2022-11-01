@@ -11,6 +11,8 @@ use Livewire\Component;
 class DatatablesUser extends ComponentDatatables
 {
     use LivewireAlert;
+
+    protected $listeners = ['delete' => 'delete'];
     
     public function delete($id)
     {

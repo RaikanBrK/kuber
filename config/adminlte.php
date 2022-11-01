@@ -316,8 +316,9 @@ return [
             'icon'    => 'fas fa-fw fa-users',
             'submenu' => [
                 [
-                    'text' => 'Transferir Permissão',
-                    'url'  => '/admin/transfer-permission',
+                    'text' => 'Transferir Admin Master',
+                    'url'  => '/admin/transferir-super-admin',
+                    'role' => 'admin-master',
                 ],
                 [
                     'text' => 'Listar',

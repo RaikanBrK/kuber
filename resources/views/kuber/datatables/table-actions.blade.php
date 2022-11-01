@@ -8,6 +8,11 @@
                         title="{{ $action['title'] }}">
                         <i class="fas {{ $action['icon'] }}"></i>
                     </a>
+                @elseif($action['livewire'] != false)
+                <button type="type" class="kuber-datatables-action kuber-datatables-action-{{ $action['action'] }}" wire:click="{{ $action['livewire'] }}"
+                    title="{{ $action['title'] }}">
+                    <i class="fas {{ $action['icon'] }}"></i>
+                </button>
                 @else
                     <form action="{{ route($action['link'], [$item['identifier']]) }}"
                         method="{{ $action['methodFormHtml'] }}">

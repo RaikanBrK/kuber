@@ -18,6 +18,6 @@ class UserSeeder extends Seeder
             'name' => 'Carlos Alexandre',
             'email' => 'raikanbr4@gmail.com',
             'password' => '$2y$10$99CqtuizT4ss/uwkUbWP0eNG11sERPMYgTlImp6l/q2eIed4XqfVG',
-        ])->assignRole('admin-master');
+        ])->assignRole('admin-master', 'admin');
     }
 }
