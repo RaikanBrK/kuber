@@ -21,11 +21,7 @@ class AdministratorController extends Controller
      */
     public function index()
     {
-        // foreach(User::factory()->count(2)->create() as $user) {
-        //     $user->assignRole('user');
-        // }
-
-        $users = User::role(['admin', 'admin-master'])->get();
+        $users = User::with('roles')->role(['admin-master', 'admin'])->get();
 
         $header = ['id' => 'Id', 'name' => 'Nome', 'email' => 'E-mail'];
 
@@ -100,12 +96,14 @@ class AdministratorController extends Controller
      */
     public function destroy($id)
     {
-        User::where('id', $id)->delete();
+        $this->repository->delete($id);
+
+        return to_route('administrators.index')->withSuccess("Usuário deletado com sucesso");
     }
 
     public function transferMaster()
     {
-        $users = User::role('admin')->get();
+        $users = User::with('roles')->role(['admin-master', 'admin'])->get();
 
         $header = ['id' => 'Id', 'name' => 'Nome', 'email' => 'E-mail'];
 
