@@ -4,7 +4,6 @@ namespace App\Repositories;
 
 use App\Models\User;
 use Spatie\Permission\Models\Role;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class EloquentUserRepository implements UserRepository
@@ -38,10 +37,15 @@ class EloquentUserRepository implements UserRepository
     {
         $user = User::find($id);
 
+        $this->removeAllRoleUser($user);
+        
+        $user->delete();
+    }
+
+    protected function removeAllRoleUser($user)
+    {
         Role::all()->each(function($item) use($user) {
             $user->removeRole($item->name);
         });
-        
-        $user->delete();
     }
 }
