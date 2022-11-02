@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Kuber\Auth\AuthenticatesAdmin;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class AdminLoginController extends Controller
 {
@@ -19,7 +19,7 @@ class AdminLoginController extends Controller
     |
     */
 
-    use AuthenticatesUsers;
+    use AuthenticatesAdmin;
 
     /**
      * Where to redirect users after login.

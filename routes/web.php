@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\administrators\AdministratorController;
 use App\Http\Controllers\Auth\AdminLoginController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*

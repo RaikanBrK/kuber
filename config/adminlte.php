@@ -316,7 +316,7 @@ return [
             'icon'    => 'fas fa-fw fa-users',
             'submenu' => [
                 [
-                    'text' => 'Transferir Admin Master',
+                    'text' => 'Transferir Super Admin',
                     'url'  => '/admin/transferir-super-admin',
                     'role' => 'admin-master',
                 ],

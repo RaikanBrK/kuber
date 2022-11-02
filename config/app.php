@@ -196,7 +196,6 @@ return [
         App\Providers\RouteServiceProvider::class,
         \Yoeunes\Toastr\ToastrServiceProvider::class,
         \App\Providers\UserRepositoryProvider::class,
-        \App\Providers\OneAdminMasterProvider::class,
 
     ],
 
