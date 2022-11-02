@@ -88,4 +88,16 @@ abstract class ComponentDatatables extends Component
         $user->countForPage = $this->countForPage;
         $user->save();
     }
+
+    protected function resetDateRemoveItem($id)
+    {
+        foreach ($this->data as $key => $value) {
+            if ($this->data[$key]->id == $id) {
+                $this->data->forget($key);
+            }
+        }
+
+        $this->updateData($this->data);
+        $this->bootstrap();
+    }
 }

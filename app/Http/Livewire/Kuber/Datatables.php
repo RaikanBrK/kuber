@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Kuber;
 
 use App\Http\Livewire\Kuber\datatables\ComponentDatatables;
 use App\Models\User;
+use App\Repositories\EloquentUserRepository;
 
 class Datatables extends ComponentDatatables
 {
@@ -11,16 +12,10 @@ class Datatables extends ComponentDatatables
 
     public function delete($id)
     {
-        User::where('id', $id)->delete();
+        $repository = new EloquentUserRepository();
+        $repository->delete($id);
 
-        foreach ($this->data as $key => $value) {
-            if ($this->data[$key]->id == $id) {
-                $this->data->forget($key);
-            }
-        }
-
-        $this->updateData($this->data);
-        $this->bootstrap();
+        $this->resetDateRemoveItem($id);
     }
 
     public function render()

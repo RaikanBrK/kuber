@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\User;
+use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -31,5 +32,16 @@ class EloquentUserRepository implements UserRepository
         $user->save();
         
         return $user;
+    }
+
+    public function delete($id)
+    {
+        $user = User::find($id);
+
+        Role::all()->each(function($item) use($user) {
+            $user->removeRole($item->name);
+        });
+        
+        $user->delete();
     }
 }

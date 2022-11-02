@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Kuber;
 
 use App\Http\Livewire\Kuber\datatables\ComponentDatatables;
 use App\Models\User;
+use App\Repositories\EloquentUserRepository;
 use Illuminate\Support\Facades\Auth;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
@@ -23,24 +24,18 @@ class DatatablesUser extends ComponentDatatables
         }
 
         if ($user->hasRole('admin-master') == true) {
-            $this->alert('error', 'O super usuário não pode ser removido ' . $id);
+            $this->alert('error', 'O super usuário não pode ser removido');
             return 'error-delete-user';
         }
 
-        User::where('id', $id)->delete();        
+        $repository = new EloquentUserRepository();
+        $repository->delete($id);
         
         if ($id == auth()->user()->id) {
             $this->logout();
         }
-            
-        foreach ($this->data as $key => $value) {
-            if ($this->data[$key]->id == $id) {
-                $this->data->forget($key);
-            }
-        }
-
-        $this->updateData($this->data);
-        $this->bootstrap();
+        
+        $this->resetDateRemoveItem($id);
 
         $this->alert('success', 'Usuário removido com sucesso');
         return 'success-delete-user';
