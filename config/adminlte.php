@@ -316,25 +316,25 @@ return [
             'icon'    => 'fas fa-fw fa-users',
             'submenu' => [
                 [
-                    'text' => 'Transferir Super Admin',
+                    'text' => 'Transferir super admin',
                     'url'  => '/admin/transferir-super-admin',
                     'role' => 'admin-master',
                 ],
                 [
-                    'text' => 'Listar',
+                    'text' => 'Listar administradores',
                     'url'  => '/admin/administrators',
                 ],
                 [
-                    'text'    => 'Criar',
+                    'text'    => 'Criar administrador',
                     'url'     => '/admin/administrators/create',
                 ],
             ],
         ],
         ['header' => 'account_settings'],
         [
-            'text' => 'change_password',
-            'url'  => 'admin/profile/password',
-            'icon' => 'fas fa-fw fa-lock',
+            'text' => 'Editar perfil',
+            'url'  => 'admin/profile',
+            'icon' => 'fas fa-user',
         ],
     ],
 

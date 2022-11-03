@@ -11,7 +11,7 @@ export default defineConfig({
 
                 // JavaScript
                 'resources/js/app.js',
-                'resources/js/admin/administrators/edit.js',
+                'resources/js/admin/administrators/changePassword.js',
                 'resources/js/welcome.js',
                 
                 // Kuber
