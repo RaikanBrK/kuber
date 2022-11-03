@@ -48,7 +48,7 @@ class AdministratorController extends Controller
     {
         $this->repository->add($request);
 
-        return to_route('administrators.create')->withSuccess('Usuário criado com sucesso');
+        return to_route('admin.administrators.create')->withSuccess('Usuário criado com sucesso');
     }
 
     /**
@@ -85,7 +85,7 @@ class AdministratorController extends Controller
     {
         $this->repository->update($id, $request);
 
-        return to_route('administrators.edit', $id)->withSuccess("Usuário editado com sucesso");
+        return to_route('admin.administrators.edit', $id)->withSuccess("Usuário editado com sucesso");
     }
 
     /**
@@ -98,7 +98,7 @@ class AdministratorController extends Controller
     {
         $this->repository->delete($id);
 
-        return to_route('administrators.index')->withSuccess("Usuário deletado com sucesso");
+        return to_route('admin.administrators.index')->withSuccess("Usuário deletado com sucesso");
     }
 
     public function transferMaster()

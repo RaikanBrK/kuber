@@ -9,7 +9,7 @@
 @section('content')
     <div class="container">
 
-        <form action="{{ route('administrators.store') }}" method="post">
+        <form action="{{ route('admin.administrators.store') }}" method="post">
             @csrf
 
             <div class="form-row">

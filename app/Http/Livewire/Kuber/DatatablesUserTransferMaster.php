@@ -38,7 +38,7 @@ class DatatablesUserTransferMaster extends ComponentDatatables
             User::find($this->idUser)->assignRole('admin-master');
             Auth::user()->removeRole('admin-master');
 
-            return redirect()->route('administrators.index')->with('success', 'Super Admin transferido com sucesso');
+            return redirect()->route('admin.administrators.index')->with('success', 'Super Admin transferido com sucesso');
         }
         $this->alert('error', 'Algo deu errado!');
     }
