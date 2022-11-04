@@ -27,6 +27,7 @@ class User extends Authenticatable
         'password',
         'countForPage',
         'image',
+        'description',
     ];
 
     /**
@@ -58,7 +59,7 @@ class User extends Authenticatable
 
     public function adminlte_desc()
     {
-        return 'That\'s a nice guy';
+        return $this->description ?? 'Olá, eu sou novo aqui!';
     }
 
     public function adminlte_profile_url()

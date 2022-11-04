@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\administrators\AdministratorController;
 use App\Http\Controllers\Auth\AdminLoginController;
 use Illuminate\Support\Facades\Auth;
@@ -35,8 +36,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::get('transferir-super-admin', 'transferMaster')->name('transferMaster.index');
             Route::post('transferir-super-admin', 'transferMasterStore')->name('transferMaster.store');
         });
-        Route::controller(AdministratorController::class)->group(function() {
-            Route::get('profile', 'profile')->name('profile');
+        Route::controller(ProfileController::class)->group(function() {
+            Route::get('profile', 'index')->name('profile');
+            Route::put('profile/{id}', 'update')->name('profile.update');
         });
     });
 

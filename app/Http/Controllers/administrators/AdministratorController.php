@@ -8,6 +8,7 @@ use App\Repositories\UserRepository;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\UserEditRequest;
 use App\Http\Requests\UserCreateRequest;
+use Illuminate\Http\Request;
 
 class AdministratorController extends Controller
 {
@@ -109,10 +110,5 @@ class AdministratorController extends Controller
         $header = ['id' => 'Id', 'name' => 'Nome', 'email' => 'E-mail'];
 
         return view('admin.administrators.transferMaster', ['users' => $users, 'header' => $header]);
-    }
-
-    public function profile()
-    {
-        return view('admin.administrators.profile', ['user' => Auth::user()]);
     }
 }
