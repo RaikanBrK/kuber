@@ -55,7 +55,13 @@ class User extends Authenticatable
 
     public function adminlte_image()
     {
-        return $this->image ?? asset('images/avatar-man.png');
+        return $this->image();
+    }
+
+    public function image()
+    {
+        $avatar = $this->gender_id == 2 ? 'avatar-woman.png' : 'avatar-man.png';
+        return $this->image ?? asset('images/' . $avatar);
     }
 
     public function adminlte_desc()

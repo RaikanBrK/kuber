@@ -20,34 +20,7 @@
 
     <tbody>
         @foreach($dataArray as $idx => $item)
-        @php($adminMaster = $data->find($item['id'])->hasRole('admin-master'))
-        <tr 
-            class="
-                kuber-table-tr
-                @if($adminMaster)
-                    table-primary
-                @else
-                    @if(auth()->user()->id == $item['id']) table-active @endif
-                @endif
-            "
-            wire:key="{{ $item['id'] }}" 
-            data-kuberIdItem="{{ $item['id'] }}"
-        >
-            @foreach($itemsKeys as $key)
-            <td class="kuber-table-td"
-                >
-                @if($key == 'id' && $adminMaster)
-                <i class="fas fa-crown text-warning mr-2"></i>
-                @endif
-                @if($key == 'name')
-                    <img src="https://picsum.photos/300/300" alt="{{ $item[$key] }}" class="img-fluid img-circle mr-2 border border-dark" style="width: 30px">
-                @endif
-                {{ $item[$key] }}
-            </td>
-            @endforeach
-            
-            @include('kuber.datatables.table-actions')
-        </tr>
+        @include('kuber.datatables.linesTr')
         @endforeach
     </tbody>
 </table>
