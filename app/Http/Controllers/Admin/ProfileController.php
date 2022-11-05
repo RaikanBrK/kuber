@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\UserEditRequest;
-use App\Repositories\UserRepository;
+use App\Models\Gender;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Repositories\UserRepository;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\UserEditRequest;
 
 class ProfileController extends Controller
 {
@@ -15,7 +16,7 @@ class ProfileController extends Controller
 
     public function index()
     {
-        return view('admin.profile', ['user' => Auth::user()]);
+        return view('admin.profile', ['user' => Auth::user(), 'genders' => Gender::all()]);
     }
 
     /**

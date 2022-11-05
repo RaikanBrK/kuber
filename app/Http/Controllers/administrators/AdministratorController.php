@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\administrators;
 
 use App\Models\User;
+use App\Models\Gender;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\UserRepository;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\UserEditRequest;
 use App\Http\Requests\UserCreateRequest;
-use Illuminate\Http\Request;
 
 class AdministratorController extends Controller
 {
@@ -37,7 +38,7 @@ class AdministratorController extends Controller
      */
     public function create()
     {
-        return view('admin.administrators.create');
+        return view('admin.administrators.create', ['genders' => Gender::all()]);
     }
 
     /**
@@ -73,7 +74,7 @@ class AdministratorController extends Controller
     {
         $user = User::find($id);
 
-        return view('admin.administrators.edit', ['user' => $user]);
+        return view('admin.administrators.edit', ['user' => $user, 'genders' => Gender::all()]);
     }
 
     /**
