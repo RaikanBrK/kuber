@@ -11,14 +11,17 @@ export default defineConfig({
 
                 // JavaScript
                 'resources/js/app.js',
-                'resources/js/admin/administrators/changePassword.js',
                 'resources/js/welcome.js',
                 
                 // Kuber
                 'resources/js/kuber/appAdminlte.js',
                 'resources/js/kuber/datatables/datatables.js',
+                'resources/js/kuber/admin/administrators/changePassword.js',
+                'resources/js/kuber/admin/profile.js',
+
                 'resources/sass/kuber/datatables/datatables.scss',
                 'resources/sass/kuber/adminlte/page.scss',
+                'resources/sass/kuber/admin/profile.scss',
             ],
         }),
     ],

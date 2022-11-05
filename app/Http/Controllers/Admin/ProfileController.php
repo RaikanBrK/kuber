@@ -32,6 +32,10 @@ class ProfileController extends Controller
             return false;
         }
 
+        $request->validate([
+            'image' => ['image', 'nullable', 'mimes:png,jpg,jpeg', 'max:2048'],
+        ]);
+
         $this->repository->update($id, $request);
 
         return to_route('admin.profile', $id)->withSuccess("Usuário editado com sucesso");

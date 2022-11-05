@@ -8,7 +8,7 @@
 
 @section('content')
     <div class="container-fluid">
-        <form action="{{ route('admin.profile.update', $user->id) }}" method="post">
+        <form action="{{ route('admin.profile.update', $user->id) }}" method="post" enctype="multipart/form-data" >
             @csrf
             @method('PUT')
             <input type="hidden" name="user_id" value="{{ $user->id }}">
@@ -16,11 +16,11 @@
             <div class="form-row mb-2">
                 <div class="col-auto pr-4">
                     <div class="form-group">
-                        <label for="imageProfile" id="labelImageProfile" class="d-flex flex-column align-items-center">
-                            <img src="{{ $user->image() }}" alt="{{ $user->name }}" class="img-fluid">
+                        <label for="campoImageProfile" id="labelImageProfile" class="d-flex flex-column align-items-center">
+                            <img src="{{ $user->image() }}" alt="{{ $user->name }}" class="img-fluid" id="imageProfile" accept='image/*'>
                             <small class="text-muted">Clicar para alterar</small>
                         </label>
-                        <input type="file" class="d-none" id="imageProfile" name="imageProfile">
+                        <input type="file" class="d-none" id="campoImageProfile" name="image">
                     </div>
                 </div>
                 <div class="col">
@@ -47,6 +47,11 @@
     </div>
 @stop
 
+@push('css')
+    @vite('resources/sass/kuber/admin/profile.scss')
+@endpush
+
 @push('js')
-    @vite('resources/js/admin/administrators/changePassword.js')
+    @vite('resources/js/kuber/admin/administrators/changePassword.js')
+    @vite('resources/js/kuber/admin/profile.js')
 @endpush

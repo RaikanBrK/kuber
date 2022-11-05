@@ -35,5 +35,5 @@
 @stop
 
 @push('js')
-    @vite('resources/js/admin/administrators/changePassword.js')
+    @vite('resources/js/kuber/admin/administrators/changePassword.js')
 @endpush
