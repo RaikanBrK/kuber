@@ -66,6 +66,11 @@ class User extends Authenticatable
 
     public function adminlte_desc()
     {
+        return $this->desc();
+    }
+
+    public function desc()
+    {
         return $this->description ?? 'Olá, eu sou novo aqui!';
     }
 

@@ -36,7 +36,7 @@
                     </div>
                     <div class="form-group">
                         <label for="desc">Descrição</label>
-                        <input type="text" class="form-control" id="desc" name="desc" placeholder="{{ $user->adminlte_desc() }}" value="{{ $user->adminlte_desc() }}">
+                        <input type="text" class="form-control" id="desc" name="desc" placeholder="{{ $user->desc() }}" value="{{ $user->desc() }}">
                     </div>
                 </div>
             </div>

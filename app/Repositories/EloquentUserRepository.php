@@ -25,6 +25,10 @@ class EloquentUserRepository implements UserRepository
         $user->name = $request->name;
         $user->email = $request->email;
         $user->gender_id = $request->gender;
+        
+        if($user->desc() != $request->desc) {
+            $user->description = $request->desc;
+        }
 
         if ($request->checkBoxChangePassword) {
             $user->password = Hash::make($request->password);
