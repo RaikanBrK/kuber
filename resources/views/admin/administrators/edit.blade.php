@@ -26,7 +26,8 @@
                         placeholder="{{ $user->email }}">
                 </div>
             </div>
-            @include('admin/administrators.partials.changePassword')
+            @include('admin/administrators.partials.radioGender')
+            @include('admin.administrators.partials.changePassword')
             
             <button type="submit" class="btn btn-outline-primary ml-auto d-block">Editar</button>
         </form>

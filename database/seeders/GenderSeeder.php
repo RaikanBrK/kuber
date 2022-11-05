@@ -18,6 +18,7 @@ class GenderSeeder extends Seeder
         Gender::insert([
             ['gender' => 'Masculino'],
             ['gender' => 'Feminino'],
+            ['gender' => 'Outro'],
         ]);
     }
 }

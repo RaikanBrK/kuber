@@ -32,6 +32,7 @@
                     <input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
                 </div>
             </div>
+            @include('admin/administrators.partials.radioGender')
             <small class="text-muted">Outras informações como foto, descrição, etc. Poderão ser alteradas após efetuar o login</small>
             <button type="submit" class="btn btn-primary ml-auto d-block">Criar</button>
         </form>

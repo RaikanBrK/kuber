@@ -40,6 +40,7 @@
                     </div>
                 </div>
             </div>
+            @include('admin/administrators.partials.radioGender')
             @include('admin/administrators.partials.changePassword')
             <button type="submit" class="btn btn-primary ml-auto d-block">Salvar</button>
         </form>

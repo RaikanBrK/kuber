@@ -28,6 +28,7 @@ class User extends Authenticatable
         'countForPage',
         'image',
         'description',
+        'gender_id'
     ];
 
     /**

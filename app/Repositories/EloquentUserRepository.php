@@ -14,6 +14,7 @@ class EloquentUserRepository implements UserRepository
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'gender_id' => $request->gender,
         ])->assignRole('admin');
     }
 
@@ -23,6 +24,7 @@ class EloquentUserRepository implements UserRepository
 
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->gender_id = $request->gender;
 
         if ($request->checkBoxChangePassword) {
             $user->password = Hash::make($request->password);
