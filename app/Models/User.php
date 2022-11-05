@@ -66,4 +66,14 @@ class User extends Authenticatable
     {
         return 'admin/profile';
     }
+
+    public function gender()
+    {
+        return $this->belongsTo(Gender::class);
+    }
+
+    public function getGender()
+    {
+        return $this->gender()->get()->first()->gender;
+    }
 }

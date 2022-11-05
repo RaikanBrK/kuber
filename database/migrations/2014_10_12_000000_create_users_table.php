@@ -23,6 +23,7 @@ return new class extends Migration
             $table->timestamps();
             $table->integer('countForPage')->default(10);
             $table->string('image')->nullable();
+            $table->unsignedBigInteger('gender_id');
             $table->string('description')->nullable();
         });
     }
