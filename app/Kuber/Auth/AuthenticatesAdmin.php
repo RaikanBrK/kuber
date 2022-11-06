@@ -201,7 +201,7 @@ trait AuthenticatesAdmin
 
         return $request->wantsJson()
             ? new JsonResponse([], 204)
-            : redirect('/');
+            : to_route('admin.login');
     }
 
     /**
