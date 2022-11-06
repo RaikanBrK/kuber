@@ -24,7 +24,7 @@ class DatatablesUser extends ComponentDatatables
         }
 
         if ($user->hasRole('admin-master') == true) {
-            $this->alert('error', 'O super usuário não pode ser removido');
+            $this->alert('error', 'O super admin não pode ser removido');
             return 'error-delete-user';
         }
 

@@ -2,10 +2,9 @@
     <div class="form-group col-md-4 d-flex align-items-center">
         <label for="countForPage" class="d-flex">
             Exibir
-            @php($select = ["10", "25", "50", "100"])
             <select id="countForPage" wire:model="countForPage">
-                @foreach($select as $item)
-                    <option value="{{ $item }}">{{ $item }}</option>
+                @foreach($countForPageAll as $item)
+                    <option value="{{ $item->number }}" >{{ $item->number }}</option>
                 @endforeach
             </select>
             resultados por página
