@@ -2,14 +2,22 @@
 
 namespace Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
  */
 class UserFactory extends Factory
 {
+    protected function example()
+    {
+        // foreach(User::factory()->count(3)->create() as $user) {
+        //     $user->assignRole('user');
+        // }
+    }
+
     /**
      * Define the model's default state.
      *
@@ -21,8 +29,9 @@ class UserFactory extends Factory
             'name' => fake()->name(),
             'email' => fake()->safeEmail(),
             'email_verified_at' => now(),
-            'password' => '$2y$10$99CqtuizT4ss/uwkUbWP0eNG11sERPMYgTlImp6l/q2eIed4XqfVG', // password
+            'password' => Hash::make('123456789'),
             'remember_token' => Str::random(10),
+            'gender_id' => rand(1, 3),
         ];
     }
 
