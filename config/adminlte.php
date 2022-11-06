@@ -63,10 +63,10 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
-    'logo_img_class' => 'brand-image img-circle elevation-3',
-    'logo_img_xl' => null,
+    'logo' => '',
+    'logo_img' => 'images/logo.svg',
+    'logo_img_class' => 'brand-image kuber-brand-image',
+    'logo_img_xl' => false,
     'logo_img_xl_class' => 'brand-image-xs',
     'logo_img_alt' => 'Admin Logo',
 
@@ -292,11 +292,6 @@ return [
     'menu' => [
         // Navbar items:
         [
-            'type'         => 'navbar-search',
-            'text'         => 'Pesquisar',
-            'topnav_right' => true,
-        ],
-        [
             'type'         => 'fullscreen-widget',
             'topnav_right' => true,
         ],
@@ -316,24 +311,25 @@ return [
             'icon'    => 'fas fa-fw fa-users',
             'submenu' => [
                 [
-                    'text' => 'Transferir Permissão',
-                    'url'  => '/admin/transfer-permission',
+                    'text' => 'Transferir super admin',
+                    'url'  => '/admin/transferir-super-admin',
+                    'role' => 'admin-master',
                 ],
                 [
-                    'text' => 'Listar',
+                    'text' => 'Listar administradores',
                     'url'  => '/admin/administrators',
                 ],
                 [
-                    'text'    => 'Criar',
+                    'text'    => 'Criar administrador',
                     'url'     => '/admin/administrators/create',
                 ],
             ],
         ],
         ['header' => 'account_settings'],
         [
-            'text' => 'change_password',
-            'url'  => 'admin/profile/password',
-            'icon' => 'fas fa-fw fa-lock',
+            'text' => 'Editar perfil',
+            'url'  => 'admin/profile',
+            'icon' => 'fas fa-user',
         ],
     ],
 

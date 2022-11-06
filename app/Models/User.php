@@ -2,15 +2,18 @@
 
 namespace App\Models;
 
+use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles;
+
+    protected $guard_name = 'web';
 
     /**
      * The attributes that are mass assignable.
@@ -23,6 +26,9 @@ class User extends Authenticatable
         'email',
         'password',
         'countForPage',
+        'image',
+        'description',
+        'gender_id'
     ];
 
     /**
@@ -49,16 +55,39 @@ class User extends Authenticatable
 
     public function adminlte_image()
     {
-        return 'https://picsum.photos/300/300';
+        return $this->image();
+    }
+
+    public function image()
+    {
+        $avatar = $this->gender_id == 2 ? 'avatar-woman.png' : 'avatar-man.png';
+        return $this->image != null 
+            ? asset("storage/".$this->image)
+            : asset('images/' . $avatar);
     }
 
     public function adminlte_desc()
     {
-        return 'That\'s a nice guy';
+        return $this->desc();
+    }
+
+    public function desc()
+    {
+        return $this->description ?? 'Olá, eu sou novo aqui!';
     }
 
     public function adminlte_profile_url()
     {
-        return 'profile/username';
+        return 'admin/profile';
+    }
+
+    public function gender()
+    {
+        return $this->belongsTo(Gender::class);
+    }
+
+    public function getGender()
+    {
+        return $this->gender()->get()->first()->gender;
     }
 }

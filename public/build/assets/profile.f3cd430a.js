@@ -1,0 +1,1 @@
+const l=$("#campoImageProfile");l.on("change",a=>{let t=a.target;const e=new FileReader;e.onload=function(){var n=e.result,r=document.getElementById("imageProfile");r.src=n},t.files.length>0&&e.readAsDataURL(t.files[0]),a.preventDefault()});

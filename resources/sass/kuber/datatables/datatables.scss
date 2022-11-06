@@ -62,6 +62,9 @@
             &.#{$slug}-datatables-action-delete {
                 background-color: #dc3545;
             }
+            &.#{$slug}-datatables-action-transfer {
+                background-color: #174966;
+            }
         }    
     }
 }

@@ -1,1 +1,0 @@
-let i=()=>{initDatatables(()=>{let e=$(window).width(),n=7;json.pagingType="simple_numbers",e<=575.98?json.pagingType="numbers":e>=992&&(n=8),$.fn.DataTable.ext.pager.numbers_length=n})};jQuery(i);$(window).on("resizeEnd",i);

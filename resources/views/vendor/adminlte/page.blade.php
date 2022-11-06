@@ -8,6 +8,8 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    @vite('resources/sass/kuber/adminlte/page.scss')
+
     @stack('css')
     @yield('css')
 @stop
@@ -58,6 +60,12 @@
 
 @section('adminlte_js')
     @livewireScripts
+    
+    <x-livewire-alert::scripts />
+
+    <x-livewire-alert::flash />
+
+    @livewire('kuber.alert-toastr')
     
     @stack('js')
     @yield('js')

@@ -1,10 +1,10 @@
 {
   "resources/js/app.js": {
-    "file": "assets/app.8f3474bb.js",
+    "file": "assets/app.2ad6cc2a.js",
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [
-      "assets/app.62a9a7ff.css"
+      "assets/app.8c56a720.css"
     ],
     "assets": [
       "assets/fa-brands-400.3fe890d0.woff2",
@@ -16,18 +16,28 @@
     ]
   },
   "resources/js/welcome.js": {
-    "file": "assets/welcome.fb923c28.js",
+    "file": "assets/welcome.9f232000.js",
     "src": "resources/js/welcome.js",
     "isEntry": true
   },
   "resources/js/kuber/appAdminlte.js": {
-    "file": "assets/appAdminlte.25eed37a.js",
+    "file": "assets/appAdminlte.d06859f3.js",
     "src": "resources/js/kuber/appAdminlte.js",
     "isEntry": true
   },
   "resources/js/kuber/datatables/datatables.js": {
-    "file": "assets/datatables.b010adca.js",
+    "file": "assets/datatables.c306ad1f.js",
     "src": "resources/js/kuber/datatables/datatables.js",
+    "isEntry": true
+  },
+  "resources/js/kuber/admin/administrators/changePassword.js": {
+    "file": "assets/changePassword.70dfcc11.js",
+    "src": "resources/js/kuber/admin/administrators/changePassword.js",
+    "isEntry": true
+  },
+  "resources/js/kuber/admin/profile.js": {
+    "file": "assets/profile.f3cd430a.js",
+    "src": "resources/js/kuber/admin/profile.js",
     "isEntry": true
   },
   "resources/sass/welcome.scss": {
@@ -35,8 +45,18 @@
     "src": "resources/sass/welcome.scss",
     "isEntry": true
   },
+  "resources/sass/kuber/adminlte/page.scss": {
+    "file": "assets/page.cd3dd287.css",
+    "src": "resources/sass/kuber/adminlte/page.scss",
+    "isEntry": true
+  },
+  "resources/sass/kuber/admin/profile.scss": {
+    "file": "assets/profile.5e92be2f.css",
+    "src": "resources/sass/kuber/admin/profile.scss",
+    "isEntry": true
+  },
   "resources/sass/kuber/datatables/datatables.scss": {
-    "file": "assets/datatables.6d7b5281.css",
+    "file": "assets/datatables.306db614.css",
     "src": "resources/sass/kuber/datatables/datatables.scss",
     "isEntry": true
   }

@@ -13,8 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->integer('countForPage')->default(10);
+        Schema::create('genders', function (Blueprint $table) {
+            $table->id();
+            $table->string('gender');
         });
     }
 
@@ -25,8 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('countForPage');
-        });
+        Schema::dropIfExists('genders');
     }
 };

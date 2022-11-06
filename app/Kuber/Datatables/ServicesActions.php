@@ -37,6 +37,14 @@ trait ServicesActions {
             'route' => 'destroy',
             'method' => 'delete',
         ],
+        'transfer' => [
+            'action' => 'transfer',
+            'title' => 'Transferir',
+            'icon' => 'fa-exchange-alt',
+            'route' => 'store',
+            'method' => 'post',
+            'livewire' => 'modal',
+        ],
     ];
     
     /**
@@ -134,6 +142,7 @@ trait ServicesActions {
         $this->setMethodsActions();
         $this->setRouteActions();
         $this->setIdentifierData();
+        $this->setLivewire();
     }
 
     /**
@@ -190,6 +199,16 @@ trait ServicesActions {
 
         foreach($this->dataArray as $key => $value) {
             $this->dataArray[$key]['identifier'] = $fun == null ? $value[$this->identifier] : $this->$fun($value);
+        }
+    }
+
+    private function setLivewire()
+    {
+        foreach($this->listActionsViewer as $action) {
+            $livewire = isset($action['livewire']) ? $action['livewire'] : false;
+
+
+            $this->listActionsViewer[$action['action']]['livewire'] = $livewire;
         }
     }
 }
