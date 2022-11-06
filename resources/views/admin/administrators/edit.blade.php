@@ -29,7 +29,10 @@
             @include('admin/administrators.partials.radioGender')
             @include('admin.administrators.partials.changePassword')
             
-            <button type="submit" class="btn btn-outline-primary ml-auto d-block">Editar</button>
+            <div class="d-flex justify-content-between align-items-center">
+                <a href="{{ route('admin.administrators.index') }}" class="btn btn-sm btn-info">Voltar</a>
+                <button type="submit" class="btn btn-outline-primary">Editar</button>
+            </div>
         </form>
     </div>
 @stop

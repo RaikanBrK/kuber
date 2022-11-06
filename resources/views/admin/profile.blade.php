@@ -17,7 +17,7 @@
                 <div class="col-auto pr-4">
                     <div class="form-group">
                         <label for="campoImageProfile" id="labelImageProfile" class="d-flex flex-column align-items-center">
-                            <img src="{{ $user->image() }}" alt="{{ $user->name }}" class="img-fluid" id="imageProfile" accept='image/*'>
+                            <img src="{{ $user->image() }}" alt="{{ $user->name }}" class="img-fluid" id="imageProfile" accept=".png, .jpg, .jpeg">
                             <small class="text-muted">Clicar para alterar</small>
                         </label>
                         <input type="file" class="d-none" id="campoImageProfile" name="image">

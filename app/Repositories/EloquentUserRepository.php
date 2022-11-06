@@ -18,7 +18,7 @@ class EloquentUserRepository implements UserRepository
         ])->assignRole('admin');
     }
 
-    public function update($id, $request): User
+    public function update($id, $request, $imagePath = false): User
     {
         $user = User::find($id);
 
@@ -32,6 +32,10 @@ class EloquentUserRepository implements UserRepository
 
         if ($request->checkBoxChangePassword) {
             $user->password = Hash::make($request->password);
+        }
+
+        if ($imagePath) {
+            $user->image = $imagePath;
         }
 
         $user->save();
