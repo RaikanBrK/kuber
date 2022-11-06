@@ -63,7 +63,7 @@ class EloquentUserRepository implements UserRepository
     public function updateCountForPage($newCountForPage)
     {
         $user = Auth::user();
-        $user->countForPage = $newCountForPage;
+        $user->count_for_page_id = $newCountForPage;
         $user->save();
     }
 }

@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
-            $table->integer('countForPage')->default(10);
+            $table->unsignedBigInteger('count_for_page_id')->default(1);
             $table->string('image')->nullable();
             $table->unsignedBigInteger('gender_id');
             $table->string('description')->nullable();

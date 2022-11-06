@@ -90,4 +90,9 @@ class User extends Authenticatable
     {
         return $this->gender()->get()->first()->gender;
     }
+
+    public function countForPage()
+    {
+        return $this->belongsTo(countForPage::class);
+    }
 }
