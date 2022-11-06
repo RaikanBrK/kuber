@@ -191,9 +191,9 @@ class Pagination extends Search {
             let effects = message.response.effects;
             let payload = message.updateQueue[0].payload;
             let retorno = effects.returns ? Object.values(effects.returns)[0] : false;
-            let id = payload.params[0];
-
+            
             if (payload.event == 'delete') {
+                let id = payload.params[0];
                 link = this.linkPagination;
                 this.deleteRegistro(retorno, id);
             }
