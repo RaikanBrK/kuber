@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Kuber\datatables;
 
+use App\Repositories\EloquentUserRepository;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
@@ -84,9 +85,8 @@ abstract class ComponentDatatables extends Component
 
     public function updatedCountForPage()
     {
-        $user = Auth::user();
-        $user->countForPage = $this->countForPage;
-        $user->save();
+        $repository = new EloquentUserRepository();
+        $repository->updateCountForPage($this->countForPage);
     }
 
     protected function resetDateRemoveItem($id)

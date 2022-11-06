@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Models\User;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class EloquentUserRepository implements UserRepository
@@ -57,5 +58,12 @@ class EloquentUserRepository implements UserRepository
         Role::all()->each(function($item) use($user) {
             $user->removeRole($item->name);
         });
+    }
+
+    public function updateCountForPage($newCountForPage)
+    {
+        $user = Auth::user();
+        $user->countForPage = $newCountForPage;
+        $user->save();
     }
 }
