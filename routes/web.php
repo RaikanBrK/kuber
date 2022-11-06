@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\SettingsUserController;
 use App\Http\Controllers\administrators\AdministratorController;
 use App\Http\Controllers\Auth\AdminLoginController;
@@ -45,9 +46,14 @@ Route::prefix('admin')->name('admin.')->group(function () {
         });
 
         // SettingsUser Controller
-        Route::controller(SettingsUserController::class)->group(function() {
-            Route::get('profile/settings', 'index')->name('profile.settings');
-            Route::post('profile/settings', 'store')->name('profile.settings.store');
+        Route::controller(SettingsUserController::class)->prefix('profile')->name('profile.')->group(function() {
+            Route::get('settings', 'index')->name('settings');
+            Route::post('settings', 'store')->name('settings.store');
+        });
+
+        // Settings Controller
+        Route::controller(SettingsController::class)->prefix('settings')->name('settings.')->group(function() {
+            Route::get('tags', 'tags')->name('tags');
         });
     });
 

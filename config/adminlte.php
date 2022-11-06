@@ -336,6 +336,12 @@ return [
             'url'  => 'admin/profile/settings',
             'icon' => 'fas fa-fw fa-user-cog',
         ],
+        ['header' => 'Configurações do site'],
+        [
+            'text' => 'Adicionar tags',
+            'url'  => '/admin/settings/tags',
+            'icon' => 'fas fa-fw fa-code',
+        ],
         ['header' => 'Atalhos'],
         [
             'text' => 'Voltar ao site',
