@@ -329,12 +329,24 @@ return [
         [
             'text' => 'Editar perfil',
             'url'  => 'admin/profile',
-            'icon' => 'fas fa-user',
+            'icon' => 'fas fa-fw fa-user',
         ],
         [
             'text' => 'Preferências do usuário',
             'url'  => 'admin/profile/settings',
-            'icon' => 'fas fa-user-cog',
+            'icon' => 'fas fa-fw fa-user-cog',
+        ],
+        ['header' => 'Configurações do site'],
+        [
+            'text' => 'Adicionar tags',
+            'url'  => '/admin/settings/tags',
+            'icon' => 'fas fa-fw fa-code',
+        ],
+        ['header' => 'Atalhos'],
+        [
+            'text' => 'Voltar ao site',
+            'url'  => '',
+            'icon' => 'fas fa-fw fa-arrow-left',
         ],
     ],
 
@@ -455,6 +467,21 @@ return [
                     'type' => 'js',
                     'asset' => false,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js',
+                ],
+            ],
+        ],
+        'Summernote' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'vendor/summernote/summernote.min.css',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/summernote/summernote.min.js',
                 ],
             ],
         ],
