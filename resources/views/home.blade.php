@@ -7,6 +7,26 @@
 @stop
 
 @section('content')
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <x-adminlte-small-box 
+                    title="{{ $qtdUser }}"
+                    text="Administradores"
+                    icon="fas fa-users text-dark"
+                    theme="info"
+                />
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <x-adminlte-small-box 
+                    title="424"
+                    text="Views"
+                    icon="fas fa-eye text-dark"
+                    theme="teal"
+                />
+            </div>
+        </div>
+    </div>
 @stop
 
 @section('css')

@@ -58,7 +58,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::controller(SettingsController::class)->prefix('settings')->name('settings.')->group(function() {
             Route::get('tags', 'tags')->name('tags');
         });
-    });
 
-    Route::get('dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+        Route::get('dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    });
 });
