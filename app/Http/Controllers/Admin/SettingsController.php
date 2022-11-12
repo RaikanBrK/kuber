@@ -7,8 +7,10 @@ use Illuminate\Http\Request;
 
 class SettingsController extends Controller
 {
-    public function tags()
+    public function tags(Request $request)
     {
-        return view('admin.settings.tags');
+        return view('admin.settings.tags', [
+            "settings" => $request->settings,
+        ]);
     }
 }

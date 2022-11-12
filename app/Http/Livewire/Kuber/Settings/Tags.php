@@ -2,8 +2,9 @@
 
 namespace App\Http\Livewire\Kuber\Settings;
 
-use Jantinnerezo\LivewireAlert\LivewireAlert;
+use App\Repositories\SettingsSite\EloquentSettingsSiteRepository;
 use Livewire\Component;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class Tags extends Component
 {
@@ -13,6 +14,10 @@ class Tags extends Component
 
     public $onUpdate;
 
+    public $content;
+
+    public $placeholder = 'Adicione sua tag aqui!';
+
     public function render()
     {
         return view('livewire.kuber.settings.tags');
@@ -20,11 +25,17 @@ class Tags extends Component
 
     public function updateHead()
     {
-        $this->alert('info', 'atualizando head...');
+        $settingsSite = new EloquentSettingsSiteRepository();
+        $settingsSite->updateHead($this->content);
+
+        $this->alert('success', 'Tag atualizada');
     }
 
     public function updateBody()
     {
-        $this->alert('info', 'atualizando body...');
+        $settingsSite = new EloquentSettingsSiteRepository();
+        $settingsSite->updateBody($this->content);
+
+        $this->alert('success', 'Tag atualizada');
     }
 }

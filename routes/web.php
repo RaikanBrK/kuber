@@ -1,12 +1,13 @@
 <?php
 
-use App\Http\Controllers\Admin\ProfileController;
-use App\Http\Controllers\Admin\SettingsController;
-use App\Http\Controllers\Admin\SettingsUserController;
-use App\Http\Controllers\administrators\AdministratorController;
-use App\Http\Controllers\Auth\AdminLoginController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\SettingsController;
+use App\Http\Controllers\Auth\AdminLoginController;
+use App\Http\Controllers\Admin\SettingsUserController;
+use App\Http\Controllers\administrators\AdministratorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,8 +20,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function (Request $request) {
+    return view('welcome', [
+        "settings" => $request->settings
+    ]);
 })->name('home');
 
 Route::prefix('admin')->name('admin.')->group(function () {
