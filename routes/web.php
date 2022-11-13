@@ -59,6 +59,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         // Settings Controller
         Route::controller(SettingsController::class)->prefix('settings')->name('settings.')->group(function() {
             Route::get('tags', 'tags')->name('tags');
+            Route::get('view-counter', 'viewCounter')->name('viewCounter');
+            Route::post('view-counter', 'viewCounterStore')->name('viewCounter.store');
         });
 
         Route::get('dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

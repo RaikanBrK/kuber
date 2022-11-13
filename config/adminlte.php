@@ -342,6 +342,11 @@ return [
             'url'  => '/admin/settings/tags',
             'icon' => 'fas fa-fw fa-code',
         ],
+        [
+            'text' => 'Contador de visualização',
+            'url'  => '/admin/settings/view-counter',
+            'icon' => 'fas fa-fw fa-eye',
+        ],
         ['header' => 'Atalhos'],
         [
             'text' => 'Voltar ao site',

@@ -21,4 +21,11 @@ class EloquentSettingsSiteRepository implements SettingsSiteRepository
             'tagsBody' => $body,
         ]);
     }
+
+    public function updateViewCounter($viewCounter)
+    {
+        SettingsSite::where('id', $this->id)->update([
+            'view_counter' => $viewCounter,
+        ]);
+    }
 }
