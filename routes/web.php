@@ -20,11 +20,13 @@ use App\Http\Controllers\administrators\AdministratorController;
 |
 */
 
-Route::get('/', function (Request $request) {
-    return view('welcome', [
-        "settings" => $request->settings
-    ]);
-})->name('home');
+Route::middleware(['counterViewerUser'])->group(function () {
+    Route::get('/', function (Request $request) {
+        return view('welcome', [
+            "settings" => $request->settings
+        ]);
+    })->name('home');
+});
 
 Route::prefix('admin')->name('admin.')->group(function () {
     // Login Controller
