@@ -19,8 +19,8 @@
             </div>
             <div class="col-lg-3 col-md-4 col-sm-6">
                 <x-adminlte-small-box 
-                    title="424"
-                    text="Views"
+                    title="{{ $viewsMonth }}"
+                    text="Visualizações do mês"
                     icon="fas fa-eye text-dark"
                     theme="teal"
                 />
