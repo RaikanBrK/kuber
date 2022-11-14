@@ -23,7 +23,7 @@
                             visitas</label>
                     </div>
 
-                    <div class="form-group mt-3 col-7">
+                    <div class="form-group mt-3 col-sm-7">
                         <div class="d-flex">
                             <label for="periodCountVisits">Perído para nova visita <span
                                     class="text-muted">(horas)</span></label>
