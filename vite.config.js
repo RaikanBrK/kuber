@@ -15,6 +15,7 @@ export default defineConfig({
                 
                 // Kuber
                 'resources/js/kuber/appAdminlte.js',
+                'resources/js/kuber/popover.js',
                 'resources/js/kuber/datatables/datatables.js',
                 'resources/js/kuber/admin/administrators/changePassword.js',
                 'resources/js/kuber/admin/profile.js',

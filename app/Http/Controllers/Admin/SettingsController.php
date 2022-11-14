@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SettingsSiteRequest;
 use App\Repositories\SettingsSite\SettingsSiteRepository;
 
 class SettingsController extends Controller
@@ -25,11 +26,9 @@ class SettingsController extends Controller
         ]);
     }
 
-    public function viewCounterStore(Request $request)
+    public function viewCounterStore(SettingsSiteRequest $request)
     {
-        $viewCounter = $request->toggleViewCounter == 'on';
-    
-        $this->repository->updateViewCounter($viewCounter);
+        $this->repository->updateViewCounter($request);
 
         return to_route('admin.settings.viewCounter')->withSuccess('Contador de visitas atualizado com sucesso!');
     }

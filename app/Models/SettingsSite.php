@@ -13,6 +13,7 @@ class SettingsSite extends Model
         'id',
         'tagsHead',
         'tagsBody',
-        'view_counter'
+        'view_counter',
+        'periodCountVisits',
     ];
 }

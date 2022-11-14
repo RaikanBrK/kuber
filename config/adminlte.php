@@ -343,7 +343,7 @@ return [
             'icon' => 'fas fa-fw fa-code',
         ],
         [
-            'text' => 'Contador de visualização',
+            'text' => 'Contador de visitas',
             'url'  => '/admin/settings/view-counter',
             'icon' => 'fas fa-fw fa-eye',
         ],

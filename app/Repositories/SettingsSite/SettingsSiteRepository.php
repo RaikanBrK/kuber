@@ -8,5 +8,5 @@ interface SettingsSiteRepository
 
     public function updateBody($body);
 
-    public function updateViewCounter($viewCounter);
+    public function updateViewCounter($request);
 }

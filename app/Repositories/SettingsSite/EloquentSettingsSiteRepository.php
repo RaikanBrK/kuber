@@ -22,10 +22,13 @@ class EloquentSettingsSiteRepository implements SettingsSiteRepository
         ]);
     }
 
-    public function updateViewCounter($viewCounter)
+    public function updateViewCounter($request)
     {
+        $viewCounter = $request->toggleViewCounter == 'on';
+
         SettingsSite::where('id', $this->id)->update([
             'view_counter' => $viewCounter,
+            'periodCountVisits' => $request->periodCountVisits,
         ]);
     }
 }
