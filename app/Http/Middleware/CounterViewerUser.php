@@ -29,9 +29,12 @@ class CounterViewerUser
     public function saveCounterViewer($request)
     {
         $ip = $request->ip();
-        $timeAtual = date('H:i:s', strtotime('-2 hours'));
+
+        $hours = '-'.$request->settings->periodCountVisits.' hours';
+
+        $timePastHours = date('H:i:s', strtotime($hours));
         
-        $time = ModelsCounterViewerUser::where('ip', $ip)->whereDate('updated_at', date('Y-m-d'))->whereTime('updated_at', '>', $timeAtual)->count();
+        $time = ModelsCounterViewerUser::where('ip', $ip)->whereDate('updated_at', date('Y-m-d'))->whereTime('updated_at', '>', $timePastHours)->count();
 
         if ($time > 0) {
             return false;
