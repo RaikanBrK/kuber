@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\CountForPage;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\countForPage;
 use App\Repositories\UserRepository;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,7 +18,7 @@ class SettingsUserController extends Controller
         $user = auth()->user();
 
         return view('admin.settings-user', [
-            'countForPageAll' => countForPage::all(),
+            'countForPageAll' => CountForPage::all(),
             'idCountForPageUserCurrent' => $user->countForPage->id,
         ]);
     }

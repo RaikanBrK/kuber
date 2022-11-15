@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Repositories\SettingsSite;
+namespace App\Repositories\Settings;
 
 use App\Models\SettingsSite;
 
-class EloquentSettingsRepository implements SettingsSiteRepository
+class EloquentSettingsRepository implements SettingsRepository
 {
     protected $id = 1;
 

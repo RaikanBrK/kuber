@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\SettingsSite;
+namespace App\Repositories\Settings;
 
 interface SettingsRepository
 {
