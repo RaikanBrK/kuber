@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Livewire\Kuber;
+namespace App\Http\Livewire\Admin\Datatables;
 
-use App\Http\Livewire\Kuber\datatables\ComponentDatatables;
 use App\Models\User;
-use App\Repositories\EloquentUserRepository;
 use Illuminate\Support\Facades\Auth;
+use App\Repositories\EloquentUserRepository;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
-use Livewire\Component;
+use App\Http\Livewire\Admin\Datatables\ComponentDatatables;
 
 class DatatablesUser extends ComponentDatatables
 {
@@ -49,6 +48,6 @@ class DatatablesUser extends ComponentDatatables
 
     public function render()
     {
-        return view('livewire.kuber.datatables-user');
+        return view('livewire.admin.datatables.datatables-user');
     }
 }

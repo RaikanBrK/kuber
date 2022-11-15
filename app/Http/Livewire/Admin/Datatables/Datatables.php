@@ -2,9 +2,9 @@
 
 namespace App\Http\Livewire\Kuber;
 
-use App\Http\Livewire\Kuber\datatables\ComponentDatatables;
 use App\Models\User;
 use App\Repositories\EloquentUserRepository;
+use App\Http\Livewire\Admin\Datatables\ComponentDatatables;
 
 class Datatables extends ComponentDatatables
 {

@@ -1,4 +1,4 @@
-@extends('kuber.layout-datatables')
+@extends('admin.layout-datatables')
 
 @section('table')
 <table class="display table {{ $table }} {{ $tableClass }}" style="width:100%">
@@ -24,7 +24,7 @@
             <td class="kuber-table-td">{{ $item[$key] }}</td>
             @endforeach
             
-            @include('kuber.datatables.table-actions')
+            @include('admin.datatables.table-actions')
         </tr>
         @endforeach
     </tbody>

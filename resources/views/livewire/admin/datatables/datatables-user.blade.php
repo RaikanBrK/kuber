@@ -1,4 +1,4 @@
-@extends('kuber.layout-datatables')
+@extends('admin.layouts.datatables')
 
 @section('table')
 
@@ -20,7 +20,7 @@
 
     <tbody>
         @foreach($dataArray as $idx => $item)
-            @include('kuber.datatables.linesTr')
+            @include('admin.datatables.linesTr')
         @endforeach
     </tbody>
 </table>
