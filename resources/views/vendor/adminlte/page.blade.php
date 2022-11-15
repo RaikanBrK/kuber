@@ -65,7 +65,7 @@
 
     <x-livewire-alert::flash />
 
-    @livewire('kuber.alert-toastr')
+    @livewire('alert-toastr')
     
     @stack('js')
     @yield('js')

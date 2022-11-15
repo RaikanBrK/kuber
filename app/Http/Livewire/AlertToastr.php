@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Kuber;
+namespace App\Http\Livewire;
 
 use Livewire\Component;
 
@@ -15,6 +15,6 @@ class AlertToastr extends Component
             }
         }
 
-        return view('livewire.kuber.alert-toastr');
+        return view('livewire.alert-toastr');
     }
 }
