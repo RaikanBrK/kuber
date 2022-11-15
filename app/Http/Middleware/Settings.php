@@ -3,10 +3,10 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use App\Models\SettingsSite as SettingsSiteModel;
+use App\Models\Settings as SettingsModel;
 use Illuminate\Http\Request;
 
-class SettingsSite
+class Settings
 {
     /**
      * Handle an incoming request.
@@ -17,7 +17,7 @@ class SettingsSite
      */
     public function handle(Request $request, Closure $next)
     {
-        $request->settings = SettingsSiteModel::find(1);
+        $request->settings = SettingsModel::find(1);
         return $next($request);
     }
 }

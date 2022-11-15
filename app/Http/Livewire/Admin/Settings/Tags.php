@@ -25,16 +25,16 @@ class Tags extends Component
 
     public function updateHead()
     {
-        $settingsSite = new EloquentSettingsRepository();
-        $settingsSite->updateHead($this->content);
+        $settings = new EloquentSettingsRepository();
+        $settings->updateHead($this->content);
 
         $this->alert('success', 'Tag atualizada');
     }
 
     public function updateBody()
     {
-        $settingsSite = new EloquentSettingsRepository();
-        $settingsSite->updateBody($this->content);
+        $settings = new EloquentSettingsRepository();
+        $settings->updateBody($this->content);
 
         $this->alert('success', 'Tag atualizada');
     }

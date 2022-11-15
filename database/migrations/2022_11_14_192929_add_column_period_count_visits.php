@@ -13,8 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('settings_sites', function(Blueprint $table) {
-            $table->integer('periodCountVisits')->default(2);
+        Schema::table('settings', function(Blueprint $table) {
+            $table->integer('period_count_visits')->default(2);
         });
     }
 
@@ -25,8 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('settings_sites', function(Blueprint $table) {
-            $table->dropColumn('periodCountVisits');
+        Schema::table('settings', function(Blueprint $table) {
+            $table->dropColumn('period_count_visits');
         });
     }
 };

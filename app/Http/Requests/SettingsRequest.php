@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SettingsSiteRequest extends FormRequest
+class SettingsRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class SettingsSiteRequest extends FormRequest
     public function rules()
     {
         return [
-            'periodCountVisits' => ['required', 'integer', 'between:1,24'],
+            'period_count_visits' => ['required', 'integer', 'between:1,24'],
         ];
     }
 }

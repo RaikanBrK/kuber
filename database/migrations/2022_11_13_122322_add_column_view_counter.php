@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('settings_sites', function(Blueprint $table) {
+        Schema::table('settings', function(Blueprint $table) {
             $table->boolean('view_counter')->default(true);
         });
     }
@@ -25,7 +25,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('settings_sites', function(Blueprint $table) {
+        Schema::table('settings', function(Blueprint $table) {
             $table->dropColumn('view_counter');
         });
     }

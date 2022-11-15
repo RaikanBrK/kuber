@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
             GenderSeeder::class,
             CountForPageSeeder::class,
             UserSeeder::class,
-            SettingsSiteSeeder::class,
+            SettingsSeeder::class,
         ]);
     }
 }

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\SettingsSiteRequest;
+use App\Http\Requests\SettingsRequest;
 use App\Repositories\Settings\SettingsRepository;
 
 
@@ -27,7 +27,7 @@ class SettingsController extends Controller
         ]);
     }
 
-    public function viewCounterStore(SettingsSiteRequest $request)
+    public function viewCounterStore(SettingsRequest $request)
     {
         $this->repository->updateViewCounter($request);
 

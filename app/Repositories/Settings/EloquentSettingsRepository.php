@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Settings;
 
-use App\Models\SettingsSite;
+use App\Models\Settings;
 
 class EloquentSettingsRepository implements SettingsRepository
 {
@@ -10,15 +10,15 @@ class EloquentSettingsRepository implements SettingsRepository
 
     public function updateHead($head)
     {
-        SettingsSite::where('id', $this->id)->update([
-            'tagsHead' => $head,
+        Settings::where('id', $this->id)->update([
+            'head' => $head,
         ]);
     }
 
     public function updateBody($body)
     {
-        SettingsSite::where('id', $this->id)->update([
-            'tagsBody' => $body,
+        Settings::where('id', $this->id)->update([
+            'body' => $body,
         ]);
     }
 
@@ -26,9 +26,9 @@ class EloquentSettingsRepository implements SettingsRepository
     {
         $viewCounter = $request->toggleViewCounter == 'on';
 
-        SettingsSite::where('id', $this->id)->update([
+        Settings::where('id', $this->id)->update([
             'view_counter' => $viewCounter,
-            'periodCountVisits' => $request->periodCountVisits,
+            'period_count_visits' => $request->period_count_visits,
         ]);
     }
 }

@@ -34,7 +34,7 @@ class CounterViewerUser
     {
         $ip = $request->ip();
 
-        $hours = '-'.$request->settings->periodCountVisits.' hours';
+        $hours = '-'.$request->settings->period_count_visits.' hours';
 
         $timePastHours = date('H:i:s', strtotime($hours));
         

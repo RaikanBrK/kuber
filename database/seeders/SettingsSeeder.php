@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\SettingsSite;
+use App\Models\Settings;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class SettingsSiteSeeder extends Seeder
+class SettingsSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,7 +15,7 @@ class SettingsSiteSeeder extends Seeder
      */
     public function run()
     {
-        SettingsSite::create([
+        Settings::create([
             'id' => 1,
         ]);
     }

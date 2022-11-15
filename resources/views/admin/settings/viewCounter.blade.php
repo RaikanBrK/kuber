@@ -32,8 +32,8 @@
                                 <i class="far fa-question-circle" class="p-2" style="font-size: 1.3rem"></i>
                             </a>
                         </div>
-                        <input type="number" id="periodCountVisits" name="periodCountVisits" class="form-control"
-                            max="24" min="1" value="{{ $settings->periodCountVisits }}" required>
+                        <input type="number" id="periodCountVisits" name="period_count_visits" class="form-control"
+                            max="24" min="1" value="{{ $settings->period_count_visits }}" required>
                     </div>
                 </div>
 
