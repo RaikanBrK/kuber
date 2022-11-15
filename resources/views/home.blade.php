@@ -20,19 +20,36 @@
             <div class="col-lg-3 col-md-4 col-sm-6">
                 <x-adminlte-small-box 
                     title="{{ $viewsMonth }}"
-                    text="Visualizações do mês"
+                    text="Visitas no mês"
                     icon="fas fa-eye text-dark"
                     theme="teal"
                 />
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card card-secondary">
+                    <div class="card-header">
+                        <h3 class="card-title">Visitas</h3>
+                    </div>
+            
+                    <div class="card-body">
+                        <div>
+                            <canvas id="myChartDashboard"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 @stop
 
-@section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
-@stop
-
 @section('js')
-    <script> console.log('Hi!'); </script>
+    <script>
+        const labels = {!! json_encode($labels) !!};
+        const data = {!! json_encode($data) !!};
+    </script>
+
+    @vite('resources/js/kuber/admin/dashboard.js')
 @stop
