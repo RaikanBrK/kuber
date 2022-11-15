@@ -18,6 +18,8 @@ class CounterViewerUser
      */
     public function handle(Request $request, Closure $next)
     {
+        $this->removeViewsLastYear();
+
         $auth = Auth::guard('admin')->check();
         if ($auth == false || ($auth == true && $request->user('admin')->hasRole('admin') == false)) {
             $this->saveCounterViewer($request);
@@ -43,5 +45,10 @@ class CounterViewerUser
         ModelsCounterViewerUser::create([
             'ip' => $ip,
         ]);
+    }
+
+    public function removeViewsLastYear()
+    {
+        ModelsCounterViewerUser::where('updated_at', '<', date('Y-m-d H:i:s', strtotime('-12 month')))->delete();
     }
 }
