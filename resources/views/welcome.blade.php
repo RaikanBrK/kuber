@@ -10,6 +10,9 @@
   @vite(['resources/js/app.js'])
 
   @vite('resources/sass/welcome.scss')
+
+  {!! $settings->tagsHead !!}
+
 </head>
 
 <body>
@@ -59,6 +62,8 @@
 
     <i class="fa-solid fa-house"></i>
   </div>
+
+  {!! $settings->tagsBody !!}
 
   @vite('resources/js/welcome.js')
 </body>

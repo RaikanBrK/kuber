@@ -2,6 +2,8 @@
 
 namespace App\Http\Livewire\Kuber\datatables;
 
+use App\Models\countForPage;
+use App\Repositories\EloquentUserRepository;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
@@ -48,7 +50,9 @@ abstract class ComponentDatatables extends Component
 
     public $theadLight = false;
 
-    public $countForPage = 10;
+    public $countForPage = 1;
+
+    public $countForPageAll;
 
     /**
      * Construindo o datatables
@@ -58,11 +62,17 @@ abstract class ComponentDatatables extends Component
     public function mount()
     {
         $this->bootstrap();
-        $this->countForPage = Auth::user()->countForPage;
         $this->init();
+        $this->initCountForPage();
     }
 
-     /**
+    public function initCountForPage()
+    {
+        $this->countForPageAll = countForPage::all();
+        $this->countForPage = Auth::user()->countForPage->number;
+    }
+
+    /**
      * Método executado com o mount para continuar construindo o datatables
      *
      * @return void
@@ -84,9 +94,11 @@ abstract class ComponentDatatables extends Component
 
     public function updatedCountForPage()
     {
-        $user = Auth::user();
-        $user->countForPage = $this->countForPage;
-        $user->save();
+        $idCountForPage = $this->countForPageAll->where('number', $this->countForPage)->first()->id;
+
+        $repository = new EloquentUserRepository();
+        $repository->updateCountForPage($idCountForPage);
+
     }
 
     protected function resetDateRemoveItem($id)

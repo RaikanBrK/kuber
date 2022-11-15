@@ -17,10 +17,10 @@ class AuthAdminMaster
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::check() && Auth::user()->hasRole('admin-master') == false) {
+        $auth = Auth::guard('admin')->check();
+        if ($auth && $request->user('admin')->hasRole('admin-master') == false) {
             return to_route('admin.home');
         }
-        
 
         return $next($request);
     }

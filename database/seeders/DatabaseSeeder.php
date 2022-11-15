@@ -17,7 +17,9 @@ class DatabaseSeeder extends Seeder
         $this->call([
             RoleSeeder::class,
             GenderSeeder::class,
+            CountForPageSeeder::class,
             UserSeeder::class,
+            SettingsSiteSeeder::class,
         ]);
     }
 }

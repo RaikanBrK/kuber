@@ -1,0 +1,1 @@
+const a=document.getElementById("myChartDashboard");new Chart(a,{type:"bar",data:{labels,datasets:[{label:"Visitas",data,borderWidth:1,backgroundColor:"#cc65fe"}]},options:{plugins:{title:{display:!0,text:"Visitas por m\u1EBDs"},legend:{display:!1}}}});

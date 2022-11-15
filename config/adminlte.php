@@ -329,7 +329,29 @@ return [
         [
             'text' => 'Editar perfil',
             'url'  => 'admin/profile',
-            'icon' => 'fas fa-user',
+            'icon' => 'fas fa-fw fa-user',
+        ],
+        [
+            'text' => 'Preferências do usuário',
+            'url'  => 'admin/profile/settings',
+            'icon' => 'fas fa-fw fa-user-cog',
+        ],
+        ['header' => 'Configurações do site'],
+        [
+            'text' => 'Adicionar tags',
+            'url'  => '/admin/settings/tags',
+            'icon' => 'fas fa-fw fa-code',
+        ],
+        [
+            'text' => 'Contador de visitas',
+            'url'  => '/admin/settings/view-counter',
+            'icon' => 'fas fa-fw fa-eye',
+        ],
+        ['header' => 'Atalhos'],
+        [
+            'text' => 'Voltar ao site',
+            'url'  => '',
+            'icon' => 'fas fa-fw fa-arrow-left',
         ],
     ],
 
@@ -404,27 +426,27 @@ return [
             ],
         ],
         'Select2' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js',
                 ],
                 [
                     'type' => 'css',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.css',
                 ],
             ],
         ],
         'Chartjs' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
-                    'location' => '//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.bundle.min.js',
+                    'asset' => true,
+                    'location' => '//cdn.jsdelivr.net/npm/chart.js@4.0.1/dist/chart.umd.min.js',
                 ],
             ],
         ],
@@ -450,6 +472,21 @@ return [
                     'type' => 'js',
                     'asset' => false,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js',
+                ],
+            ],
+        ],
+        'Summernote' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'vendor/summernote/summernote.min.css',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/summernote/summernote.min.js',
                 ],
             ],
         ],
