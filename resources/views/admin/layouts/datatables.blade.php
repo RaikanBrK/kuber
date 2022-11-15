@@ -3,13 +3,13 @@
 @endpush
 
 <div class="container-datatables">
-    @include('kuber.datatables.search')
+    @include('admin.datatables.search')
 
     <div class="table-responsive pb-3">
         @yield('table')
     </div>
 
-    @include('kuber.datatables.pagination')
+    @include('admin.datatables.pagination')
 </div>
 
-@include('kuber.datatables.assets')
+@include('admin.datatables.assets')

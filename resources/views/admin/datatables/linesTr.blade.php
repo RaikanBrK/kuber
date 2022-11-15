@@ -20,5 +20,5 @@
         </td>
     @endforeach
 
-    @include('kuber.datatables.table-actions')
+    @include('admin.datatables.table-actions')
 </tr>

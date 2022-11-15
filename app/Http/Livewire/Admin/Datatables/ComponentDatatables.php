@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Livewire\Kuber\datatables;
+namespace App\Http\Livewire\Admin\Datatables;
 
-use App\Models\countForPage;
+use App\Models\CountForPage;
 use App\Repositories\EloquentUserRepository;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -68,7 +68,7 @@ abstract class ComponentDatatables extends Component
 
     public function initCountForPage()
     {
-        $this->countForPageAll = countForPage::all();
+        $this->countForPageAll = CountForPage::all();
         $this->countForPage = Auth::user()->countForPage->number;
     }
 

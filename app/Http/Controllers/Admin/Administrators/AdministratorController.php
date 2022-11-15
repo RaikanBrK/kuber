@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\administrators;
+namespace App\Http\Controllers\Admin\Administrators;
 
 use App\Models\User;
 use App\Models\Gender;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\UserRepository;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\UserEditRequest;
 use App\Http\Requests\UserCreateRequest;
 

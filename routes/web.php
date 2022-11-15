@@ -7,7 +7,7 @@ use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Auth\AdminLoginController;
 use App\Http\Controllers\Admin\SettingsUserController;
-use App\Http\Controllers\administrators\AdministratorController;
+use App\Http\Controllers\Admin\Administrators\AdministratorController;
 
 /*
 |--------------------------------------------------------------------------

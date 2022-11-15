@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Livewire\Kuber;
+namespace App\Http\Livewire\Admin\Datatables;
 
-use App\Http\Livewire\Kuber\datatables\ComponentDatatables;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
-use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\Admin\Datatables\ComponentDatatables;
+
 
 class DatatablesUserTransferMaster extends ComponentDatatables
 {
@@ -45,6 +45,7 @@ class DatatablesUserTransferMaster extends ComponentDatatables
 
     public function render()
     {
-        return view('livewire.kuber.datatables-user-transfer-master');
+        
+        return view('livewire.admin.datatables.datatables-user-transfer-master');
     }
 }
