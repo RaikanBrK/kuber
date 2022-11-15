@@ -5,11 +5,11 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SettingsSiteRequest;
-use App\Repositories\SettingsSite\SettingsSiteRepository;
+use App\Repositories\SettingsSite\SettingsRepository;
 
 class SettingsController extends Controller
 {
-    public function __construct(protected SettingsSiteRepository $repository)
+    public function __construct(protected SettingsRepository $repository)
     {}
 
     public function tags(Request $request)

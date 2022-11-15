@@ -2,7 +2,7 @@
 
 namespace App\Repositories\SettingsSite;
 
-interface SettingsSiteRepository
+interface SettingsRepository
 {
     public function updateHead($head);
 

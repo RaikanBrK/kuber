@@ -6,9 +6,9 @@ use App\Repositories\SettingsSite\EloquentSettingsSiteRepository;
 use App\Repositories\SettingsSite\SettingsSiteRepository;
 use Illuminate\Support\ServiceProvider;
 
-class SettingsSiteProvider extends ServiceProvider
+class SettingsProvider extends ServiceProvider
 {
     public array $bindings = [
-        SettingsSiteRepository::class => EloquentSettingsSiteRepository::class,
+        SettingsRepository::class => EloquentSettingsRepository::class,
     ];
 }

@@ -4,7 +4,7 @@ namespace App\Repositories\SettingsSite;
 
 use App\Models\SettingsSite;
 
-class EloquentSettingsSiteRepository implements SettingsSiteRepository
+class EloquentSettingsRepository implements SettingsSiteRepository
 {
     protected $id = 1;
 

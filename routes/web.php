@@ -63,6 +63,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::post('view-counter', 'viewCounterStore')->name('viewCounter.store');
         });
 
-        Route::get('dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+        Route::get('dashboard', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('home');
     });
 });
