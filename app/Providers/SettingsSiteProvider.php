@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\Repositories\EloquentSettingsSiteRepository;
-use App\Repositories\SettingsSiteRepository;
+use App\Repositories\SettingsSite\EloquentSettingsSiteRepository;
+use App\Repositories\SettingsSite\SettingsSiteRepository;
 use Illuminate\Support\ServiceProvider;
 
 class SettingsSiteProvider extends ServiceProvider

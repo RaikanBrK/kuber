@@ -20,11 +20,13 @@ use App\Http\Controllers\administrators\AdministratorController;
 |
 */
 
-Route::get('/', function (Request $request) {
-    return view('welcome', [
-        "settings" => $request->settings
-    ]);
-})->name('home');
+Route::middleware(['counterViewerUser'])->group(function () {
+    Route::get('/', function (Request $request) {
+        return view('welcome', [
+            "settings" => $request->settings
+        ]);
+    })->name('home');
+});
 
 Route::prefix('admin')->name('admin.')->group(function () {
     // Login Controller
@@ -34,10 +36,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('logout', 'logout')->name('logout');
     });
 
-    Route::middleware(['auth', 'admin.master'])->group(function() {
+    Route::middleware(['auth'])->group(function() {
         // Administrador controller
         Route::resource('administrators', AdministratorController::class)->except('show');
-        Route::controller(AdministratorController::class)->name('administrators.')->group(function () {
+        Route::controller(AdministratorController::class)->name('administrators.')->middleware('admin.master')->group(function () {
             Route::get('transferir-super-admin', 'transferMaster')->name('transferMaster.index');
             Route::post('transferir-super-admin', 'transferMasterStore')->name('transferMaster.store');
         });
@@ -57,6 +59,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         // Settings Controller
         Route::controller(SettingsController::class)->prefix('settings')->name('settings.')->group(function() {
             Route::get('tags', 'tags')->name('tags');
+            Route::get('view-counter', 'viewCounter')->name('viewCounter');
+            Route::post('view-counter', 'viewCounterStore')->name('viewCounter.store');
         });
 
         Route::get('dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -5,15 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class SettingsSite extends Model
+class CounterViewerUser extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'id',
-        'tagsHead',
-        'tagsBody',
-        'view_counter',
-        'periodCountVisits',
+        'ip'
     ];
 }

@@ -186,7 +186,8 @@ return [
         'description' => 'descrição',
         'password_confirmation' => 'confirmação da senha',
         'current_password' => 'senha atual',
-        'checkBoxChangePassword' => 'alterar senha'
+        'checkBoxChangePassword' => 'alterar senha',
+        'periodCountVisits' => 'período para nova visita',
     ],
 
 ];

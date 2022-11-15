@@ -342,6 +342,11 @@ return [
             'url'  => '/admin/settings/tags',
             'icon' => 'fas fa-fw fa-code',
         ],
+        [
+            'text' => 'Contador de visitas',
+            'url'  => '/admin/settings/view-counter',
+            'icon' => 'fas fa-fw fa-eye',
+        ],
         ['header' => 'Atalhos'],
         [
             'text' => 'Voltar ao site',
@@ -436,12 +441,12 @@ return [
             ],
         ],
         'Chartjs' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
-                    'location' => '//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.bundle.min.js',
+                    'asset' => true,
+                    'location' => '//cdn.jsdelivr.net/npm/chart.js@4.0.1/dist/chart.umd.min.js',
                 ],
             ],
         ],
