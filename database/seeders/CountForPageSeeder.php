@@ -2,8 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\countForPage;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\CountForPage;
 use Illuminate\Database\Seeder;
 
 class CountForPageSeeder extends Seeder
@@ -15,7 +14,7 @@ class CountForPageSeeder extends Seeder
      */
     public function run()
     {
-        countForPage::insert([
+        CountForPage::insert([
             ['number' => 10],
             ['number' => 25],
             ['number' => 50],

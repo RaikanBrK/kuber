@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories;
+namespace App\Repositories\User;
 
 use App\Models\User;
 use Spatie\Permission\Models\Role;
@@ -62,7 +62,7 @@ class EloquentUserRepository implements UserRepository
 
     public function updateCountForPage($newCountForPage)
     {
-        $user = Auth::user();
+        $user = User::find(Auth::user()->id);
         $user->count_for_page_id = $newCountForPage;
         $user->save();
     }

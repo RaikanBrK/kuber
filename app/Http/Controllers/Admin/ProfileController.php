@@ -3,11 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Gender;
-use Illuminate\Http\File;
 use Illuminate\Support\Str;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Repositories\UserRepository;
+use App\Repositories\User\UserRepository;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
 use App\Http\Requests\UserEditRequest;

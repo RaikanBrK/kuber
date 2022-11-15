@@ -5,8 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\CountForPage;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Repositories\UserRepository;
-use Illuminate\Support\Facades\Auth;
+use App\Repositories\User\UserRepository;
 
 class SettingsUserController extends Controller
 {

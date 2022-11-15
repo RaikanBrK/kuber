@@ -4,9 +4,9 @@ namespace App\Http\Livewire\Admin\Datatables;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use App\Repositories\EloquentUserRepository;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use App\Http\Livewire\Admin\Datatables\ComponentDatatables;
+use App\Repositories\User\EloquentUserRepository;
 
 class DatatablesUser extends ComponentDatatables
 {

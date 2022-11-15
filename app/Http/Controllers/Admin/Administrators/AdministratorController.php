@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Admin\Administrators;
 use App\Models\User;
 use App\Models\Gender;
 use App\Http\Controllers\Controller;
-use App\Repositories\UserRepository;
 use App\Http\Requests\UserEditRequest;
 use App\Http\Requests\UserCreateRequest;
+use App\Repositories\User\UserRepository;
 
 class AdministratorController extends Controller
 {
