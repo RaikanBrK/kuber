@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CounterViewerUser;
-use App\Models\User;
 use DateTime;
+use App\Models\User;
+use Illuminate\Http\Request;
+use App\Models\CounterViewerUser;
 
 class HomeController extends Controller
 {
@@ -17,7 +18,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
         $qtdUser = User::with('roles')->role(['admin-master', 'admin'])->count();
 
@@ -26,6 +27,7 @@ class HomeController extends Controller
         $this->runData();
 
         return view('home', [
+            'settings' => $request->settings,
             'qtdUser' => $qtdUser,
             'viewsMonth' => $viewsMonth,
             'labels' => $this->labels,
