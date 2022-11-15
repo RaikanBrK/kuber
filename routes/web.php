@@ -36,10 +36,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('logout', 'logout')->name('logout');
     });
 
-    Route::middleware(['auth', 'admin.master'])->group(function() {
+    Route::middleware(['auth'])->group(function() {
         // Administrador controller
         Route::resource('administrators', AdministratorController::class)->except('show');
-        Route::controller(AdministratorController::class)->name('administrators.')->group(function () {
+        Route::controller(AdministratorController::class)->name('administrators.')->middleware('admin.master')->group(function () {
             Route::get('transferir-super-admin', 'transferMaster')->name('transferMaster.index');
             Route::post('transferir-super-admin', 'transferMasterStore')->name('transferMaster.store');
         });
