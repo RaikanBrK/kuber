@@ -21,7 +21,7 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        $qtdUser = User::with('roles')->role(['admin-master', 'admin'])->count();
+        $qtdUser = User::with('roles')->role(['admin'])->count();
 
         $viewsMonth = CounterViewerUser::whereMonth('updated_at', date('m'))->whereYear('updated_at', date('Y'))->count();
 

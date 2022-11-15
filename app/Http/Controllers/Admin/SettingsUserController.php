@@ -16,9 +16,11 @@ class SettingsUserController extends Controller
     {
         $user = auth()->user();
 
+        $countForPageAll = CountForPage::all();
+
         return view('admin.settings-user', [
-            'countForPageAll' => CountForPage::all(),
-            'idCountForPageUserCurrent' => $user->countForPage->id,
+            'countForPageAll' => $countForPageAll,
+            'idCountForPageUserCurrent' => $countForPageAll->find($user->count_for_page_id)->id,
         ]);
     }
 

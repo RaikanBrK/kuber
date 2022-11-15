@@ -3,7 +3,7 @@
 namespace App\Http\Livewire\Admin\Datatables;
 
 use App\Models\CountForPage;
-use App\Repositories\EloquentUserRepository;
+use App\Repositories\User\EloquentUserRepository;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
@@ -69,7 +69,7 @@ abstract class ComponentDatatables extends Component
     public function initCountForPage()
     {
         $this->countForPageAll = CountForPage::all();
-        $this->countForPage = Auth::user()->countForPage->number;
+        $this->countForPage = $this->countForPageAll->find(Auth::user()->count_for_page_id)->number;
     }
 
     /**

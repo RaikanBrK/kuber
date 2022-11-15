@@ -22,7 +22,7 @@ class AdministratorController extends Controller
      */
     public function index()
     {
-        $users = User::with('roles')->role(['admin-master', 'admin'])->get();
+        $users = User::with('roles')->role(['admin'])->get();
 
         $header = ['id' => 'Id', 'name' => 'Nome', 'email' => 'E-mail'];
 
@@ -94,7 +94,7 @@ class AdministratorController extends Controller
 
     public function transferMaster()
     {
-        $users = User::with('roles')->role(['admin-master', 'admin'])->get();
+        $users = User::with('roles')->role(['admin'])->get();
 
         $header = ['id' => 'Id', 'name' => 'Nome', 'email' => 'E-mail'];
 
