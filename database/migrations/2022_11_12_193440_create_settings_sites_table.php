@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('settings_sites', function (Blueprint $table) {
+        Schema::create('settings', function (Blueprint $table) {
             $table->id();
-            $table->text('tagsHead')->nullable();
-            $table->text('tagsBody')->nullable();
+            $table->text('head')->nullable();
+            $table->text('body')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('settings_sites');
+        Schema::dropIfExists('settings');
     }
 };

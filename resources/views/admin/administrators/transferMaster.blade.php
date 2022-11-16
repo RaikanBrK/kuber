@@ -7,5 +7,5 @@
 @stop
 
 @section('content')
-    <livewire:kuber.datatables-user-transfer-master theadDark tableHover :data="$users" :header="$header" actions :actionsList="['transfer']" route="administrators.transferMaster" />
+    <livewire:admin.datatables.datatables-user-transfer-master theadDark tableHover :data="$users" :header="$header" actions :actionsList="['transfer']" route="administrators.transferMaster" />
 @stop

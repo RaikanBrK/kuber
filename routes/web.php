@@ -7,7 +7,7 @@ use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Auth\AdminLoginController;
 use App\Http\Controllers\Admin\SettingsUserController;
-use App\Http\Controllers\administrators\AdministratorController;
+use App\Http\Controllers\Admin\Administrators\AdministratorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,6 +63,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::post('view-counter', 'viewCounterStore')->name('viewCounter.store');
         });
 
-        Route::get('dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+        Route::get('dashboard', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('home');
     });
 });

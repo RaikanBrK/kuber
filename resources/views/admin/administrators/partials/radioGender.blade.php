@@ -12,7 +12,7 @@
             @if(isset($genderId))
                 @checked($genderId == $gender->id)
             @elseif(isset($user))
-                @checked($user->gender->id == $gender->id)
+                @checked($user->gender_id == $gender->id)
             @endif
         >
         <label class="form-check-label" for="{{ $id }}">{{ $gender->gender }}</label>

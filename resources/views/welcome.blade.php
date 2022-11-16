@@ -11,7 +11,7 @@
 
   @vite('resources/sass/welcome.scss')
 
-  {!! $settings->tagsHead !!}
+  {!! $settings->head !!}
 
 </head>
 
@@ -63,7 +63,7 @@
     <i class="fa-solid fa-house"></i>
   </div>
 
-  {!! $settings->tagsBody !!}
+  {!! $settings->body !!}
 
   @vite('resources/js/welcome.js')
 </body>
