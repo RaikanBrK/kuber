@@ -30,24 +30,24 @@
     "src": "resources/js/kuber/popover.js",
     "isEntry": true
   },
-  "resources/js/kuber/datatables/datatables.js": {
+  "resources/js/admin/datatables/datatables.js": {
     "file": "assets/datatables.c306ad1f.js",
-    "src": "resources/js/kuber/datatables/datatables.js",
+    "src": "resources/js/admin/datatables/datatables.js",
     "isEntry": true
   },
-  "resources/js/kuber/admin/administrators/changePassword.js": {
+  "resources/js/admin/administrators/changePassword.js": {
     "file": "assets/changePassword.70dfcc11.js",
-    "src": "resources/js/kuber/admin/administrators/changePassword.js",
+    "src": "resources/js/admin/administrators/changePassword.js",
     "isEntry": true
   },
-  "resources/js/kuber/admin/profile.js": {
+  "resources/js/admin/profile.js": {
     "file": "assets/profile.f3cd430a.js",
-    "src": "resources/js/kuber/admin/profile.js",
+    "src": "resources/js/admin/profile.js",
     "isEntry": true
   },
-  "resources/js/kuber/admin/dashboard.js": {
+  "resources/js/admin/dashboard.js": {
     "file": "assets/dashboard.836c7134.js",
-    "src": "resources/js/kuber/admin/dashboard.js",
+    "src": "resources/js/admin/dashboard.js",
     "isEntry": true
   },
   "resources/sass/welcome.scss": {
@@ -55,19 +55,19 @@
     "src": "resources/sass/welcome.scss",
     "isEntry": true
   },
-  "resources/sass/kuber/adminlte/page.scss": {
+  "resources/sass/adminlte/page.scss": {
     "file": "assets/page.cd3dd287.css",
-    "src": "resources/sass/kuber/adminlte/page.scss",
+    "src": "resources/sass/adminlte/page.scss",
     "isEntry": true
   },
-  "resources/sass/kuber/datatables/datatables.scss": {
-    "file": "assets/datatables.306db614.css",
-    "src": "resources/sass/kuber/datatables/datatables.scss",
-    "isEntry": true
-  },
-  "resources/sass/kuber/admin/profile.scss": {
+  "resources/sass/admin/profile.scss": {
     "file": "assets/profile.5e92be2f.css",
-    "src": "resources/sass/kuber/admin/profile.scss",
+    "src": "resources/sass/admin/profile.scss",
+    "isEntry": true
+  },
+  "resources/sass/admin/datatables/datatables.scss": {
+    "file": "assets/datatables.306db614.css",
+    "src": "resources/sass/admin/datatables/datatables.scss",
     "isEntry": true
   }
 }
