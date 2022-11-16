@@ -48,10 +48,10 @@
 @stop
 
 @push('css')
-    @vite('resources/sass/kuber/admin/profile.scss')
+    @vite('resources/sass/admin/profile.scss')
 @endpush
 
 @push('js')
-    @vite('resources/js/kuber/admin/administrators/changePassword.js')
-    @vite('resources/js/kuber/admin/profile.js')
+    @vite('resources/js/admin/administrators/changePassword.js')
+    @vite('resources/js/admin/profile.js')
 @endpush

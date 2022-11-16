@@ -1,5 +1,5 @@
 @push('css')
-@vite('resources/sass/kuber/datatables/datatables.scss')
+@vite('resources/sass/admin/datatables/datatables.scss')
 @endpush
 
 <div class="container-datatables">

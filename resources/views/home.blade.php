@@ -56,6 +56,6 @@
         const data = {!! json_encode($data) !!};
     </script>
 
-    @vite('resources/js/kuber/admin/dashboard.js')
+    @vite('resources/js/admin/dashboard.js')
     @endif
 @stop

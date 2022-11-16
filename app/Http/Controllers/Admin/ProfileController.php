@@ -59,7 +59,9 @@ class ProfileController extends Controller
         $nameImg = $path . $filename;
         $validation = Storage::disk('public')->put($nameImg, $img);
 
-        Storage::disk('public')->delete(Auth::user()->image);
+        if (Auth::user()->image) {
+            Storage::disk('public')->delete(Auth::user()->image);
+        }
 
         return $validation ? $nameImg : $validation;
     }
