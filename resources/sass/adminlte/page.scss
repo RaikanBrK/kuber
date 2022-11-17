@@ -1,8 +1,9 @@
 @import '../variables';
 
-.#{$slug}-brand-image {
-    width: 100% !important;
-    margin: 0 !important;
+.main-sidebar .brand-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .navbar-nav>.user-menu>.dropdown-menu>li.user-header {

@@ -64,8 +64,8 @@ return [
     */
 
     'logo' => '',
-    'logo_img' => 'images/logo.svg',
-    'logo_img_class' => 'brand-image kuber-brand-image',
+    'logo_img' => 'images/logo.webp',
+    'logo_img_class' => 'brand-image',
     'logo_img_xl' => false,
     'logo_img_xl_class' => 'brand-image-xs',
     'logo_img_alt' => 'Admin Logo',

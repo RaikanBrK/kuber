@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Auth\AdminLoginController;
 use App\Http\Controllers\Admin\SettingsUserController;
 use App\Http\Controllers\Admin\Administrators\AdministratorController;
+use App\Http\Controllers\Admin\Settings\LogoFavicon;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,13 +57,20 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::post('settings', 'store')->name('settings.store');
         });
 
-        // Settings Controller
-        Route::controller(SettingsController::class)->prefix('settings')->name('settings.')->group(function() {
-            Route::get('tags', 'tags')->name('tags');
-            Route::get('view-counter', 'viewCounter')->name('viewCounter');
-            Route::post('view-counter', 'viewCounterStore')->name('viewCounter.store');
-            Route::get('logo-favicon', 'logoFavicon')->name('logoFavicon');
-            Route::post('logo-favicon', 'logoFaviconStore')->name('logoFavicon.store');
+        // Settings
+        Route::prefix('settings')->name('settings.')->group(function() {
+            // Settings Controller
+            Route::controller(SettingsController::class)->group(function() {
+                Route::get('tags', 'tags')->name('tags');
+                Route::get('view-counter', 'viewCounter')->name('viewCounter');
+                Route::post('view-counter', 'viewCounterStore')->name('viewCounter.store');
+            });
+
+            // LogoFavicon Controller
+            Route::controller(LogoFavicon::class)->group(function() {
+                Route::get('logo-favicon', 'logoFavicon')->name('logoFavicon');
+                Route::post('logo-favicon', 'logoFaviconStore')->name('logoFavicon.store');
+            });
         });
 
         Route::get('dashboard', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('home');

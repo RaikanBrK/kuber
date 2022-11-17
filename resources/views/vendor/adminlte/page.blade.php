@@ -9,6 +9,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="robots" content="noindex">
 
+    <link rel="shortcut icon" href="{{ asset('images/favicon.webp') }}" type="image/x-icon">
+
     @vite('resources/sass/adminlte/page.scss')
 
     @stack('css')

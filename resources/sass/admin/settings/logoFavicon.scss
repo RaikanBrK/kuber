@@ -8,4 +8,17 @@
     .form-group {
         margin-bottom: 0;
     }
+
+    .content-img {
+        display: flex;
+        justify-content: center;
+    }
+
+    .logo {
+        max-height: 200px;
+    }
+
+    .favicon {
+        max-height: 120px;
+    }
 }
