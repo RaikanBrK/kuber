@@ -33,4 +33,9 @@ class SettingsController extends Controller
 
         return to_route('admin.settings.viewCounter')->withSuccess('Contador de visitas atualizado com sucesso!');
     }
+
+    public function logoFavicon()
+    {
+        return view('admin.settings.logoFavicon');
+    }
 }

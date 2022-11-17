@@ -61,6 +61,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::get('tags', 'tags')->name('tags');
             Route::get('view-counter', 'viewCounter')->name('viewCounter');
             Route::post('view-counter', 'viewCounterStore')->name('viewCounter.store');
+            Route::get('logo-favicon', 'logoFavicon')->name('logoFavicon');
+            Route::post('logo-favicon', 'logoFaviconStore')->name('logoFavicon.store');
         });
 
         Route::get('dashboard', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('home');
