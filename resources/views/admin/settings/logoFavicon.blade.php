@@ -24,6 +24,7 @@
                                 </div>
                             </x-slot>
                         </x-adminlte-input-file>
+                        <small id="emailHelp" class="form-text text-muted">Recomendado: 250 x 150 px</small>
                     </div>
                 </div>
             </x-adminlte-card>
@@ -41,6 +42,7 @@
                                 </div>
                             </x-slot>
                         </x-adminlte-input-file>
+                        <small id="emailHelp" class="form-text text-muted">Recomendado: 144 x 144 px</small>
                     </div>
                 </div>
             </x-adminlte-card>
