@@ -1,6 +1,5 @@
 const image = $('#campoImageProfile');
 
-
 image.on('change', e => {
     let image = e.target;
     const reader = new FileReader();

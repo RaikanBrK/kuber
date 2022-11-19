@@ -20,6 +20,7 @@ export default defineConfig({
                 'resources/js/admin/administrators/changePassword.js',
                 'resources/js/admin/profile.js',
                 'resources/js/admin/dashboard.js',
+                'resources/js/admin/settings/logoFavicon.js',
                 
                 'resources/sass/admin/datatables/datatables.scss',
                 'resources/sass/adminlte/page.scss',
