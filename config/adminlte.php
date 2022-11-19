@@ -64,8 +64,8 @@ return [
     */
 
     'logo' => '',
-    'logo_img' => 'images/logo.svg',
-    'logo_img_class' => 'brand-image kuber-brand-image',
+    'logo_img' => 'images/logo.webp',
+    'logo_img_class' => 'brand-image',
     'logo_img_xl' => false,
     'logo_img_xl_class' => 'brand-image-xs',
     'logo_img_alt' => 'Admin Logo',
@@ -347,6 +347,11 @@ return [
             'url'  => '/admin/settings/view-counter',
             'icon' => 'fas fa-fw fa-eye',
         ],
+        [
+            'text' => 'Logo e Favicon',
+            'url'  => '/admin/settings/logo-favicon',
+            'icon' => 'fas fa-fw fa-icons',
+        ],
         ['header' => 'Atalhos'],
         [
             'text' => 'Voltar ao site',
@@ -487,6 +492,16 @@ return [
                     'type' => 'js',
                     'asset' => true,
                     'location' => 'vendor/summernote/summernote.min.js',
+                ],
+            ],
+        ],
+        'BsCustomFileInput' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/bs-custom-file-input/bs-custom-file-input.min.js',
                 ],
             ],
         ],

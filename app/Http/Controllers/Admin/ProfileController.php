@@ -51,9 +51,9 @@ class ProfileController extends Controller
     {
         $img = Image::make($image)
         ->fit(205)
-        ->encode('png',80);
+        ->encode('webp',80);
 
-        $filename = uniqid() . Str::random(20) . '.png';
+        $filename = uniqid() . Str::random(20) . '.webp';
         $path = "users/avatar/";
 
         $nameImg = $path . $filename;
