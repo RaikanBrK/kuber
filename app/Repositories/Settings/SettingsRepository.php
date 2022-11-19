@@ -9,4 +9,6 @@ interface SettingsRepository
     public function updateBody($body);
 
     public function updateViewCounter($request);
+
+    public function addSettingsFrontEnd($request);
 }

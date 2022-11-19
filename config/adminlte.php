@@ -338,6 +338,11 @@ return [
         ],
         ['header' => 'Configurações do site'],
         [
+            'text' => 'Configurações gerais',
+            'url'  => '/admin/settings',
+            'icon' => 'fas fa-fw fa-cog',
+        ],
+        [
             'text' => 'Adicionar tags',
             'url'  => '/admin/settings/tags',
             'icon' => 'fas fa-fw fa-code',

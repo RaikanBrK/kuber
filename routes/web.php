@@ -61,6 +61,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::prefix('settings')->name('settings.')->group(function() {
             // Settings Controller
             Route::controller(SettingsController::class)->group(function() {
+                Route::get('', 'index')->name('index');
+                Route::post('', 'store')->name('store');
                 Route::get('tags', 'tags')->name('tags');
                 Route::get('view-counter', 'viewCounter')->name('viewCounter');
                 Route::post('view-counter', 'viewCounterStore')->name('viewCounter.store');

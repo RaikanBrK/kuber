@@ -31,4 +31,12 @@ class EloquentSettingsRepository implements SettingsRepository
             'period_count_visits' => $request->period_count_visits,
         ]);
     }
+
+    public function addSettingsFrontEnd($request)
+    {
+        Settings::where('id', $this->id)->update([
+            'title' => $request->title,
+            'description' => $request->description,
+        ]);
+    }
 }
