@@ -1,18 +1,12 @@
-<div class="card card-primary">
-    <div class="card-header">
-        <h3 class="card-title">{!! $title !!}</h3>
-    </div>
+<form action="{{ route('admin.settings.tags') }}" wire:submit.prevent="{{ $onUpdate }}">
+    @csrf
 
-    <form action="{{ route('admin.settings.tags') }}" wire:submit.prevent="{{ $onUpdate }}">
-        @csrf
-        <div class="card-body">
-            <x-adminlte-textarea name="taDisabled" placeholder="{{ $placeholder }}" rows="5" wire:model="content">
-                {{ $content }}
-            </x-adminlte-textarea>
-        </div>
-
-        <div class="card-footer">
-            <button class="btn btn-primary ml-auto d-block">Atualizar</button>
-        </div>
-    </form>
-</div>
+    <x-adminlte-card :title="$title" theme="lightblue">
+        <x-adminlte-textarea name="taDisabled" placeholder="{{ $placeholder }}" rows="5" wire:model="content">
+            {{ $content }}
+        </x-adminlte-textarea>
+        <x-slot name="footerSlot">
+            <x-adminlte-button class="d-block ml-auto" type="submit" label="Salvar" theme="primary" />
+        </x-slot>
+    </x-adminlte-card>
+</form>

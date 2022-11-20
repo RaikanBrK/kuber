@@ -7,5 +7,7 @@
 @stop
 
 @section('content')
-    <livewire:admin.datatables.datatables-user-transfer-master theadDark tableHover :data="$users" :header="$header" actions :actionsList="['transfer']" route="administrators.transferMaster" />
+    <x-adminlte-card title="Administradores" theme="lightblue">
+        <livewire:admin.datatables.datatables-user-transfer-master theadDark tableHover :data="$users" :header="$header" actions :actionsList="['transfer']" route="administrators.transferMaster" />
+    </x-adminlte-card>
 @stop

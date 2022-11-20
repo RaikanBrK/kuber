@@ -8,18 +8,18 @@
 
 @section('content')
 <div class="container-fluid">
-    <x-adminlte-alert theme="info" title="Cuidado!">
+    <x-adminlte-alert theme="info" title="Cuidado!" dismissable>
         Não adicione tags de terceiro, apenas se você confiar no provedor.
     </x-adminlte-alert>
 
     @livewire('admin.settings.tags', [
-        'title' => 'Tags antes do <b>&#60;/head&#62;</b>',
+        'title' => 'Tags antes do </head>',
         'content' => $settings->head,
         'onUpdate' => 'updateHead'
     ])
 
     @livewire('admin.settings.tags', [
-        'title' => 'Tags antes do <b>&#60;/body&#62;</b>',
+        'title' => 'Tags antes do </body>',
         'content' => $settings->body,
         'onUpdate' => 'updateBody'
     ])

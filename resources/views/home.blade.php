@@ -22,53 +22,22 @@
         </div>
 
         <div class="row">
+            @php
+                $classCol = $settings->view_counter ? 'col-lg-4': 'col-md-12';
+                $classRow = $settings->view_counter ? 'row-cols-lg-1' : 'row-cols-md-3';
+            @endphp
             @if ($settings->view_counter)
-                <div class="col-md-8">
-                    <div class="card card-secondary">
-                        <div class="card-header">
-                            <h3 class="card-title">Visitas</h3>
+                <div class="col-lg-8 mb-4">
+                    <x-adminlte-card title="Visitas" theme="purple">
+                        <div>
+                            <canvas id="myChartDashboard"></canvas>
                         </div>
-
-                        <div class="card-body">
-                            <div>
-                                <canvas id="myChartDashboard"></canvas>
-                            </div>
-                        </div>
-                    </div>
+                    </x-adminlte-card>
                 </div>
             @endif
-
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="media">
-                            <img src="{{ asset('storage/' . $user->image) }}" class="mr-3 user-image img-circle elevation-2" alt="..." width="92px">
-                            <div class="media-body">
-                                <h5 class="card-title mt-0 float-none">{{ $user->name }} <small class="text-muted">({{ $roleName }})</small></h5>
-                                <p>{{ $user->description }}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header">
-                        Configurações gerais
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $settings->title }}</h5>
-                        <p class="card-text">{{ $settings->description }}</p>
-                        <a href="{{ route('admin.settings.index') }}" class="btn btn-primary">Editar</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header">
-                        Contador de visitas
-                        <span class="badge badge-primary badge-pill">{{ $labelViewCounter }}</span>
-                    </div>
-                    <div class="card-body">
-                        <p class="card-text">Perído de {{ $settings->period_count_visits }} horas para nova visita</p>
-                        <a href="{{ route('admin.settings.viewCounter') }}" class="btn btn-primary">Editar</a>
-                    </div>
+            <div class="{{ $classCol }}">
+                <div class="row row-cols-1 row-cols-sm-2 {{ $classRow }}">
+                    @include('admin.dashboard.info')
                 </div>
             </div>
         </div>

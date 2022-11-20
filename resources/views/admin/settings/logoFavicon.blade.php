@@ -47,7 +47,7 @@
                 </div>
             </x-adminlte-card>
     
-            <x-adminlte-button class="d-block ml-auto" type="submit" label="Salvar" theme="success" />
+            <x-adminlte-button class="d-block ml-auto" type="submit" label="Salvar" theme="primary" />
         </form>
         
     </div>
