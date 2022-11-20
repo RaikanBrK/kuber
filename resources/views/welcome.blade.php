@@ -5,13 +5,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Welcome</title>
+  <title>{{ $settings->title }}</title>
+  <meta name="description" content="{{ $settings->description }}">
+
+  <link rel="shortcut icon" href="{{ asset('images/favicon.webp') }}" type="image/x-icon">
 
   @vite(['resources/js/app.js'])
 
   @vite('resources/sass/welcome.scss')
 
-  {!! $settings->tagsHead !!}
+  {!! $settings->head !!}
 
 </head>
 
@@ -63,7 +66,7 @@
     <i class="fa-solid fa-house"></i>
   </div>
 
-  {!! $settings->tagsBody !!}
+  {!! $settings->body !!}
 
   @vite('resources/js/welcome.js')
 </body>

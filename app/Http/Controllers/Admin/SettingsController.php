@@ -4,13 +4,27 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\SettingsSiteRequest;
-use App\Repositories\SettingsSite\SettingsSiteRepository;
+use App\Http\Requests\SettingsFrontEndRequest;
+use App\Http\Requests\SettingsRequest;
+use App\Repositories\Settings\SettingsRepository;
+
 
 class SettingsController extends Controller
 {
-    public function __construct(protected SettingsSiteRepository $repository)
+    public function __construct(protected SettingsRepository $repository)
     {}
+
+    public function index(Request $request)
+    {
+        return view('admin.settings.index', ['settings' => $request->settings]);
+    }
+
+    public function store(SettingsFrontEndRequest $request)
+    {
+        $this->repository->addSettingsFrontEnd($request);
+
+        return to_route('admin.settings.index')->withSuccess('Configurações atualizadas com sucesso!');
+    }
 
     public function tags(Request $request)
     {
@@ -26,7 +40,7 @@ class SettingsController extends Controller
         ]);
     }
 
-    public function viewCounterStore(SettingsSiteRequest $request)
+    public function viewCounterStore(SettingsRequest $request)
     {
         $this->repository->updateViewCounter($request);
 

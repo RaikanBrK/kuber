@@ -7,8 +7,11 @@
     @livewireStyles 
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="robots" content="noindex">
 
-    @vite('resources/sass/kuber/adminlte/page.scss')
+    <link rel="shortcut icon" href="{{ asset('images/favicon.webp') }}" type="image/x-icon">
+
+    @vite('resources/sass/adminlte/page.scss')
 
     @stack('css')
     @yield('css')
@@ -65,7 +68,7 @@
 
     <x-livewire-alert::flash />
 
-    @livewire('kuber.alert-toastr')
+    @livewire('alert-toastr')
     
     @stack('js')
     @yield('js')

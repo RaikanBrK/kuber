@@ -3,11 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Gender;
-use Illuminate\Http\File;
 use Illuminate\Support\Str;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Repositories\UserRepository;
+use App\Repositories\User\UserRepository;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
 use App\Http\Requests\UserEditRequest;
@@ -53,15 +51,17 @@ class ProfileController extends Controller
     {
         $img = Image::make($image)
         ->fit(205)
-        ->encode('png',80);
+        ->encode('webp',80);
 
-        $filename = uniqid() . Str::random(20) . '.png';
+        $filename = uniqid() . Str::random(20) . '.webp';
         $path = "users/avatar/";
 
         $nameImg = $path . $filename;
         $validation = Storage::disk('public')->put($nameImg, $img);
 
-        Storage::disk('public')->delete(Auth::user()->image);
+        if (Auth::user()->image) {
+            Storage::disk('public')->delete(Auth::user()->image);
+        }
 
         return $validation ? $nameImg : $validation;
     }

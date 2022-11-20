@@ -64,8 +64,8 @@ return [
     */
 
     'logo' => '',
-    'logo_img' => 'images/logo.svg',
-    'logo_img_class' => 'brand-image kuber-brand-image',
+    'logo_img' => 'images/logo.webp',
+    'logo_img_class' => 'brand-image',
     'logo_img_xl' => false,
     'logo_img_xl_class' => 'brand-image-xs',
     'logo_img_alt' => 'Admin Logo',
@@ -338,6 +338,11 @@ return [
         ],
         ['header' => 'Configurações do site'],
         [
+            'text' => 'Configurações gerais',
+            'url'  => '/admin/settings',
+            'icon' => 'fas fa-fw fa-cog',
+        ],
+        [
             'text' => 'Adicionar tags',
             'url'  => '/admin/settings/tags',
             'icon' => 'fas fa-fw fa-code',
@@ -346,6 +351,11 @@ return [
             'text' => 'Contador de visitas',
             'url'  => '/admin/settings/view-counter',
             'icon' => 'fas fa-fw fa-eye',
+        ],
+        [
+            'text' => 'Logo e Favicon',
+            'url'  => '/admin/settings/logo-favicon',
+            'icon' => 'fas fa-fw fa-icons',
         ],
         ['header' => 'Atalhos'],
         [
@@ -487,6 +497,16 @@ return [
                     'type' => 'js',
                     'asset' => true,
                     'location' => 'vendor/summernote/summernote.min.js',
+                ],
+            ],
+        ],
+        'BsCustomFileInput' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/bs-custom-file-input/bs-custom-file-input.min.js',
                 ],
             ],
         ],

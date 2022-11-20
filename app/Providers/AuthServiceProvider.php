@@ -27,6 +27,6 @@ class AuthServiceProvider extends ServiceProvider
 
         Gate::after(function ($user, $ability) {
             return $user->hasRole('admin-master'); // note this returns boolean
-         });
+        });
     }
 }

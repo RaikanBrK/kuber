@@ -16,14 +16,16 @@ export default defineConfig({
                 // Kuber
                 'resources/js/kuber/appAdminlte.js',
                 'resources/js/kuber/popover.js',
-                'resources/js/kuber/datatables/datatables.js',
-                'resources/js/kuber/admin/administrators/changePassword.js',
-                'resources/js/kuber/admin/profile.js',
-                'resources/js/kuber/admin/dashboard.js',
-
-                'resources/sass/kuber/datatables/datatables.scss',
-                'resources/sass/kuber/adminlte/page.scss',
-                'resources/sass/kuber/admin/profile.scss',
+                'resources/js/admin/datatables/datatables.js',
+                'resources/js/admin/administrators/changePassword.js',
+                'resources/js/admin/profile.js',
+                'resources/js/admin/dashboard.js',
+                'resources/js/admin/settings/logoFavicon.js',
+                
+                'resources/sass/admin/datatables/datatables.scss',
+                'resources/sass/adminlte/page.scss',
+                'resources/sass/admin/profile.scss',
+                'resources/sass/admin/settings/logoFavicon.scss'
             ],
         }),
     ],
