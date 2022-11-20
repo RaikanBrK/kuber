@@ -14,6 +14,7 @@ class HomeController extends Controller
     protected $labels = [];
     protected $date = null;
     protected $data = [];
+    protected $dateInit = null;
 
     /**
      * Show the application dashboard.
@@ -46,24 +47,27 @@ class HomeController extends Controller
     public function runData()
     {
         $this->date = new DateTime('-11 month');
-        
-        $this->setData();
+        $this->dateInit = clone $this->date;
         
         for($i = 0; $i < 12; $i++) {
             $this->setLabel();
             $this->date->modify('+1 month');
         }
+
+        $this->setData();
     }
 
     public function setLabel()
     {
+        $this->data[$this->date->format('m')] = 0;
+
         $labelMonth = str_replace('home.', '', __('home.' . $this->date->format('M')));
         array_push($this->labels, $labelMonth);
     }
 
     public function setData()
     {
-        $views = CounterViewerUser::where('updated_at', '>', $this->date->modify('-2 days'))->orderBy('updated_at')->get();
+        $views = CounterViewerUser::where('updated_at', '>', $this->dateInit)->orderBy('updated_at')->get();
 
         $views->filter(function($value) {
             $monthId = strval($value->updated_at->format('m'));
