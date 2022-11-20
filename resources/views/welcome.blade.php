@@ -8,7 +8,7 @@
   <title>{{ $settings->title }}</title>
   <meta name="description" content="{{ $settings->description }}">
 
-  
+  <link rel="shortcut icon" href="{{ asset('images/favicon.webp') }}" type="image/x-icon">
 
   @vite(['resources/js/app.js'])
 
