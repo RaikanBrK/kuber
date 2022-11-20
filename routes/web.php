@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SettingsController;
@@ -75,6 +74,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
             });
         });
 
-        Route::get('dashboard', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('home');
+        Route::get('dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('home');
     });
 });
