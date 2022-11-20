@@ -1,12 +1,12 @@
 <div class="col">
     <x-adminlte-card>
         <div class="media">
-            <img src="{{ asset('storage/' . $user->image) }}" class="mr-3 user-image img-circle elevation-2"
-                alt="..." width="92px">
+            <img src="{{ $user->image() }}" class="mr-3 user-image img-circle elevation-2"
+                alt="{{ $user->name }}" width="92px">
             <div class="media-body">
                 <h5 class="card-title mt-0 float-none">{{ $user->name }} <small
                         class="text-muted">({{ $roleName }})</small></h5>
-                <p>{{ $user->description }}</p>
+                <p>{{ $user->desc() }}</p>
             </div>
         </div>
     </x-adminlte-card>
