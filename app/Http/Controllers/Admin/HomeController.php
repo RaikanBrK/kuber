@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use DateTime;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\CounterViewerUser;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -22,17 +23,23 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $qtdUser = User::with('roles')->role(['admin'])->count();
+        $settings = $request->settings;
+        $user = Auth::user();
+        $role = $user->getRoleNames()[0];
 
         $viewsMonth = CounterViewerUser::whereMonth('updated_at', date('m'))->whereYear('updated_at', date('Y'))->count();
 
         $this->runData();
 
         return view('home', [
-            'settings' => $request->settings,
+            'settings' => $settings,
             'qtdUser' => $qtdUser,
             'viewsMonth' => $viewsMonth,
             'labels' => $this->labels,
             'data' => array_values($this->data),
+            'labelViewCounter' => $settings->view_counter ? 'Ativo' : 'Desativado',
+            'user' => $user,
+            'roleName' => $role == 'admin-master' ? 'Super Admin' : $role,
         ]);
     }
 

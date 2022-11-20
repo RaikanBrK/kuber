@@ -15,5 +15,7 @@ class Settings extends Model
         'body',
         'view_counter',
         'period_count_visits',
+        'title',
+        'description',
     ];
 }
