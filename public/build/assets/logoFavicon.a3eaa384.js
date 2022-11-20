@@ -1,0 +1,1 @@
+function t(o,r){o.on("change",a=>{let n=a.target;const e=new FileReader;e.onload=function(){var l=e.result;r.attr("src",l)},n.files.length>0&&e.readAsDataURL(n.files[0]),a.preventDefault()})}t($("#logo"),$("#imageLogo"));t($("#favicon"),$("#imageFavicon"));

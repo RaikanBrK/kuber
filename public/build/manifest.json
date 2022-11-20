@@ -41,7 +41,7 @@
     "isEntry": true
   },
   "resources/js/admin/profile.js": {
-    "file": "assets/profile.f3cd430a.js",
+    "file": "assets/profile.4b3acb88.js",
     "src": "resources/js/admin/profile.js",
     "isEntry": true
   },
@@ -50,14 +50,19 @@
     "src": "resources/js/admin/dashboard.js",
     "isEntry": true
   },
+  "resources/js/admin/settings/logoFavicon.js": {
+    "file": "assets/logoFavicon.a3eaa384.js",
+    "src": "resources/js/admin/settings/logoFavicon.js",
+    "isEntry": true
+  },
   "resources/sass/welcome.scss": {
     "file": "assets/welcome.552c02cb.css",
     "src": "resources/sass/welcome.scss",
     "isEntry": true
   },
-  "resources/sass/adminlte/page.scss": {
-    "file": "assets/page.cd3dd287.css",
-    "src": "resources/sass/adminlte/page.scss",
+  "resources/sass/admin/datatables/datatables.scss": {
+    "file": "assets/datatables.306db614.css",
+    "src": "resources/sass/admin/datatables/datatables.scss",
     "isEntry": true
   },
   "resources/sass/admin/profile.scss": {
@@ -65,9 +70,14 @@
     "src": "resources/sass/admin/profile.scss",
     "isEntry": true
   },
-  "resources/sass/admin/datatables/datatables.scss": {
-    "file": "assets/datatables.306db614.css",
-    "src": "resources/sass/admin/datatables/datatables.scss",
+  "resources/sass/adminlte/page.scss": {
+    "file": "assets/page.81adf73d.css",
+    "src": "resources/sass/adminlte/page.scss",
+    "isEntry": true
+  },
+  "resources/sass/admin/settings/logoFavicon.scss": {
+    "file": "assets/logoFavicon.07560792.css",
+    "src": "resources/sass/admin/settings/logoFavicon.scss",
     "isEntry": true
   }
 }
