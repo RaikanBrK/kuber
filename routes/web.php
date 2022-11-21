@@ -22,4 +22,4 @@ Route::middleware(['counterViewerUser'])->group(function () {
     })->name('home');
 });
 
-require_once 'kuber/auth.php';
+require __DIR__.'/kuber/auth.php';

@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Auth;
 
 use Kuber\Auth\AuthenticatesAdmin;
 use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
 
 class AdminLoginController extends Controller
 {
@@ -26,7 +25,7 @@ class AdminLoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = 'admin/dashboard';
 
     /**
      * Create a new controller instance.

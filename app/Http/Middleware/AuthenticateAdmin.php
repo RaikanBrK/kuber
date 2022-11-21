@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
 
-class Authenticate extends Middleware
+class AuthenticateAdmin extends Middleware
 {
 
     /**
@@ -19,7 +19,7 @@ class Authenticate extends Middleware
     protected function authenticate($request, array $guards)
     {
         if (empty($guards)) {
-            $guards = ['web', 'admin'];
+            $guards = ['admin'];
         }
 
         foreach ($guards as $guard) {
@@ -40,7 +40,7 @@ class Authenticate extends Middleware
     protected function redirectTo($request)
     {
         if (! $request->expectsJson()) {
-            return route('login');
+            return route('admin.login');
         }
     }
 }

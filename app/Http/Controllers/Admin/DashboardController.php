@@ -29,7 +29,7 @@ class DashboardController extends Controller
 
         $this->runData();
 
-        return view('dashboard', [
+        return view('admin.dashboard', [
             'settings' => $settings,
             'qtdUser' => $qtdUser,
             'viewsMonth' => $viewsMonth,

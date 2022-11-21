@@ -16,7 +16,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('logout', 'logout')->name('logout');
     });
 
-    Route::middleware(['auth'])->group(function() {
+    Route::middleware(['auth.admin'])->group(function() {
         // Administrador controller
         Route::resource('administrators', AdministratorController::class)->except('show');
         Route::controller(AdministratorController::class)->name('administrators.')->middleware('admin.master')->group(function () {
