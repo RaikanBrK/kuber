@@ -1,1 +1,0 @@
-let o=$('[data-toggle="popover"]');$(function(){o.popover()});$(window).on("click",t=>{let e=$(t.target),p=$(e.closest('[data-toggle="popover"]')),l=e.closest(".popover");p.length==0&&l.length==0&&o.popover("hide")});
