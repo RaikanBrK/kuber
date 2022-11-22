@@ -19,7 +19,7 @@ class Authenticate extends Middleware
     protected function authenticate($request, array $guards)
     {
         if (empty($guards)) {
-            $guards = ['admin'];
+            $guards = ['web', 'admin'];
         }
 
         foreach ($guards as $guard) {
@@ -40,7 +40,7 @@ class Authenticate extends Middleware
     protected function redirectTo($request)
     {
         if (! $request->expectsJson()) {
-            return route('admin.login');
+            return route('login');
         }
     }
 }
