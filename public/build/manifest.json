@@ -1,12 +1,88 @@
 {
   "resources/js/app.js": {
-    "file": "assets/app.86dd0080.js",
+    "file": "assets/app.2d2107c9.js",
     "src": "resources/js/app.js",
+    "isEntry": true,
+    "css": [
+      "assets/app.132c45b2.css"
+    ],
+    "assets": [
+      "assets/fa-brands-400.3fe890d0.woff2",
+      "assets/fa-brands-400.c7ae37d3.ttf",
+      "assets/fa-regular-400.fe69d948.woff2",
+      "assets/fa-regular-400.fdc1f753.ttf",
+      "assets/fa-solid-900.d27bc752.woff2",
+      "assets/fa-solid-900.6d53c706.ttf"
+    ]
+  },
+  "resources/js/welcome.js": {
+    "file": "assets/welcome.9f232000.js",
+    "src": "resources/js/welcome.js",
+    "isEntry": true
+  },
+  "resources/js/kuber/appAdminlte.js": {
+    "file": "assets/appAdminlte.d06859f3.js",
+    "src": "resources/js/kuber/appAdminlte.js",
+    "isEntry": true
+  },
+  "resources/js/kuber/popover.js": {
+    "file": "assets/popover.a8574fcf.js",
+    "src": "resources/js/kuber/popover.js",
+    "isEntry": true
+  },
+  "resources/js/admin/datatables/datatables.js": {
+    "file": "assets/datatables.c306ad1f.js",
+    "src": "resources/js/admin/datatables/datatables.js",
+    "isEntry": true
+  },
+  "resources/js/admin/administrators/changePassword.js": {
+    "file": "assets/changePassword.70dfcc11.js",
+    "src": "resources/js/admin/administrators/changePassword.js",
+    "isEntry": true
+  },
+  "resources/js/admin/profile.js": {
+    "file": "assets/profile.4b3acb88.js",
+    "src": "resources/js/admin/profile.js",
+    "isEntry": true
+  },
+  "resources/js/admin/dashboard.js": {
+    "file": "assets/dashboard.836c7134.js",
+    "src": "resources/js/admin/dashboard.js",
+    "isEntry": true
+  },
+  "resources/js/admin/settings/logoFavicon.js": {
+    "file": "assets/logoFavicon.a3eaa384.js",
+    "src": "resources/js/admin/settings/logoFavicon.js",
+    "isEntry": true
+  },
+  "resources/sass/welcome.scss": {
+    "file": "assets/welcome.552c02cb.css",
+    "src": "resources/sass/welcome.scss",
     "isEntry": true
   },
   "resources/css/app.css": {
-    "file": "assets/app.a483d243.css",
+    "file": "assets/app.e142c1f8.css",
     "src": "resources/css/app.css",
+    "isEntry": true
+  },
+  "resources/sass/admin/datatables/datatables.scss": {
+    "file": "assets/datatables.306db614.css",
+    "src": "resources/sass/admin/datatables/datatables.scss",
+    "isEntry": true
+  },
+  "resources/sass/adminlte/page.scss": {
+    "file": "assets/page.81adf73d.css",
+    "src": "resources/sass/adminlte/page.scss",
+    "isEntry": true
+  },
+  "resources/sass/admin/profile.scss": {
+    "file": "assets/profile.11e3c65d.css",
+    "src": "resources/sass/admin/profile.scss",
+    "isEntry": true
+  },
+  "resources/sass/admin/settings/logoFavicon.scss": {
+    "file": "assets/logoFavicon.07560792.css",
+    "src": "resources/sass/admin/settings/logoFavicon.scss",
     "isEntry": true
   }
 }
